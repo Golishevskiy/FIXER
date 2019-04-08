@@ -25,7 +25,7 @@ struct Product: Codable {
     let parent: Parent
     let description: Description
     let images: [String]
-    
+
     enum CodingKeys: String, CodingKey {
         case parentArticle = "parent_article"
         case article, price, presence

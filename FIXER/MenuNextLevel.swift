@@ -13,6 +13,7 @@ class MenuNextLevel: UIViewController {
     var menu: MenuStruct!
     var selectedCategories: Int?
     var category = [Page]()
+    var parentID: Int?
     
     @IBOutlet weak var tableViewMenu: UITableView!
     override func viewDidLoad() {
@@ -43,7 +44,9 @@ extension MenuNextLevel: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        parentID = category[indexPath.item].id
         performSegue(withIdentifier: "showBoard", sender: category)
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -51,10 +54,9 @@ extension MenuNextLevel: UITableViewDataSource, UITableViewDelegate {
             if let board = segue.destination as? BoardProduct {
                 if let senderCategory = sender as? [Page] {
                     board.productFiltered = senderCategory
-                    
+                    board.CategoryId = parentID
                 }
             }
         }
     }
-    
 }

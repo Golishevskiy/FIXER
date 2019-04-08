@@ -9,10 +9,15 @@
 import Foundation
 
 class Network: Codable {
+    
+    static let shared = Network()
+    
     typealias EmptyClosure = (() -> Void)
+    typealias exempleClosure = (() -> Void)
     let baseUrl = "https://fixcenter.com.ua/api"
-    private var one: String = ""
+    var token: String = ""
     var menuResp: MenuStruct!
+    var items: AllResponse?
     
     func getToken(completion: EmptyClosure? = nil) {
         let authUrl = "/auth"
@@ -30,7 +35,7 @@ class Network: Codable {
             guard let data = data else { return }
             do {
                 let response = try JSONDecoder().decode(ProductItem.self, from: data)
-                self.one = response.response.token
+                self.token = response.response.token
                 completion?()
                 
             } catch {
@@ -41,7 +46,7 @@ class Network: Codable {
     
     func loadMenu() {
         let urlMenuStr = "/pages/export/"
-        let parametrs = ["token": one, "parent": "1273"]
+        let parametrs = ["token": token, "parent": "1273"]
         guard let url = URL(string: baseUrl + urlMenuStr) else { return }
         
         var reuest = URLRequest(url: url)
@@ -52,6 +57,7 @@ class Network: Codable {
         
         URLSession.shared.dataTask(with: reuest) { (data, response, error) in
             guard let data = data else { return }
+            
             do {
                 let menu = try JSONDecoder().decode(MenuStruct.self, from: data)
                 self.menuResp = menu
@@ -61,7 +67,46 @@ class Network: Codable {
             }.resume()
     }
     
+    func loadProduct(idCategory: String, completion: @escaping exempleClosure) {
+        getToken()
+        let urlProductStr = "/catalog/export/"
+        let parametrs = ["token": token, "expr": ["parent": ["id": idCategory]]] as [String : Any]
+        guard let url = URL(string: baseUrl + urlProductStr) else { return }
+        
+        var reuest = URLRequest(url: url)
+        reuest.httpMethod = "POST"
+        reuest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        guard let httpBody = try? JSONSerialization.data(withJSONObject: parametrs, options:[]) else { return }
+        reuest.httpBody = httpBody
+        
+        URLSession.shared.dataTask(with: reuest) { (data, response, error) in
+            guard let data = data else { return }
+            do {
+                let item = try JSONDecoder().decode(AllResponse.self, from: data)
+                self.items = item
+                completion()
+            } catch {
+                print(error)
+            }
+            }.resume()
+    }
     
+    func searchItem() {
+        let urlProductStr = "https://fixcenter.com.ua/product-category/search/?q=z570"
+        guard let url = URL(string: urlProductStr) else { return }
+        
+        var reuest = URLRequest(url: url)
+        reuest.httpMethod = "GET"
+        reuest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+//        guard let httpBody = try? JSONSerialization.data(withJSONObject: parametrs, options:[]) else { return }
+//        reuest.httpBody = httpBody
+        
+        URLSession.shared.dataTask(with: reuest) { (data, response, error) in
+            guard let data = data else { return }
+            print(response)
+            print(data)
+            }.resume()
+    }
 }
 
 

@@ -11,6 +11,9 @@ import UIKit
 class ViewController: UIViewController {
     let net = Network()
     
+    
+    @IBOutlet weak var activiti: UIActivityIndicatorView!
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         net.getToken {
@@ -38,7 +41,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func getMenuButton(_ sender: UIButton) {
-        
+        self.net.searchItem()
     }
 }
 
