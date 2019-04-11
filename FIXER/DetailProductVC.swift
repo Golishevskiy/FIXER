@@ -21,9 +21,7 @@ class DetailProductVC: UIViewController {
         super.viewDidLoad()
         
         CheckProductInCartAfterReloadMenu(productInCart: Cart.shared.cartArrayItem, slectedProduct: item!)
-        
         productImageView.image = item?.image
-        
         nameLabel.textColor = UIColor.blue
         nameLabel.text = item?.product.title.ua
         guard let price = item?.product.price else { return }

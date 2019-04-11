@@ -9,33 +9,38 @@
 import UIKit
 
 class MenuVC: UIViewController {
-
+    
     let net = Network()
     var menu: MenuStruct? = nil
     var category = [Page]()
+    var allCategoryMenu = [Page]()
     var selectRow: Int?
-
+    
     @IBOutlet weak var tableViewMenu: UITableView!
+    @IBOutlet weak var activityLoadMenu: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        activityLoadMenu.startAnimating()
         net.getToken {
-            self.net.loadMenu()
+            self.net.loadMenu(completion: {
+                self.allCategoryMenu = self.net.menuResp.response.pages
+                let count = self.allCategoryMenu.count 
+                for i in 0..<count {
+                    if self.allCategoryMenu[i].parent == 1273 {
+                        self.category.append((self.allCategoryMenu[i]))
+                    }
+                }
+                print("Cout - \(self.category.count)")
+                DispatchQueue.main.async { [weak self] in
+                    self!.tableViewMenu.reloadData()
+                    self?.activityLoadMenu.stopAnimating()
+                }
+            })
         }
         
-        
-        
-        
-        let count = menu?.response.pages.count ?? 0
         tableViewMenu.dataSource = self
         tableViewMenu.delegate = self
-        for i in 0..<count {
-            if menu?.response.pages[i].parent == 1273 {
-                category.append((menu?.response.pages[i])!)
-                //                print(menu?.response.pages[i])
-                //                print(category.count)
-            }
-        }
     }
 }
 
@@ -55,13 +60,13 @@ extension MenuVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectRow = category[indexPath.row].id
         self.selectRow = selectRow
-        performSegue(withIdentifier: "showTwoMenu", sender: menu)
+        performSegue(withIdentifier: "showTwoMenu", sender: allCategoryMenu)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showTwoMenu" {
             if let menuNext = segue.destination as? MenuNextLevel {
-                if let senderMenu = sender as? MenuStruct {
+                if let senderMenu = sender as? [Page] {
                     menuNext.menu = senderMenu
                     menuNext.selectedCategories = selectRow!
                     

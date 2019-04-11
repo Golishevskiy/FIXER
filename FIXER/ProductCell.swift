@@ -12,7 +12,7 @@ class ProductCell: UICollectionViewCell {
     
     @IBOutlet weak var imageViewProduct: UIImageView!
     @IBOutlet weak var nameProductCell: UILabel!
- 
+    
     var viewModel: ProductViewModel?
     
     func fill(_ productViewModel: ProductViewModel) {

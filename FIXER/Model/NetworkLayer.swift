@@ -44,7 +44,7 @@ class Network: Codable {
             }.resume()
     }
     
-    func loadMenu() {
+    func loadMenu(completion: EmptyClosure? = nil) {
         let urlMenuStr = "/pages/export/"
         let parametrs = ["token": token, "parent": "1273"]
         guard let url = URL(string: baseUrl + urlMenuStr) else { return }
@@ -61,6 +61,7 @@ class Network: Codable {
             do {
                 let menu = try JSONDecoder().decode(MenuStruct.self, from: data)
                 self.menuResp = menu
+                completion?()
             } catch {
                 print(error)
             }

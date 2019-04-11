@@ -10,23 +10,24 @@ import UIKit
 
 class MenuNextLevel: UIViewController {
     
-    var menu: MenuStruct!
+    var menu: [Page] = []
     var selectedCategories: Int?
     var category = [Page]()
     var parentID: Int?
     
     @IBOutlet weak var tableViewMenu: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        let count = menu?.response.pages.count ?? 0
+        let count = menu.count
         for i in 0..<count {
-            if menu?.response.pages[i].parent == selectedCategories {
-                category.append((menu?.response.pages[i])!)
+            if menu[i].parent == selectedCategories {
+                category.append((menu[i]))
+                tableViewMenu.reloadData()
                 
             }
         }
     }
-    
 }
 
 extension MenuNextLevel: UITableViewDataSource, UITableViewDelegate {

@@ -113,7 +113,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9BG-tj-V9C" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-123.18840579710145" y="-765.40178571428567"/>
+            <point key="canvasLocation" x="635" y="-673"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="fOw-dq-5Pz">
@@ -131,7 +131,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ykI-X8-IDu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1721" y="15"/>
+            <point key="canvasLocation" x="-426" y="21"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="UVa-Ld-5QX">
@@ -143,49 +143,12 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="VDB-BT-HUh"/>
+                        <segue destination="qoE-Qq-6la" kind="relationship" relationship="rootViewController" id="37S-Us-bF2"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jBh-Ou-poB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-123" y="21"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
-            <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="FIXER" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NgU-lV-oyH">
-                                <rect key="frame" x="133" y="186" width="61" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="getMenu"/>
-                                <connections>
-                                    <action selector="getMenuButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kpK-4s-4JH"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FAe-G8-sGa">
-                                <rect key="frame" x="130" y="426" width="66" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="nextVIEW"/>
-                                <connections>
-                                    <action selector="buttoShowMenu:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Wjx-Em-03e"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="yFC-PA-uXK"/>
-                    <connections>
-                        <segue destination="qoE-Qq-6la" kind="show" identifier="show" id="zH1-Wa-H4l"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="636" y="21"/>
+            <point key="canvasLocation" x="635" y="21"/>
         </scene>
         <!--MenuVC-->
         <scene sceneID="cVL-mu-3J8">
@@ -218,6 +181,11 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="K6X-r2-hMA">
+                                <rect key="frame" x="189" y="430" width="37" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="color" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -228,7 +196,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="e1m-c4-UB4"/>
                     </view>
+                    <navigationItem key="navigationItem" id="QLA-u5-grr"/>
                     <connections>
+                        <outlet property="activityLoadMenu" destination="K6X-r2-hMA" id="01s-kq-L7a"/>
                         <outlet property="tableViewMenu" destination="5u4-UG-uZ8" id="Cq5-If-pMw"/>
                         <segue destination="Cbf-Wb-BUD" kind="show" identifier="showTwoMenu" id="B8L-1V-AqH"/>
                     </connections>

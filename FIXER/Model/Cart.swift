@@ -14,32 +14,11 @@ class Cart {
     var cartArrayItem: [ProductInCart] = []
     
     func addItemToCart(item: ProductViewModel) {
-        if cartArrayItem.count == 0 {
-            let oneItem = ProductInCart(nameItem: item.product.title.ru,
-                                        priceItem: Int(item.product.price),
-                                        countItem: 1,
-                                        articleItem: Int(item.product.article)!,
-                                        preViewImage: item.image ?? UIImage(named: "rabbit")!)
-            cartArrayItem.append(oneItem)
-        } else {
-            countItem(item: item)
-        }
-    }
-    
-    func countItem(item: ProductViewModel) {
-        let count = cartArrayItem.count
-        for i in 0..<count {
-            if Int(item.product.article) == cartArrayItem[i].article {
-                cartArrayItem[i].count += 1
-            } else {
-                let oneItem = ProductInCart(nameItem: item.product.title.ru,
-                                            priceItem: Int(item.product.price),
-                                            countItem: 1,
-                                            articleItem: Int(item.product.article)!,
-                                            preViewImage: item.image ?? UIImage(named: "rabbit")!)
-                cartArrayItem.append(oneItem)
-            }
-        }
+        cartArrayItem.append(ProductInCart(nameItem: item.product.title.ru,
+                                           priceItem: Int(item.product.price),
+                                           countItem: 1,
+                                           articleItem: item.product.article,
+                                           preViewImage: item.image ?? UIImage(named: "rabbit")!))
     }
 }
 
@@ -47,10 +26,10 @@ class ProductInCart {
     let name: String
     let price: Int
     var count: Int
-    let article: Int
+    let article: String
     let image: UIImage
     
-    init(nameItem: String, priceItem: Int, countItem: Int, articleItem: Int, preViewImage: UIImage) {
+    init(nameItem: String, priceItem: Int, countItem: Int, articleItem: String, preViewImage: UIImage) {
         name = nameItem
         price = priceItem
         count = countItem
