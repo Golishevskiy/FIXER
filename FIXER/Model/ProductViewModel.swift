@@ -9,7 +9,7 @@
 import UIKit
 
 class ProductViewModel {
-
+    
     let product: Product
     var cartStatus: Bool
     var image: UIImage?

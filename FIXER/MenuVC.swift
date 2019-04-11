@@ -9,15 +9,23 @@
 import UIKit
 
 class MenuVC: UIViewController {
-    
+
+    let net = Network()
     var menu: MenuStruct? = nil
     var category = [Page]()
     var selectRow: Int?
-    
+
     @IBOutlet weak var tableViewMenu: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        net.getToken {
+            self.net.loadMenu()
+        }
+        
+        
+        
+        
         let count = menu?.response.pages.count ?? 0
         tableViewMenu.dataSource = self
         tableViewMenu.delegate = self

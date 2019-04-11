@@ -9,24 +9,15 @@
 import UIKit
 
 class CartVC: UIViewController {
-
+    
     @IBOutlet weak var cartTableView: UITableView!
     
-        override func viewDidLoad() {
+    override func viewDidLoad() {
         super.viewDidLoad()
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
         cartTableView.reloadData()
-//        var count = Cart.shared.cartArrayItem.count
-//        print(count)
-//        if count != 0 {
-//            for i in 0..<count {
-//                print(Cart.shared.cartArrayItem[i].name)
-//
-//            }
-//        }
     }
 }
 
@@ -45,6 +36,7 @@ extension CartVC: UITableViewDataSource, UITableViewDelegate {
         cell.priceLabel.text = String(price)
         cell.countLabel.text = String(count)
         cell.cartImageView.image = Cart.shared.cartArrayItem[indexPath.row].image
+        cell.count = Cart.shared.cartArrayItem[indexPath.row]
         return cell
     }
     
@@ -58,6 +50,6 @@ extension CartVC: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100.0
-//        return .automaticDimension
+        //        return .automaticDimension
     }
 }

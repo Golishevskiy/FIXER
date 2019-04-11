@@ -12,17 +12,12 @@ class ViewController: UIViewController {
     let net = Network()
     
     
-    @IBOutlet weak var activiti: UIActivityIndicatorView!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         net.getToken {
             self.net.loadMenu()
         }
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
     }
     
     @IBAction func buttoShowMenu(_ sender: Any) {
@@ -38,10 +33,6 @@ class ViewController: UIViewController {
                 }
             }
         }
-    }
-    
-    @IBAction func getMenuButton(_ sender: UIButton) {
-        self.net.searchItem()
     }
 }
 

@@ -90,23 +90,6 @@ class Network: Codable {
             }
             }.resume()
     }
-    
-    func searchItem() {
-        let urlProductStr = "https://fixcenter.com.ua/product-category/search/?q=z570"
-        guard let url = URL(string: urlProductStr) else { return }
-        
-        var reuest = URLRequest(url: url)
-        reuest.httpMethod = "GET"
-        reuest.addValue("application/json", forHTTPHeaderField: "Content-Type")
-//        guard let httpBody = try? JSONSerialization.data(withJSONObject: parametrs, options:[]) else { return }
-//        reuest.httpBody = httpBody
-        
-        URLSession.shared.dataTask(with: reuest) { (data, response, error) in
-            guard let data = data else { return }
-            print(response)
-            print(data)
-            }.resume()
-    }
 }
 
 

@@ -20,14 +20,10 @@ class DetailProductVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if item?.cartStatus == true {
-            print("This product in cart")
-            bayButton.isEnabled = false
-            bayButton.setTitle("в корзине", for: .normal)
-        }
-//        print(item?.cartStatus)
+        CheckProductInCartAfterReloadMenu(productInCart: Cart.shared.cartArrayItem, slectedProduct: item!)
+        
         productImageView.image = item?.image
-    
+        
         nameLabel.textColor = UIColor.blue
         nameLabel.text = item?.product.title.ua
         guard let price = item?.product.price else { return }
@@ -43,6 +39,16 @@ class DetailProductVC: UIViewController {
         bayButton.setTitle("в корзине", for: .normal)
         bayButton.isEnabled = false
         item?.cartStatus = true
+    }
+    
+    func CheckProductInCartAfterReloadMenu(productInCart: [ProductInCart], slectedProduct: ProductViewModel) {
+        for i in productInCart {
+            if String(i.article) == item?.product.article {
+                print("This product in cart")
+                bayButton.isEnabled = false
+                bayButton.setTitle("в корзине", for: .normal)
+            }
+        }
     }
 }
 

@@ -14,11 +14,11 @@ class CartTVC: UITableViewCell {
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var cartImageView: UIImageView!
     @IBOutlet weak var countLabel: UILabel!
+    var count: ProductInCart?
     
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    @IBAction func changeCountItem(_ sender: UIStepper) {
+        countLabel.text = Int(sender.value).description
+        count!.count = Int(sender.value)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool)  {
