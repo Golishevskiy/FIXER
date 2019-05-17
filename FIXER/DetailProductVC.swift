@@ -29,6 +29,7 @@ class DetailProductVC: UIViewController {
         guard let descr = item?.product.description.ru else { return }
         textViewDescription.attributedText = try? NSAttributedString(htmlString: descr)
         
+        
     }
     
     @IBAction func addToCart(_ bayButton: UIButton) {

@@ -9,16 +9,28 @@
 import Foundation
 import UIKit
 
+protocol CartUIDelegateProtocol: class {
+    func cartOrderIsChnaged()
+}
+
+
 class Cart {
+    
     static let shared = Cart()
+    
+    weak var uiDelegate: CartUIDelegateProtocol?
+    
     var cartArrayItem: [ProductInCart] = []
     
     func addItemToCart(item: ProductViewModel) {
-        cartArrayItem.append(ProductInCart(nameItem: item.product.title.ru,
-                                           priceItem: Int(item.product.price),
-                                           countItem: 1,
-                                           articleItem: item.product.article,
-                                           preViewImage: item.image ?? UIImage(named: "rabbit")!))
+        let productItem = ProductInCart(item)
+        cartArrayItem.append(productItem)
+        uiDelegate?.cartOrderIsChnaged()
+    }
+    
+    func changeCount(_ productInCart: ProductInCart, count: Int) {
+        productInCart.count = count
+        uiDelegate?.cartOrderIsChnaged()
     }
 }
 
@@ -35,6 +47,10 @@ class ProductInCart {
         count = countItem
         article = articleItem
         image = preViewImage
+    }
+    
+    convenience init(_ item: ProductViewModel) {
+        self.init(nameItem: item.product.title.ru, priceItem: Int(item.product.price), countItem: 1, articleItem: item.product.article, preViewImage: item.image ?? UIImage(named: "rabbit")!)
     }
 }
 

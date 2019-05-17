@@ -22,6 +22,7 @@ class MenuVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         activityLoadMenu.startAnimating()
+        
         net.getToken {
             self.net.loadMenu(completion: {
                 self.allCategoryMenu = self.net.menuResp.response.pages
@@ -41,6 +42,7 @@ class MenuVC: UIViewController {
         
         tableViewMenu.dataSource = self
         tableViewMenu.delegate = self
+        tableViewMenu.tableFooterView = UIView()
     }
 }
 

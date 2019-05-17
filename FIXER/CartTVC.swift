@@ -14,16 +14,28 @@ class CartTVC: UITableViewCell {
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var cartImageView: UIImageView!
     @IBOutlet weak var countLabel: UILabel!
-    var count: ProductInCart?
+    @IBOutlet weak var stepper: UIStepper!
+    
+    var productInCart: ProductInCart?
     
     @IBAction func changeCountItem(_ sender: UIStepper) {
-        countLabel.text = Int(sender.value).description
-        count!.count = Int(sender.value)
+        guard let productInCart = productInCart else { return }
+        Cart.shared.changeCount(productInCart, count: Int(sender.value))
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool)  {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    func fillIn(_ product: ProductInCart) {
+        productInCart = product
+        
+        nameLabel.text = product.name
+        priceLabel.text = String(product.price)
+        countLabel.text = String(product.count)
+        cartImageView.image = product.image
+        stepper.value = Double(product.count)
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        productInCart = nil
     }
 }

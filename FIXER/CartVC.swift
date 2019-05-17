@@ -11,12 +11,31 @@ import UIKit
 class CartVC: UIViewController {
     
     @IBOutlet weak var cartTableView: UITableView!
+    @IBOutlet weak var totalPriceLabel: UILabel!
     
     override func viewDidLoad() {
-        super.viewDidLoad()
+        
+        Cart.shared.uiDelegate = self
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    @IBAction func toOrderButton(_ sender: UIButton) {
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        cartTableView.reloadData()
+    }
+}
+
+
+extension CartVC: CartUIDelegateProtocol {
+    
+    func cartOrderIsChnaged() {
+        var totalPrice = 0
+        Cart.shared.cartArrayItem.forEach { (item) in
+            let priceOneProduct = item.price * item.count
+            totalPrice += priceOneProduct
+        }
+        totalPriceLabel.text = totalPrice.description
         cartTableView.reloadData()
     }
 }
@@ -29,14 +48,8 @@ extension CartVC: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = cartTableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CartTVC
-        let title = Cart.shared.cartArrayItem[indexPath.row].name
-        let price = Cart.shared.cartArrayItem[indexPath.row].price
-        let count = Cart.shared.cartArrayItem[indexPath.row].count
-        cell.nameLabel.text = title
-        cell.priceLabel.text = String(price)
-        cell.countLabel.text = String(count)
-        cell.cartImageView.image = Cart.shared.cartArrayItem[indexPath.row].image
-        cell.count = Cart.shared.cartArrayItem[indexPath.row]
+        let productInCart = Cart.shared.cartArrayItem[indexPath.row]
+        cell.fillIn(productInCart)
         return cell
     }
     
@@ -49,7 +62,10 @@ extension CartVC: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100.0
+        return 160.0
         //        return .automaticDimension
     }
+    
 }
+
+
