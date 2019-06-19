@@ -16,6 +16,8 @@ class CartVC: UIViewController {
     override func viewDidLoad() {
         
         Cart.shared.uiDelegate = self
+        cartTableView.rowHeight = UITableView.automaticDimension
+        cartTableView.estimatedRowHeight = UITableView.automaticDimension
     }
     
     @IBAction func toOrderButton(_ sender: UIButton) {
@@ -47,7 +49,7 @@ extension CartVC: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = cartTableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CartTVC
+        let cell = cartTableView.dequeueReusableCell(withIdentifier: "product_cell", for: indexPath) as! CartTVC
         let productInCart = Cart.shared.cartArrayItem[indexPath.row]
         cell.fillIn(productInCart)
         return cell
@@ -62,10 +64,12 @@ extension CartVC: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 160.0
-        //        return .automaticDimension
+        return UITableView.automaticDimension
     }
     
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
 }
 
 

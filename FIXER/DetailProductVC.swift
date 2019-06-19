@@ -11,6 +11,7 @@ import Foundation
 
 class DetailProductVC: UIViewController {
     var item: ProductViewModel?
+    
     @IBOutlet weak var productImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
@@ -19,15 +20,18 @@ class DetailProductVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+                
         CheckProductInCartAfterReloadMenu(productInCart: Cart.shared.cartArrayItem, slectedProduct: item!)
         productImageView.image = item?.image
-        nameLabel.textColor = UIColor.blue
-        nameLabel.text = item?.product.title.ua
+        nameLabel.text = item?.product.title.ru
         guard let price = item?.product.price else { return }
-        priceLabel.text = String(price * 28)
+        priceLabel.text = String(price * 27.0)
         guard let descr = item?.product.description.ru else { return }
         textViewDescription.attributedText = try? NSAttributedString(htmlString: descr)
+        textViewDescription.isEditable = false
+        
+//        textViewDescription.sizeToFit()
+//        scrollView.contentSize = CGSize(width: self.scrollView.contentSize.width, height: self.view.subVi)
         
         
     }
@@ -36,6 +40,8 @@ class DetailProductVC: UIViewController {
         guard let itemProd = item else { return }
         Cart.shared.addItemToCart(item: itemProd)
         bayButton.setTitle("в корзине", for: .normal)
+        let textColorButton = UIColor(red: 0.6, green: 0.2, blue: 0.5, alpha: 1)
+        bayButton.setTitleColor(textColorButton, for: .normal)
         bayButton.isEnabled = false
         item?.cartStatus = true
     }
@@ -43,9 +49,10 @@ class DetailProductVC: UIViewController {
     func CheckProductInCartAfterReloadMenu(productInCart: [ProductInCart], slectedProduct: ProductViewModel) {
         for i in productInCart {
             if String(i.article) == item?.product.article {
-                print("This product in cart")
                 bayButton.isEnabled = false
                 bayButton.setTitle("в корзине", for: .normal)
+                let textColorButton = UIColor(red: 0.6, green: 0.2, blue: 0.5, alpha: 1)
+                bayButton.setTitleColor(textColorButton, for: .normal)
             }
         }
     }

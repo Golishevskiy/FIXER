@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Alamofire
 
 class Network: Codable {
     
@@ -92,6 +93,4 @@ class Network: Codable {
             }.resume()
     }
 }
-
-
 

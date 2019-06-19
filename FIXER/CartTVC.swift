@@ -25,12 +25,12 @@ class CartTVC: UITableViewCell {
 
     func fillIn(_ product: ProductInCart) {
         productInCart = product
-        
         nameLabel.text = product.name
         priceLabel.text = String(product.price)
         countLabel.text = String(product.count)
         cartImageView.image = product.image
         stepper.value = Double(product.count)
+        
     }
     
     override func prepareForReuse() {
