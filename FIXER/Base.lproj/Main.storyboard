@@ -144,19 +144,19 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qPs-Rm-1kd">
-                                        <rect key="frame" x="346" y="31" width="11" height="21"/>
+                                        <rect key="frame" x="348" y="31" width="11" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Итого:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Fq-d1-V3t">
-                                        <rect key="frame" x="291" y="31" width="52" height="21"/>
+                                        <rect key="frame" x="293" y="31" width="52" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="USD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Fh-Wq-24N">
-                                        <rect key="frame" x="359" y="31" width="35" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ГРН" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Fh-Wq-24N">
+                                        <rect key="frame" x="361" y="31" width="33" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -218,45 +218,98 @@
                                     <action selector="cancel:" destination="Cve-CL-7cO" eventType="touchUpInside" id="5LE-ti-3XB"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Покупець" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8g6-Hc-9ou">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Покупець" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8g6-Hc-9ou">
                                 <rect key="frame" x="168" y="82" width="78" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.43529412150000002" green="0.4431372583" blue="0.47450980539999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Прізвище" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kAg-Ke-mv8">
+                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Прізвище" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kAg-Ke-mv8">
                                 <rect key="frame" x="30" y="111" width="364" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Ім'я" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cXi-55-kyI">
+                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Ім'я" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cXi-55-kyI">
                                 <rect key="frame" x="30" y="157" width="364" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Новая почта" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rbJ-Us-oYo">
-                                <rect key="frame" x="157" y="248" width="100" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Доставка" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rbJ-Us-oYo">
+                                <rect key="frame" x="169.5" y="249" width="75" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.43529412150000002" green="0.4431372583" blue="0.47450980539999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="M1R-M6-ZtN">
-                                <rect key="frame" x="30" y="202" width="364" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Мобільний" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="M1R-M6-ZtN">
+                                <rect key="frame" x="30" y="203" width="364" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                            </textField>
+                            <pickerView contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hll-y5-V6f">
+                                <rect key="frame" x="0.0" y="268" width="414" height="149"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Cve-CL-7cO" id="TRk-iq-UPZ"/>
+                                    <outlet property="delegate" destination="Cve-CL-7cO" id="JmO-c2-ka9"/>
+                                </connections>
+                            </pickerView>
+                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Місто" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pcP-fY-Z09">
+                                <rect key="frame" x="30" y="432" width="364" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="№ відділення НП" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lAm-Yf-bTD">
+                                <rect key="frame" x="30" y="478" width="364" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Адреса доставки" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bnc-1F-PX4">
+                                <rect key="frame" x="30" y="433" width="364" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="м. Київ, вул. Шолуденко 1Б, офіс 224                    (пн-пт: 10:00 - 19:00)" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Em-sr-lGq">
+                                <rect key="frame" x="30" y="455" width="364" height="41"/>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="kAg-Ke-mv8" firstAttribute="top" secondItem="8g6-Hc-9ou" secondAttribute="bottom" constant="8" id="2Va-Od-y5k"/>
+                            <constraint firstItem="8g6-Hc-9ou" firstAttribute="top" secondItem="SGL-7u-704" secondAttribute="top" constant="38" id="4q0-ay-JZv"/>
+                            <constraint firstItem="Hll-y5-V6f" firstAttribute="leading" secondItem="SGL-7u-704" secondAttribute="leading" id="CYx-Ji-jnD"/>
+                            <constraint firstItem="8Em-sr-lGq" firstAttribute="leading" secondItem="SGL-7u-704" secondAttribute="leading" constant="30" id="H0f-9C-1Dl"/>
+                            <constraint firstItem="SGL-7u-704" firstAttribute="bottom" relation="lessThanOrEqual" secondItem="8Em-sr-lGq" secondAttribute="bottom" constant="366" id="MwL-nt-UoG"/>
+                            <constraint firstItem="lAm-Yf-bTD" firstAttribute="top" secondItem="pcP-fY-Z09" secondAttribute="bottom" constant="16" id="O3N-kO-4Kq"/>
+                            <constraint firstItem="SGL-7u-704" firstAttribute="trailing" secondItem="8Em-sr-lGq" secondAttribute="trailing" constant="20" id="WVq-6G-ZTl"/>
+                            <constraint firstItem="Hll-y5-V6f" firstAttribute="trailing" secondItem="SGL-7u-704" secondAttribute="trailing" id="aIi-Ng-d7j"/>
+                            <constraint firstItem="cXi-55-kyI" firstAttribute="top" secondItem="kAg-Ke-mv8" secondAttribute="bottom" constant="16" id="bko-c1-yF7"/>
+                            <constraint firstItem="SGL-7u-704" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="lAm-Yf-bTD" secondAttribute="bottom" constant="354" id="blc-z5-JSp"/>
+                            <constraint firstItem="8Em-sr-lGq" firstAttribute="leading" secondItem="Hll-y5-V6f" secondAttribute="trailing" constant="-384" id="cG1-w8-XMA"/>
+                            <constraint firstItem="rbJ-Us-oYo" firstAttribute="centerX" secondItem="AfA-H8-OvI" secondAttribute="centerX" id="hcO-d3-En3"/>
+                            <constraint firstItem="M1R-M6-ZtN" firstAttribute="top" secondItem="cXi-55-kyI" secondAttribute="bottom" constant="16" id="lAF-Eo-cAP"/>
+                            <constraint firstItem="8g6-Hc-9ou" firstAttribute="centerX" secondItem="AfA-H8-OvI" secondAttribute="centerX" id="rkR-ex-W4c"/>
+                            <constraint firstItem="rbJ-Us-oYo" firstAttribute="top" secondItem="M1R-M6-ZtN" secondAttribute="bottom" constant="16" id="vd3-w9-y4B"/>
+                            <constraint firstItem="bnc-1F-PX4" firstAttribute="top" secondItem="Hll-y5-V6f" secondAttribute="bottom" constant="16" id="zgi-De-JRJ"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="SGL-7u-704"/>
                     </view>
+                    <connections>
+                        <outlet property="cityDelivery" destination="pcP-fY-Z09" id="VHt-ko-hI0"/>
+                        <outlet property="firstNameShopper" destination="cXi-55-kyI" id="lwc-K9-M9b"/>
+                        <outlet property="fixcenterAddress" destination="8Em-sr-lGq" id="I0a-Uz-pEz"/>
+                        <outlet property="myPicker" destination="Hll-y5-V6f" id="Hj2-PP-8QZ"/>
+                        <outlet property="nameShopper" destination="kAg-Ke-mv8" id="PrS-CY-X7z"/>
+                        <outlet property="phoneShopper" destination="M1R-M6-ZtN" id="pzc-Ch-LE9"/>
+                        <outlet property="postOfficeDeliveryr" destination="lAm-Yf-bTD" id="9r4-to-Kuh"/>
+                        <outlet property="shippingAddress" destination="bnc-1F-PX4" id="vt5-fP-fEw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tiw-uw-Uqf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -592,7 +645,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zx3-f6-bFj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3469.5652173913045" y="1479.9107142857142"/>
+            <point key="canvasLocation" x="2726" y="1542"/>
         </scene>
     </scenes>
     <resources>

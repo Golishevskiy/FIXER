@@ -19,7 +19,7 @@ class BoardProduct: UICollectionViewController {
         super.viewDidLoad()
         print("ViewDidLoad #BoardProduct")
         
-        // loader start nimating
+        // loader start
         activiti.startAnimating()
         
         Network.shared.getToken { [weak self] in
@@ -32,7 +32,7 @@ class BoardProduct: UICollectionViewController {
                     self?.filteredProducts.append(viewModel)
                 }
                 DispatchQueue.main.async{ [weak self] in
-                    // loader stop animation
+                    // loader stop
                     self?.activiti.stopAnimating()
                     self?.activiti.hidesWhenStopped = true
                     self?.collectionView.reloadData()

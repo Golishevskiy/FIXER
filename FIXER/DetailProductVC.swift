@@ -25,7 +25,7 @@ class DetailProductVC: UIViewController {
         productImageView.image = item?.image
         nameLabel.text = item?.product.title.ru
         guard let price = item?.product.price else { return }
-        priceLabel.text = String(price * 27.0)
+        priceLabel.text = String(Int(price) * 27)
         guard let descr = item?.product.description.ru else { return }
         textViewDescription.attributedText = try? NSAttributedString(htmlString: descr)
         textViewDescription.isEditable = false

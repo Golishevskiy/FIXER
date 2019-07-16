@@ -34,7 +34,7 @@ extension CartVC: CartUIDelegateProtocol {
     func cartOrderIsChnaged() {
         var totalPrice = 0
         Cart.shared.cartArrayItem.forEach { (item) in
-            let priceOneProduct = item.price * item.count
+            let priceOneProduct = item.price * 27 * item.count
             totalPrice += priceOneProduct
         }
         totalPriceLabel.text = totalPrice.description
