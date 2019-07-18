@@ -210,9 +210,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pji-vr-vg9">
-                                <rect key="frame" x="185" y="44" width="45" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pji-vr-vg9">
+                                <rect key="frame" x="184.5" y="44" width="45" height="30"/>
                                 <state key="normal" title="cancel"/>
                                 <connections>
                                     <action selector="cancel:" destination="Cve-CL-7cO" eventType="touchUpInside" id="5LE-ti-3XB"/>
@@ -224,14 +223,14 @@
                                 <color key="textColor" red="0.43529412150000002" green="0.4431372583" blue="0.47450980539999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Прізвище" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kAg-Ke-mv8">
-                                <rect key="frame" x="30" y="111" width="364" height="30"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Прізвище" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kAg-Ke-mv8">
+                                <rect key="frame" x="20" y="111" width="374" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Ім'я" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cXi-55-kyI">
-                                <rect key="frame" x="30" y="157" width="364" height="30"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Ім'я" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cXi-55-kyI">
+                                <rect key="frame" x="20" y="157" width="374" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -242,66 +241,95 @@
                                 <color key="textColor" red="0.43529412150000002" green="0.4431372583" blue="0.47450980539999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Мобільний" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="M1R-M6-ZtN">
-                                <rect key="frame" x="30" y="203" width="364" height="30"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Мобільний" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="M1R-M6-ZtN">
+                                <rect key="frame" x="20" y="203" width="374" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
-                            <pickerView contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hll-y5-V6f">
-                                <rect key="frame" x="0.0" y="268" width="414" height="149"/>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hll-y5-V6f">
+                                <rect key="frame" x="0.0" y="278" width="414" height="146"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="146" id="vsW-dL-a82"/>
+                                </constraints>
                                 <connections>
                                     <outlet property="dataSource" destination="Cve-CL-7cO" id="TRk-iq-UPZ"/>
                                     <outlet property="delegate" destination="Cve-CL-7cO" id="JmO-c2-ka9"/>
                                 </connections>
                             </pickerView>
-                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Місто" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pcP-fY-Z09">
-                                <rect key="frame" x="30" y="432" width="364" height="30"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Місто" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pcP-fY-Z09">
+                                <rect key="frame" x="20" y="432" width="374" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="№ відділення НП" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lAm-Yf-bTD">
-                                <rect key="frame" x="30" y="478" width="364" height="30"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="№ відділення НП" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lAm-Yf-bTD">
+                                <rect key="frame" x="20" y="478" width="374" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Адреса доставки" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bnc-1F-PX4">
-                                <rect key="frame" x="30" y="433" width="364" height="30"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Адреса доставки" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bnc-1F-PX4">
+                                <rect key="frame" x="20" y="432" width="374" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="м. Київ, вул. Шолуденко 1Б, офіс 224                    (пн-пт: 10:00 - 19:00)" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Em-sr-lGq">
-                                <rect key="frame" x="30" y="455" width="364" height="41"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="м. Київ, вул. Шолуденко 1Б, офіс 224                    (пн-пт: 10:00 - 19:00)" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Em-sr-lGq">
+                                <rect key="frame" x="30" y="432" width="364" height="41"/>
                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1JG-RM-G1m">
+                                <rect key="frame" x="50" y="810" width="314" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="finishOrderButton:" destination="Cve-CL-7cO" eventType="touchUpInside" id="cb9-6z-QY0"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="kAg-Ke-mv8" firstAttribute="top" secondItem="8g6-Hc-9ou" secondAttribute="bottom" constant="8" id="2Va-Od-y5k"/>
+                            <constraint firstItem="bnc-1F-PX4" firstAttribute="top" secondItem="Hll-y5-V6f" secondAttribute="bottom" constant="8" id="3vn-Bx-G2X"/>
                             <constraint firstItem="8g6-Hc-9ou" firstAttribute="top" secondItem="SGL-7u-704" secondAttribute="top" constant="38" id="4q0-ay-JZv"/>
+                            <constraint firstItem="lAm-Yf-bTD" firstAttribute="top" secondItem="bnc-1F-PX4" secondAttribute="bottom" constant="16" id="5GS-Mq-ish"/>
+                            <constraint firstItem="SGL-7u-704" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="1JG-RM-G1m" secondAttribute="trailing" constant="50" id="7KR-QK-09t"/>
+                            <constraint firstItem="M1R-M6-ZtN" firstAttribute="leading" relation="lessThanOrEqual" secondItem="SGL-7u-704" secondAttribute="leading" constant="20" id="9ag-m2-MDh"/>
                             <constraint firstItem="Hll-y5-V6f" firstAttribute="leading" secondItem="SGL-7u-704" secondAttribute="leading" id="CYx-Ji-jnD"/>
+                            <constraint firstItem="Pji-vr-vg9" firstAttribute="top" secondItem="SGL-7u-704" secondAttribute="top" id="Ct4-Pg-aGt"/>
+                            <constraint firstItem="SGL-7u-704" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="bnc-1F-PX4" secondAttribute="trailing" constant="20" id="EUS-rZ-8ic"/>
+                            <constraint firstItem="SGL-7u-704" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="kAg-Ke-mv8" secondAttribute="trailing" constant="20" id="GNm-EP-cfx"/>
                             <constraint firstItem="8Em-sr-lGq" firstAttribute="leading" secondItem="SGL-7u-704" secondAttribute="leading" constant="30" id="H0f-9C-1Dl"/>
-                            <constraint firstItem="SGL-7u-704" firstAttribute="bottom" relation="lessThanOrEqual" secondItem="8Em-sr-lGq" secondAttribute="bottom" constant="366" id="MwL-nt-UoG"/>
-                            <constraint firstItem="lAm-Yf-bTD" firstAttribute="top" secondItem="pcP-fY-Z09" secondAttribute="bottom" constant="16" id="O3N-kO-4Kq"/>
+                            <constraint firstItem="8Em-sr-lGq" firstAttribute="top" secondItem="Hll-y5-V6f" secondAttribute="bottom" constant="8" id="HxF-4i-7dj"/>
+                            <constraint firstItem="kAg-Ke-mv8" firstAttribute="leading" relation="lessThanOrEqual" secondItem="SGL-7u-704" secondAttribute="leading" constant="20" id="IfX-gU-A9d"/>
+                            <constraint firstItem="bnc-1F-PX4" firstAttribute="leading" relation="lessThanOrEqual" secondItem="SGL-7u-704" secondAttribute="leading" constant="20" id="LVb-t1-Jsf"/>
+                            <constraint firstItem="SGL-7u-704" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="cXi-55-kyI" secondAttribute="trailing" constant="20" id="Laj-E2-sbK"/>
+                            <constraint firstItem="pcP-fY-Z09" firstAttribute="top" secondItem="Hll-y5-V6f" secondAttribute="bottom" constant="8" id="Lbv-os-59v"/>
+                            <constraint firstItem="SGL-7u-704" firstAttribute="bottom" secondItem="1JG-RM-G1m" secondAttribute="bottom" constant="22" id="Mbg-4D-19v"/>
+                            <constraint firstItem="1JG-RM-G1m" firstAttribute="leading" relation="lessThanOrEqual" secondItem="SGL-7u-704" secondAttribute="leading" constant="50" id="UWv-nk-Jwk"/>
                             <constraint firstItem="SGL-7u-704" firstAttribute="trailing" secondItem="8Em-sr-lGq" secondAttribute="trailing" constant="20" id="WVq-6G-ZTl"/>
+                            <constraint firstItem="Hll-y5-V6f" firstAttribute="top" secondItem="rbJ-Us-oYo" secondAttribute="bottom" constant="8" id="YBv-pk-tE5"/>
+                            <constraint firstItem="SGL-7u-704" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="pcP-fY-Z09" secondAttribute="trailing" constant="20" id="Yuz-LH-clJ"/>
                             <constraint firstItem="Hll-y5-V6f" firstAttribute="trailing" secondItem="SGL-7u-704" secondAttribute="trailing" id="aIi-Ng-d7j"/>
+                            <constraint firstItem="cXi-55-kyI" firstAttribute="leading" relation="lessThanOrEqual" secondItem="SGL-7u-704" secondAttribute="leading" constant="20" id="aRB-N2-weZ"/>
                             <constraint firstItem="cXi-55-kyI" firstAttribute="top" secondItem="kAg-Ke-mv8" secondAttribute="bottom" constant="16" id="bko-c1-yF7"/>
-                            <constraint firstItem="SGL-7u-704" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="lAm-Yf-bTD" secondAttribute="bottom" constant="354" id="blc-z5-JSp"/>
-                            <constraint firstItem="8Em-sr-lGq" firstAttribute="leading" secondItem="Hll-y5-V6f" secondAttribute="trailing" constant="-384" id="cG1-w8-XMA"/>
+                            <constraint firstItem="Pji-vr-vg9" firstAttribute="centerX" secondItem="AfA-H8-OvI" secondAttribute="centerX" id="cjg-ke-9ed"/>
                             <constraint firstItem="rbJ-Us-oYo" firstAttribute="centerX" secondItem="AfA-H8-OvI" secondAttribute="centerX" id="hcO-d3-En3"/>
                             <constraint firstItem="M1R-M6-ZtN" firstAttribute="top" secondItem="cXi-55-kyI" secondAttribute="bottom" constant="16" id="lAF-Eo-cAP"/>
+                            <constraint firstItem="pcP-fY-Z09" firstAttribute="leading" relation="lessThanOrEqual" secondItem="SGL-7u-704" secondAttribute="leading" constant="20" id="lEs-iL-TkW"/>
+                            <constraint firstItem="SGL-7u-704" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="M1R-M6-ZtN" secondAttribute="trailing" constant="20" id="ng7-Pu-ryJ"/>
                             <constraint firstItem="8g6-Hc-9ou" firstAttribute="centerX" secondItem="AfA-H8-OvI" secondAttribute="centerX" id="rkR-ex-W4c"/>
+                            <constraint firstItem="lAm-Yf-bTD" firstAttribute="leading" relation="lessThanOrEqual" secondItem="SGL-7u-704" secondAttribute="leading" constant="20" id="u5g-e4-gRN"/>
                             <constraint firstItem="rbJ-Us-oYo" firstAttribute="top" secondItem="M1R-M6-ZtN" secondAttribute="bottom" constant="16" id="vd3-w9-y4B"/>
-                            <constraint firstItem="bnc-1F-PX4" firstAttribute="top" secondItem="Hll-y5-V6f" secondAttribute="bottom" constant="16" id="zgi-De-JRJ"/>
+                            <constraint firstItem="SGL-7u-704" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="lAm-Yf-bTD" secondAttribute="trailing" constant="20" id="yYQ-zl-bHi"/>
+                            <constraint firstItem="1JG-RM-G1m" firstAttribute="centerX" secondItem="AfA-H8-OvI" secondAttribute="centerX" id="zFy-QO-yFg"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="SGL-7u-704"/>
                     </view>
                     <connections>
                         <outlet property="cityDelivery" destination="pcP-fY-Z09" id="VHt-ko-hI0"/>
+                        <outlet property="finishOrderButton" destination="1JG-RM-G1m" id="wTK-ay-bHf"/>
                         <outlet property="firstNameShopper" destination="cXi-55-kyI" id="lwc-K9-M9b"/>
                         <outlet property="fixcenterAddress" destination="8Em-sr-lGq" id="I0a-Uz-pEz"/>
                         <outlet property="myPicker" destination="Hll-y5-V6f" id="Hj2-PP-8QZ"/>

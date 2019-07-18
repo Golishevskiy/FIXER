@@ -19,11 +19,14 @@ class CartTVC: UITableViewCell {
     var productInCart: ProductInCart?
     
     @IBAction func changeCountItem(_ sender: UIStepper) {
+        print(#function)
         guard let productInCart = productInCart else { return }
+        print(productInCart.name)
         Cart.shared.changeCount(productInCart, count: Int(sender.value))
     }
 
     func fillIn(_ product: ProductInCart) {
+        print(#function)
         productInCart = product
         nameLabel.text = product.name
         priceLabel.text = String(Int(product.price)*27)
@@ -34,8 +37,8 @@ class CartTVC: UITableViewCell {
     }
     
     override func prepareForReuse() {
+        print(#function)
         super.prepareForReuse()
-        
         productInCart = nil
     }
 }

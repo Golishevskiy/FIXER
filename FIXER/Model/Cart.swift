@@ -13,12 +13,17 @@ protocol CartUIDelegateProtocol: class {
     func cartOrderIsChnaged()
 }
 
+protocol CartUIDelegat: class {
+    func reloadTotalCount()
+}
+
 
 class Cart {
     
     static let shared = Cart()
     
     weak var uiDelegate: CartUIDelegateProtocol?
+    weak var uiDelegat1: CartUIDelegat?
     
     var cartArrayItem: [ProductInCart] = []
     
@@ -31,6 +36,11 @@ class Cart {
     func changeCount(_ productInCart: ProductInCart, count: Int) {
         productInCart.count = count
         uiDelegate?.cartOrderIsChnaged()
+    }
+    
+    func clearCart() {
+        cartArrayItem.removeAll()
+        uiDelegat1?.reloadTotalCount()
     }
 }
 

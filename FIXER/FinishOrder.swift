@@ -13,6 +13,7 @@ class FinishOrder: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
     var deliveryOptions = ["Самовивіз", "Доставка НП", "Кур'єром (Київ)"]
     var deliveryMethod = ""
     
+    @IBOutlet weak var finishOrderButton: UIButton!
     @IBOutlet weak var fixcenterAddress: UILabel!
     @IBOutlet weak var postOfficeDeliveryr: UITextField!
     @IBOutlet weak var shippingAddress: UITextField!
@@ -27,9 +28,20 @@ class FinishOrder: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
         postOfficeDeliveryr.isHidden = true
         shippingAddress.isHidden = true
         fixcenterAddress.isHidden = false
+        
+        //for button finish order
+        finishOrderButton.backgroundColor = UIColor(red: 1, green: 0.45, blue: 0, alpha: 1)
+        finishOrderButton.setTitle("Оформити", for: .normal)
+        finishOrderButton.layer.cornerRadius = finishOrderButton.frame.height / 2
+        finishOrderButton.setTitleColor(.white, for: .normal)
+        
     }
     
     @IBAction func cancel(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func finishOrderButton(_ sender: UIButton) {
         let apiToken = "861029744:AAF83m9tfZ1k8HnXteFsrJQYawEQdkMTAYo"
         let chatId = "@fixcenterOrder"
         var strUrl = "https://api.telegram.org/bot%@/sendMessage?chat_id=%@&text=%@"
@@ -45,9 +57,10 @@ class FinishOrder: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
         }
         downloadTask.resume()
         
-        
-        //        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
+        Cart.shared.clearCart()
     }
+    
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return deliveryOptions.count

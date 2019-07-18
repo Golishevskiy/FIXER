@@ -16,8 +16,10 @@ class CartVC: UIViewController {
     override func viewDidLoad() {
         
         Cart.shared.uiDelegate = self
+        Cart.shared.uiDelegat1 = self
         cartTableView.rowHeight = UITableView.automaticDimension
         cartTableView.estimatedRowHeight = UITableView.automaticDimension
+        cartTableView.tableFooterView = UIView()  // приховати полоски на табл
     }
     
     @IBAction func toOrderButton(_ sender: UIButton) {
@@ -32,6 +34,7 @@ class CartVC: UIViewController {
 extension CartVC: CartUIDelegateProtocol {
     
     func cartOrderIsChnaged() {
+        print(#function)
         var totalPrice = 0
         Cart.shared.cartArrayItem.forEach { (item) in
             let priceOneProduct = item.price * 27 * item.count
@@ -42,6 +45,15 @@ extension CartVC: CartUIDelegateProtocol {
     }
 }
 
+extension CartVC: CartUIDelegat {
+    func reloadTotalCount() {
+        print("delegate")
+        totalPriceLabel.text = "0"
+        //        cartTableView.reloadData()
+        //        totalPriceLabel.reloadInputViews()
+    }
+}
+
 extension CartVC: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -49,6 +61,7 @@ extension CartVC: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        print(#function)
         let cell = cartTableView.dequeueReusableCell(withIdentifier: "product_cell", for: indexPath) as! CartTVC
         let productInCart = Cart.shared.cartArrayItem[indexPath.row]
         cell.fillIn(productInCart)
@@ -71,5 +84,4 @@ extension CartVC: UITableViewDataSource, UITableViewDelegate {
         return UITableView.automaticDimension
     }
 }
-
 
