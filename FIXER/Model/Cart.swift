@@ -17,14 +17,12 @@ protocol CartUIDelegat: class {
     func reloadTotalCount()
 }
 
-
 class Cart {
     
     static let shared = Cart()
     
     weak var uiDelegate: CartUIDelegateProtocol?
     weak var uiDelegat1: CartUIDelegat?
-    
     var cartArrayItem: [ProductInCart] = []
     
     func addItemToCart(item: ProductViewModel) {

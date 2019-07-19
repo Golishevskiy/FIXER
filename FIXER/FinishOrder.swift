@@ -77,7 +77,6 @@ class FinishOrder: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         deliveryMethod = deliveryOptions[row]
         
-        
         if deliveryMethod == "Доставка НП" {
             cityDelivery.isHidden = false
             postOfficeDeliveryr.isHidden = false
@@ -108,5 +107,4 @@ class FinishOrder: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
         let resultTextOrder = textOrder.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)
         return resultTextOrder
     }
-    
 }

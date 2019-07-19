@@ -11,15 +11,14 @@ import UIKit
 class BoardProduct: UICollectionViewController {
     
     @IBOutlet weak var activiti: UIActivityIndicatorView!
+    
     var productFiltered: [Page] = []
     var CategoryId: Int?
     var filteredProducts: [ProductViewModel] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("ViewDidLoad #BoardProduct")
         
-        // loader start
         activiti.startAnimating()
         
         Network.shared.getToken { [weak self] in
@@ -31,8 +30,8 @@ class BoardProduct: UICollectionViewController {
                     let viewModel = ProductViewModel(product: product)
                     self?.filteredProducts.append(viewModel)
                 }
+                
                 DispatchQueue.main.async{ [weak self] in
-                    // loader stop
                     self?.activiti.stopAnimating()
                     self?.activiti.hidesWhenStopped = true
                     self?.collectionView.reloadData()

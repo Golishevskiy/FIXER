@@ -10,12 +10,12 @@ import UIKit
 
 class MenuNextLevel: UIViewController {
     
+    @IBOutlet weak var tableViewMenu: UITableView!
+    
     var menu: [Page] = []
     var selectedCategories: Int?
     var category = [Page]()
     var parentID: Int?
-    
-    @IBOutlet weak var tableViewMenu: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +24,6 @@ class MenuNextLevel: UIViewController {
             if menu[i].parent == selectedCategories {
                 category.append((menu[i]))
                 tableViewMenu.reloadData()
-                
             }
         }
     }

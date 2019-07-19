@@ -10,7 +10,7 @@ import UIKit
 
 class MenuVC: UIViewController {
     
-    let net = Network()
+    private let net = Network()
     var menu: MenuStruct? = nil
     var category = [Page]()
     var allCategoryMenu = [Page]()
@@ -32,7 +32,6 @@ class MenuVC: UIViewController {
                         self.category.append((self.allCategoryMenu[i]))
                     }
                 }
-                print("Cout - \(self.category.count)")
                 DispatchQueue.main.async { [weak self] in
                     self!.tableViewMenu.reloadData()
                     self?.activityLoadMenu.stopAnimating()

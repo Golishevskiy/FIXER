@@ -11,18 +11,11 @@ import UIKit
 class ViewController: UIViewController {
     let net = Network()
     
-    
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         net.getToken {
             self.net.loadMenu()
         }
-    }
-    
-    @IBAction func buttoShowMenu(_ sender: Any) {
-        let menu = net.menuResp
-        performSegue(withIdentifier: "show", sender: menu)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

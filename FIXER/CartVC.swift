@@ -14,7 +14,6 @@ class CartVC: UIViewController {
     @IBOutlet weak var totalPriceLabel: UILabel!
     
     override func viewDidLoad() {
-        
         Cart.shared.uiDelegate = self
         Cart.shared.uiDelegat1 = self
         cartTableView.rowHeight = UITableView.automaticDimension
@@ -23,10 +22,6 @@ class CartVC: UIViewController {
     }
     
     @IBAction func toOrderButton(_ sender: UIButton) {
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        cartTableView.reloadData()
     }
 }
 
@@ -49,8 +44,6 @@ extension CartVC: CartUIDelegat {
     func reloadTotalCount() {
         print("delegate")
         totalPriceLabel.text = "0"
-        //        cartTableView.reloadData()
-        //        totalPriceLabel.reloadInputViews()
     }
 }
 

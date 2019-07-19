@@ -20,7 +20,7 @@ class DetailProductVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-                
+        
         CheckProductInCartAfterReloadMenu(productInCart: Cart.shared.cartArrayItem, slectedProduct: item!)
         productImageView.image = item?.image
         nameLabel.text = item?.product.title.ru
@@ -29,10 +29,6 @@ class DetailProductVC: UIViewController {
         guard let descr = item?.product.description.ru else { return }
         textViewDescription.attributedText = try? NSAttributedString(htmlString: descr)
         textViewDescription.isEditable = false
-        
-//        textViewDescription.sizeToFit()
-//        scrollView.contentSize = CGSize(width: self.scrollView.contentSize.width, height: self.view.subVi)
-        
         
     }
     
@@ -51,7 +47,7 @@ class DetailProductVC: UIViewController {
             if String(i.article) == item?.product.article {
                 bayButton.isEnabled = false
                 bayButton.setTitle("в корзине", for: .normal)
-                let textColorButton = UIColor(red: 0.6, green: 0.2, blue: 0.5, alpha: 1)
+                let textColorButton = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 1)
                 bayButton.setTitleColor(textColorButton, for: .normal)
             }
         }

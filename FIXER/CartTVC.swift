@@ -21,10 +21,9 @@ class CartTVC: UITableViewCell {
     @IBAction func changeCountItem(_ sender: UIStepper) {
         print(#function)
         guard let productInCart = productInCart else { return }
-        print(productInCart.name)
         Cart.shared.changeCount(productInCart, count: Int(sender.value))
     }
-
+    
     func fillIn(_ product: ProductInCart) {
         print(#function)
         productInCart = product
@@ -33,7 +32,6 @@ class CartTVC: UITableViewCell {
         countLabel.text = String(product.count)
         cartImageView.image = product.image
         stepper.value = Double(product.count)
-        
     }
     
     override func prepareForReuse() {

@@ -17,7 +17,6 @@ class ProductCell: UICollectionViewCell {
     
     func fill(_ productViewModel: ProductViewModel) {
         self.viewModel = productViewModel
-        
         self.nameProductCell.text = productViewModel.product.title.ua
         self.imageViewProduct.image = productViewModel.image ?? UIImage(named: "rabbit")
         
@@ -28,7 +27,6 @@ class ProductCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        
         self.imageViewProduct.image = nil
         self.viewModel?.cancelImageDownload()
         self.viewModel = nil
