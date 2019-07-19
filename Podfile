@@ -8,5 +8,4 @@ target 'FIXER' do
   pod 'Alamofire' 
   pod 'SwiftyJSON', '~> 4.0'
 
-  
 end
