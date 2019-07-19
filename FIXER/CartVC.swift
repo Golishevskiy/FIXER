@@ -44,6 +44,7 @@ extension CartVC: CartUIDelegat {
     func reloadTotalCount() {
         print("delegate")
         totalPriceLabel.text = "0"
+        self.cartTableView.reloadData()
     }
 }
 

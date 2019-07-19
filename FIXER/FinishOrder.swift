@@ -57,10 +57,11 @@ class FinishOrder: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
         }
         downloadTask.resume()
         
-        self.dismiss(animated: true, completion: nil)
         Cart.shared.clearCart()
+        if Cart.shared.cartArrayItem.isEmpty {
+            self.dismiss(animated: true, completion: nil)
+        }
     }
-    
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return deliveryOptions.count

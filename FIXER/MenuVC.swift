@@ -32,6 +32,8 @@ class MenuVC: UIViewController {
                         self.category.append((self.allCategoryMenu[i]))
                     }
                 }
+                print(self.category)
+                print(self.allCategoryMenu)
                 DispatchQueue.main.async { [weak self] in
                     self!.tableViewMenu.reloadData()
                     self?.activityLoadMenu.stopAnimating()
