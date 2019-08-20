@@ -20,9 +20,9 @@ class DetailProductVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.title = "Детальніше"
         CheckProductInCartAfterReloadMenu(productInCart: Cart.shared.cartArrayItem, slectedProduct: item!)
-        productImageView.image = item?.image
+        productImageView.image = item?.image ?? UIImage(named: "noPhoto")
         nameLabel.text = item?.product.title.ru
         guard let price = item?.product.price else { return }
         priceLabel.text = String(Int(price) * 27)

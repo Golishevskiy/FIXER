@@ -38,6 +38,7 @@ class Network: Codable {
                 let response = try JSONDecoder().decode(ProductItem.self, from: data)
                 self.token = response.response.token
                 completion?()
+                self.loadMenu(completion: nil)
                 
             } catch {
                 print(error)

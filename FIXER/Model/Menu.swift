@@ -26,3 +26,26 @@ struct Page: Codable {
 struct Title: Codable {
     let ru, ua: String
 }
+
+class Menu {
+    var menu: [String:[String]]?
+    
+    func sortedMenu(response: [Page]) /*-> [String:[String?]]*/ {
+        for i in response {
+            if String(i.parent) == "1273" {
+                for y in response{
+                    if i.id.description == y.parent.description {
+                        print(i.title.ua)
+                        print(y.title.ua)
+                        var array = [String]()
+                        array.append(y.title.ua)
+                        menu?.updateValue(array, forKey: i.title.ua)
+                    }
+                }
+            }
+        }
+    }
+}
+ 
+
+

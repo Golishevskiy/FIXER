@@ -18,7 +18,7 @@ class ProductCell: UICollectionViewCell {
     func fill(_ productViewModel: ProductViewModel) {
         self.viewModel = productViewModel
         self.nameProductCell.text = productViewModel.product.title.ua
-        self.imageViewProduct.image = productViewModel.image ?? UIImage(named: "rabbit")
+        self.imageViewProduct.image = productViewModel.image ?? UIImage(named: "noPhoto")
         
         productViewModel.loadImage { [weak self] (loadedImage) in
             self?.imageViewProduct.image = loadedImage

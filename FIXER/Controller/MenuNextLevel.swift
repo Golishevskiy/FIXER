@@ -19,6 +19,7 @@ class MenuNextLevel: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Бренд"
         let count = menu.count
         for i in 0..<count {
             if menu[i].parent == selectedCategories {
@@ -39,6 +40,7 @@ extension MenuNextLevel: UITableViewDataSource, UITableViewDelegate {
         let cell = tableViewMenu.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)
         let titleCell = category[indexPath.row].title.ua
         cell.textLabel?.text = titleCell
+        cell.selectionStyle = .none
         return cell
         
     }

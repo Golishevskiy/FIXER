@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		7321DBED38DD833D5D9E1268 /* Pods_FIXER.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FC4A362304D00E3A26434D5 /* Pods_FIXER.framework */; };
 		EA008C882237D9E900025332 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA008C872237D9E900025332 /* AppDelegate.swift */; };
-		EA008C8A2237D9E900025332 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA008C892237D9E900025332 /* ViewController.swift */; };
 		EA008C8D2237D9E900025332 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA008C8B2237D9E900025332 /* Main.storyboard */; };
 		EA008C8F2237D9EB00025332 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA008C8E2237D9EB00025332 /* Assets.xcassets */; };
 		EA008C922237D9EB00025332 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA008C902237D9EB00025332 /* LaunchScreen.storyboard */; };
@@ -36,7 +35,6 @@
 		4FC4A362304D00E3A26434D5 /* Pods_FIXER.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FIXER.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA008C842237D9E900025332 /* FIXER.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FIXER.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA008C872237D9E900025332 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		EA008C892237D9E900025332 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		EA008C8C2237D9E900025332 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EA008C8E2237D9EB00025332 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EA008C912237D9EB00025332 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -108,21 +106,10 @@
 		EA008C862237D9E900025332 /* FIXER */ = {
 			isa = PBXGroup;
 			children = (
-				EA008C872237D9E900025332 /* AppDelegate.swift */,
-				EA008C892237D9E900025332 /* ViewController.swift */,
-				EA00ACB6223A6810009D2F00 /* MenuVC.swift */,
-				EAC5A0B3223C0B1000D16517 /* MenuNextLevel.swift */,
-				EA9D6BAD223C3C71000B8B36 /* BoardProduct.swift */,
-				EA9D6BAF223C4233000B8B36 /* ProductCell.swift */,
-				EA71E0D122457E7100A23E96 /* DetailProductVC.swift */,
-				EA71E0D3224D29C700A23E96 /* CartVC.swift */,
-				EA71E0D7224E7B0000A23E96 /* CartTVC.swift */,
-				EA406496227E2BA300EC4BBD /* FinishOrder.swift */,
 				EAC5A0AE223B97C100D16517 /* Model */,
-				EA008C8B2237D9E900025332 /* Main.storyboard */,
-				EA008C8E2237D9EB00025332 /* Assets.xcassets */,
-				EA008C902237D9EB00025332 /* LaunchScreen.storyboard */,
-				EA008C932237D9EB00025332 /* Info.plist */,
+				EAE5514F230C29E70058C236 /* View */,
+				EAE55150230C29F30058C236 /* Controller */,
+				EAE55151230C2AB80058C236 /* Resources */,
 			);
 			path = FIXER;
 			sourceTree = "<group>";
@@ -139,6 +126,40 @@
 				EA71E0D922510F7200A23E96 /* ProductViewModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		EAE5514F230C29E70058C236 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EA9D6BAF223C4233000B8B36 /* ProductCell.swift */,
+				EA71E0D7224E7B0000A23E96 /* CartTVC.swift */,
+				EA008C902237D9EB00025332 /* LaunchScreen.storyboard */,
+				EA008C8B2237D9E900025332 /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		EAE55150230C29F30058C236 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				EA008C872237D9E900025332 /* AppDelegate.swift */,
+				EA00ACB6223A6810009D2F00 /* MenuVC.swift */,
+				EAC5A0B3223C0B1000D16517 /* MenuNextLevel.swift */,
+				EA9D6BAD223C3C71000B8B36 /* BoardProduct.swift */,
+				EA71E0D122457E7100A23E96 /* DetailProductVC.swift */,
+				EA71E0D3224D29C700A23E96 /* CartVC.swift */,
+				EA406496227E2BA300EC4BBD /* FinishOrder.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		EAE55151230C2AB80058C236 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				EA008C8E2237D9EB00025332 /* Assets.xcassets */,
+				EA008C932237D9EB00025332 /* Info.plist */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -273,7 +294,6 @@
 			files = (
 				EA008C9A2237DA3500025332 /* NetworkLayer.swift in Sources */,
 				EA71E0D8224E7B0000A23E96 /* CartTVC.swift in Sources */,
-				EA008C8A2237D9E900025332 /* ViewController.swift in Sources */,
 				EA8B515A22BCD9FC00C32F06 /* NovaPoshtaAllCity.swift in Sources */,
 				EA71E0D4224D29C700A23E96 /* CartVC.swift in Sources */,
 				EA71E0D6224D320000A23E96 /* Cart.swift in Sources */,
@@ -371,6 +391,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = "";
 			};
 			name = Debug;
 		};
@@ -425,6 +446,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = "";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -436,7 +458,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4R56U7KD56;
-				INFOPLIST_FILE = FIXER/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/FIXER/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -456,7 +478,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4R56U7KD56;
-				INFOPLIST_FILE = FIXER/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/FIXER/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

@@ -12,6 +12,7 @@ class FinishOrder: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
     
     var deliveryOptions = ["Самовивіз", "Доставка НП", "Кур'єром (Київ)"]
     var deliveryMethod = ""
+        
     
     @IBOutlet weak var finishOrderButton: UIButton!
     @IBOutlet weak var fixcenterAddress: UILabel!
@@ -53,7 +54,7 @@ class FinishOrder: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
         let downloadTask = URLSession.shared.dataTask(with: newUrl) { (data : Data?, response : URLResponse?, error : Error?) in
             print(data!)
             print(response!)
-            print(error?.localizedDescription)
+            print(error.debugDescription)
         }
         downloadTask.resume()
         

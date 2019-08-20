@@ -58,7 +58,7 @@ class ProductInCart {
     }
     
     convenience init(_ item: ProductViewModel) {
-        self.init(nameItem: item.product.title.ru, priceItem: Int(item.product.price), countItem: 1, articleItem: item.product.article, preViewImage: item.image ?? UIImage(named: "rabbit")!)
+        self.init(nameItem: item.product.title.ru, priceItem: Int(item.product.price), countItem: 1, articleItem: item.product.article, preViewImage: item.image ?? UIImage(named: "noPhoto")!)
     }
 }
 

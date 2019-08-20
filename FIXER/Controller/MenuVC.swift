@@ -10,37 +10,38 @@ import UIKit
 
 class MenuVC: UIViewController {
     
-    private let net = Network()
     var menu: MenuStruct? = nil
     var category = [Page]()
     var allCategoryMenu = [Page]()
     var selectRow: Int?
+    var x = Menu()
     
     @IBOutlet weak var tableViewMenu: UITableView!
     @IBOutlet weak var activityLoadMenu: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.title = "Каталог"
         activityLoadMenu.startAnimating()
         
-        net.getToken {
-            self.net.loadMenu(completion: {
-                self.allCategoryMenu = self.net.menuResp.response.pages
+        Network.shared.getToken {
+            Network.shared.loadMenu(completion: {
+                self.allCategoryMenu = Network.shared.menuResp.response.pages
                 let count = self.allCategoryMenu.count 
                 for i in 0..<count {
                     if self.allCategoryMenu[i].parent == 1273 {
                         self.category.append((self.allCategoryMenu[i]))
                     }
                 }
-                print(self.category)
-                print(self.allCategoryMenu)
+                self.x.sortedMenu(response: self.allCategoryMenu)
+                
                 DispatchQueue.main.async { [weak self] in
                     self!.tableViewMenu.reloadData()
                     self?.activityLoadMenu.stopAnimating()
                 }
             })
         }
-        
         tableViewMenu.dataSource = self
         tableViewMenu.delegate = self
         tableViewMenu.tableFooterView = UIView()
@@ -57,6 +58,7 @@ extension MenuVC: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellMenu", for: indexPath)
         let titleMenuRu = category[indexPath.row].title.ua
         cell.textLabel?.text = titleMenuRu
+        cell.selectionStyle = .none
         return cell
     }
     

@@ -10,7 +10,7 @@ import UIKit
 
 class BoardProduct: UICollectionViewController {
     
-    @IBOutlet weak var activiti: UIActivityIndicatorView!
+    @IBOutlet weak var activity: UIActivityIndicatorView!
     
     var productFiltered: [Page] = []
     var CategoryId: Int?
@@ -18,8 +18,8 @@ class BoardProduct: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        activiti.startAnimating()
+        self.title = "Товари"
+        activity.startAnimating()
         
         Network.shared.getToken { [weak self] in
             guard let id = self?.CategoryId else { return }
@@ -32,8 +32,8 @@ class BoardProduct: UICollectionViewController {
                 }
                 
                 DispatchQueue.main.async{ [weak self] in
-                    self?.activiti.stopAnimating()
-                    self?.activiti.hidesWhenStopped = true
+                    self?.activity.stopAnimating()
+                    self?.activity.hidesWhenStopped = true
                     self?.collectionView.reloadData()
                 }
             }
