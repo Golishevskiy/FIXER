@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct ProductItem: Codable {
+struct ResponseToken: Codable {
     let status: String
     let response: Answer
 }

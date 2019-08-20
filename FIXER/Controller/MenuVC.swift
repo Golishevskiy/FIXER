@@ -10,7 +10,7 @@ import UIKit
 
 class MenuVC: UIViewController {
     
-    var menu: MenuStruct? = nil
+//    var menu: MenuStruct? = nil
     var category = [Page]()
     var allCategoryMenu = [Page]()
     var selectRow: Int?
@@ -23,12 +23,15 @@ class MenuVC: UIViewController {
         super.viewDidLoad()
         
         self.title = "Каталог"
+        tableViewMenu.dataSource = self
+        tableViewMenu.delegate = self
+        tableViewMenu.tableFooterView = UIView()
         activityLoadMenu.startAnimating()
         
         Network.shared.getToken {
-            Network.shared.loadMenu(completion: {
-                self.allCategoryMenu = Network.shared.menuResp.response.pages
-                let count = self.allCategoryMenu.count 
+            Network.shared.loadMenu(completion: { (menu) in
+                self.allCategoryMenu = menu.response.pages
+                let count = self.allCategoryMenu.count
                 for i in 0..<count {
                     if self.allCategoryMenu[i].parent == 1273 {
                         self.category.append((self.allCategoryMenu[i]))
@@ -42,9 +45,6 @@ class MenuVC: UIViewController {
                 }
             })
         }
-        tableViewMenu.dataSource = self
-        tableViewMenu.delegate = self
-        tableViewMenu.tableFooterView = UIView()
     }
 }
 

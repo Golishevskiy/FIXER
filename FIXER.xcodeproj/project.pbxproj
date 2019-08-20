@@ -27,6 +27,7 @@
 		EA9D6BB0223C4233000B8B36 /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9D6BAF223C4233000B8B36 /* ProductCell.swift */; };
 		EA9D6BB2223D33AE000B8B36 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9D6BB1223D33AE000B8B36 /* Product.swift */; };
 		EAC5A0B4223C0B1000D16517 /* MenuNextLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC5A0B3223C0B1000D16517 /* MenuNextLevel.swift */; };
+		EAE55153230C4B670058C236 /* Urls.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE55152230C4B670058C236 /* Urls.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		EA9D6BAF223C4233000B8B36 /* ProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
 		EA9D6BB1223D33AE000B8B36 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		EAC5A0B3223C0B1000D16517 /* MenuNextLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuNextLevel.swift; sourceTree = "<group>"; };
+		EAE55152230C4B670058C236 /* Urls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Urls.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				EA008C992237DA3500025332 /* NetworkLayer.swift */,
+				EAE55152230C4B670058C236 /* Urls.swift */,
 				EA8B515922BCD9FC00C32F06 /* NovaPoshtaAllCity.swift */,
 				EA71E0D5224D320000A23E96 /* Cart.swift */,
 				EA9D6BB1223D33AE000B8B36 /* Product.swift */,
@@ -300,6 +303,7 @@
 				EAC5A0B4223C0B1000D16517 /* MenuNextLevel.swift in Sources */,
 				EA008C882237D9E900025332 /* AppDelegate.swift in Sources */,
 				EA008C9C2237DAC400025332 /* Authorization.swift in Sources */,
+				EAE55153230C4B670058C236 /* Urls.swift in Sources */,
 				EA6322772238236C0090753B /* Menu.swift in Sources */,
 				EA406497227E2BA300EC4BBD /* FinishOrder.swift in Sources */,
 				EA71E0D222457E7200A23E96 /* DetailProductVC.swift in Sources */,

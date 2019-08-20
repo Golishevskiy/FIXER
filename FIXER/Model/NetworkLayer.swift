@@ -14,16 +14,14 @@ class Network: Codable {
     static let shared = Network()
     
     typealias EmptyClosure = (() -> Void)
-    typealias exempleClosure = (() -> Void)
-    let baseUrl = "https://fixcenter.com.ua/api"
-    var token: String = ""
-    var menuResp: MenuStruct!
-    var items: AllResponse?
+    typealias exempleClosure = ((AllResponse) -> Void)
+    typealias Closure = ((MenuStruct) -> Void)
+    var token: String?
+    
     
     func getToken(completion: EmptyClosure? = nil) {
-        let authUrl = "/auth"
         let parametrs = ["login": "Petro", "password": "life210191"]
-        guard let url = URL(string: baseUrl + authUrl) else { return }
+        guard let url = URL(string: Url.base.rawValue + Url.auth.rawValue) else { return }
         var reuest = URLRequest(url: url)
         reuest.httpMethod = "POST"
         reuest.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -35,21 +33,19 @@ class Network: Codable {
             
             guard let data = data else { return }
             do {
-                let response = try JSONDecoder().decode(ProductItem.self, from: data)
+                let response = try JSONDecoder().decode(ResponseToken.self, from: data)
                 self.token = response.response.token
                 completion?()
-                self.loadMenu(completion: nil)
-                
             } catch {
                 print(error)
             }
             }.resume()
     }
     
-    func loadMenu(completion: EmptyClosure? = nil) {
-        let urlMenuStr = "/pages/export/"
+    func loadMenu(completion: @escaping Closure) {
+        guard let token = self.token else { return }
         let parametrs = ["token": token, "parent": "1273"]
-        guard let url = URL(string: baseUrl + urlMenuStr) else { return }
+        guard let url = URL(string: Url.base.rawValue + Url.menu.rawValue) else { return }
         
         var reuest = URLRequest(url: url)
         reuest.httpMethod = "POST"
@@ -62,8 +58,7 @@ class Network: Codable {
             
             do {
                 let menu = try JSONDecoder().decode(MenuStruct.self, from: data)
-                self.menuResp = menu
-                completion?()
+                completion(menu)
             } catch {
                 print(error)
             }
@@ -72,9 +67,9 @@ class Network: Codable {
     
     func loadProduct(idCategory: String, completion: @escaping exempleClosure) {
         getToken()
-        let urlProductStr = "/catalog/export/"
+        guard let token = self.token else { return }
         let parametrs = ["token": token, "expr": ["parent": ["id": idCategory]]] as [String : Any]
-        guard let url = URL(string: baseUrl + urlProductStr) else { return }
+        guard let url = URL(string: Url.base.rawValue + Url.catalog.rawValue) else { return }
         
         var reuest = URLRequest(url: url)
         reuest.httpMethod = "POST"
@@ -86,8 +81,7 @@ class Network: Codable {
             guard let data = data else { return }
             do {
                 let item = try JSONDecoder().decode(AllResponse.self, from: data)
-                self.items = item
-                completion()
+                completion(item)
             } catch {
                 print(error)
             }

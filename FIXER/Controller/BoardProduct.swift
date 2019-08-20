@@ -23,8 +23,8 @@ class BoardProduct: UICollectionViewController {
         
         Network.shared.getToken { [weak self] in
             guard let id = self?.CategoryId else { return }
-            Network.shared.loadProduct(idCategory: String(id)) { [weak self] in
-                guard let objSinglton = Network.shared.items else { return }
+            Network.shared.loadProduct(idCategory: String(id)) { [weak self] (items) in
+                let objSinglton = items
                 
                 for product in objSinglton.response.products {
                     let viewModel = ProductViewModel(product: product)
