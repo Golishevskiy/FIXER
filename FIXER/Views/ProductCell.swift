@@ -20,6 +20,14 @@ class ProductCell: UICollectionViewCell {
         self.nameProductCell.text = productViewModel.product.title.ua
         self.imageViewProduct.image = productViewModel.image ?? UIImage(named: "noPhoto")
         
+        layer.cornerRadius = 15
+        layer.masksToBounds = true
+        layer.shadowOffset = .zero
+        layer.shadowOpacity = 0.2
+        layer.shadowRadius = 5
+        layer.shadowColor = UIColor.black.cgColor
+        layer.masksToBounds = false
+        
         productViewModel.loadImage { [weak self] (loadedImage) in
             self?.imageViewProduct.image = loadedImage
         }

@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Alamofire
 
 class Network: Codable {
     
@@ -16,6 +15,7 @@ class Network: Codable {
     typealias EmptyClosure = (() -> Void)
     typealias exempleClosure = ((AllResponse) -> Void)
     typealias Closure = ((MenuStruct) -> Void)
+//    typealias Closure<T> = ((T) -> Void)
     var token: String?
     
     
@@ -87,5 +87,31 @@ class Network: Codable {
             }
             }.resume()
     }
-}
+    
+//    func loadData<T>(model: T.Type, urlString: String, type: T.Type, completion: @escaping Closure<T>) where T: Decodable  {
+//
+//            guard let token = self.token else { return }
+//            let parametrs = ["token": token, "parent": "1273"]
+//            let url = URL(string: urlString)
+//
+//            var reuest = URLRequest(url: url!)
+//            reuest.httpMethod = "POST"
+//            reuest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+//            guard let httpBody = try? JSONSerialization.data(withJSONObject: parametrs, options:[]) else { return }
+//            reuest.httpBody = httpBody
+//
+//            URLSession.shared.dataTask(with: reuest) { (data, response, error) in
+//                guard let data = data else { return }
+//
+//                do {
+//                    let result = try JSONDecoder().decode(model, from: data)
+//                    completion(result)
+//                } catch {
+//                    print(error)
+//                }
+//                }.resume()
+//        }
+    }
+
+
 

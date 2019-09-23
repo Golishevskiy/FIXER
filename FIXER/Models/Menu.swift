@@ -35,8 +35,6 @@ class Menu {
             if String(i.parent) == "1273" {
                 for y in response{
                     if i.id.description == y.parent.description {
-                        print(i.title.ua)
-                        print(y.title.ua)
                         var array = [String]()
                         array.append(y.title.ua)
                         menu?.updateValue(array, forKey: i.title.ua)

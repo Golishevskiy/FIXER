@@ -47,14 +47,10 @@ class FinishOrder: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
         let chatId = "@fixcenterOrder"
         var strUrl = "https://api.telegram.org/bot%@/sendMessage?chat_id=%@&text=%@"
         
-        strUrl = String(format: strUrl, apiToken, chatId, orderInformationForTelegrams()!)
-        print(strUrl)
+        strUrl = String(format: strUrl, apiToken, chatId, orderInformationForTelegram()!)
         let url = URL(string: strUrl)
         guard let newUrl = url else {return}
         let downloadTask = URLSession.shared.dataTask(with: newUrl) { (data : Data?, response : URLResponse?, error : Error?) in
-            print(data!)
-            print(response!)
-            print(error.debugDescription)
         }
         downloadTask.resume()
         
@@ -99,7 +95,7 @@ class FinishOrder: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
         }
     }
     
-    func orderInformationForTelegrams() -> String? {
+    func orderInformationForTelegram() -> String? {
         var textOrder = "#ЗАКАЗ#"
         for i in Cart.shared.cartArrayItem {
             textOrder = "\(textOrder)\n+\(i.name) x \(i.count.description)шт\nАртикул - \(i.article)\nЦіна - \(i.price)\n-----------------------------------------------"
@@ -108,5 +104,14 @@ class FinishOrder: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
         textOrder = "\(textOrder)\n*ПОКУПАТЕЛЬ:*\n\(firstNameShopper.text!) \(nameShopper.text!) \(phoneShopper.text!)\n*ДОСТАВКА:*\n\(deliveryMethod)\n\(shippingAddress.text ?? "")\(cityDelivery.text ?? "")\n\(postOfficeDeliveryr.text ?? "")"
         let resultTextOrder = textOrder.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)
         return resultTextOrder
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }

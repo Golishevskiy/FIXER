@@ -55,9 +55,9 @@ extension MenuVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cellMenu", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cellMenu", for: indexPath) as! MenuCell
         let titleMenuRu = category[indexPath.row].title.ua
-        cell.textLabel?.text = titleMenuRu
+        cell.setupCell(name: titleMenuRu)
         cell.selectionStyle = .none
         return cell
     }
@@ -66,6 +66,10 @@ extension MenuVC: UITableViewDelegate, UITableViewDataSource {
         let selectRow = category[indexPath.row].id
         self.selectRow = selectRow
         performSegue(withIdentifier: "showTwoMenu", sender: allCategoryMenu)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return tableView.frame.width / 4.5
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -37,18 +37,19 @@ extension MenuNextLevel: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableViewMenu.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)
+        let cell = tableViewMenu.dequeueReusableCell(withIdentifier: "myCell", for: indexPath) as! MenuNextLevelCell
         let titleCell = category[indexPath.row].title.ua
-        cell.textLabel?.text = titleCell
-        cell.selectionStyle = .none
+        cell.setupCell(name: titleCell)
         return cell
-        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         parentID = category[indexPath.item].id
         performSegue(withIdentifier: "showBoard", sender: category)
-        
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return tableViewMenu.frame.width / 4.5
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
