@@ -54,11 +54,8 @@ extension MenuNextLevel: UITableViewDataSource, UITableViewDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showBoard" {
-            if let board = segue.destination as? BoardProduct {
-                if let senderCategory = sender as? [Page] {
-                    board.productFiltered = senderCategory
+            if let board = segue.destination as? BoardProducts {
                     board.CategoryId = parentID
-                }
             }
         }
     }

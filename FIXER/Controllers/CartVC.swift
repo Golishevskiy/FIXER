@@ -14,6 +14,8 @@ class CartVC: UIViewController {
     @IBOutlet weak var totalPriceLabel: UILabel!
     
     override func viewDidLoad() {
+        self.title = "Кошик"
+        cartOrderIsChnaged()
         Cart.shared.uiDelegate = self
         Cart.shared.uiDelegat1 = self
         cartTableView.rowHeight = UITableView.automaticDimension
@@ -21,10 +23,33 @@ class CartVC: UIViewController {
         cartTableView.tableFooterView = UIView()  // приховати полоски на табл
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        if !checkCountInCart() {
+            UIAlertController.alert(title: "Кошик пустий", msg: "Будь ласка, додайте товар у кошик", target: self)
+        }
+    }
+    
     @IBAction func toOrderButton(_ sender: UIButton) {
+        checkCartForUserNotification()
+    }
+    
+    
+    func checkCountInCart() -> Bool {
+        if Cart.shared.cartArrayItem.count != 0 {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    func checkCartForUserNotification() {
+        if checkCountInCart() {
+            performSegue(withIdentifier: "toOrderSegue", sender: nil)
+        } else {
+            UIAlertController.alert(title: "Кошик пустий", msg: "Будь ласка, додайте товар у кошик", target: self)
+        }
     }
 }
-
 
 extension CartVC: CartUIDelegateProtocol {
     
@@ -64,6 +89,7 @@ extension CartVC: UITableViewDataSource, UITableViewDelegate {
         if editingStyle == UITableViewCell.EditingStyle.delete {
             Cart.shared.cartArrayItem.remove(at: indexPath.row)
             cartTableView.reloadData()
+            cartOrderIsChnaged()
         }
     }
     
@@ -73,6 +99,17 @@ extension CartVC: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
+    }
+}
+
+extension UIAlertController {
+    
+    class func alert(title: String, msg: String, target: UIViewController) {
+        let alert = UIAlertController(title: title, message: msg, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "Добре", style: UIAlertAction.Style.default) {
+            (result: UIAlertAction) -> Void in
+        })
+        target.present(alert, animated: true, completion: nil)
     }
 }
 

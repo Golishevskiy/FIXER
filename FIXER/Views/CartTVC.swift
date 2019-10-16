@@ -30,6 +30,7 @@ class CartTVC: UITableViewCell {
         countLabel.text = String(product.count)
         cartImageView.image = product.image
         stepper.value = Double(product.count)
+        selectionStyle = .none
     }
     
     override func prepareForReuse() {

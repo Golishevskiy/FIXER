@@ -10,6 +10,10 @@ import UIKit
 
 class MenuVC: UIViewController {
     
+    var menuOneLine = [1186,
+                       1052,
+                       1053]
+    
 //    var menu: MenuStruct? = nil
     var category = [Page]()
     var allCategoryMenu = [Page]()
@@ -63,8 +67,15 @@ extension MenuVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(#function)
         let selectRow = category[indexPath.row].id
         self.selectRow = selectRow
+        
+        if menuOneLine.contains(selectRow)  {
+            performSegue(withIdentifier: "toBoard", sender: selectRow)
+            return
+        }
+        
         performSegue(withIdentifier: "showTwoMenu", sender: allCategoryMenu)
     }
     
@@ -80,6 +91,13 @@ extension MenuVC: UITableViewDelegate, UITableViewDataSource {
                     menuNext.selectedCategories = selectRow!
                     
                 }
+            }
+        }
+        
+        if segue.identifier == "toBoard" {
+            if let board = segue.destination as? BoardProducts {
+                    board.CategoryId = self.selectRow
+                print(selectRow as Any)
             }
         }
     }
