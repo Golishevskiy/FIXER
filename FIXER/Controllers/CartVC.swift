@@ -12,20 +12,23 @@ class CartVC: UIViewController {
     
     @IBOutlet weak var cartTableView: UITableView!
     @IBOutlet weak var totalPriceLabel: UILabel!
+    @IBOutlet weak var bayButton: UIButton!
+    
     
     override func viewDidLoad() {
-        self.title = "Кошик"
+        self.title = "Корзина"
         cartOrderIsChnaged()
         Cart.shared.uiDelegate = self
         Cart.shared.uiDelegat1 = self
         cartTableView.rowHeight = UITableView.automaticDimension
         cartTableView.estimatedRowHeight = UITableView.automaticDimension
         cartTableView.tableFooterView = UIView()  // приховати полоски на табл
+//        bayButton.layer.cornerRadius = CGFloat(bayButton.frame.height / 4)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         if !checkCountInCart() {
-            UIAlertController.alert(title: "Кошик пустий", msg: "Будь ласка, додайте товар у кошик", target: self)
+            UIAlertController.alert(title: "Корзина пуста", msg: "Пожалуйста, положите товар в корзину", target: self)
         }
     }
     
@@ -46,7 +49,7 @@ class CartVC: UIViewController {
         if checkCountInCart() {
             performSegue(withIdentifier: "toOrderSegue", sender: nil)
         } else {
-            UIAlertController.alert(title: "Кошик пустий", msg: "Будь ласка, додайте товар у кошик", target: self)
+            UIAlertController.alert(title: "Корзина пуста", msg: "Пожалуйста, положите товар в корзину", target: self)
         }
     }
 }
@@ -106,7 +109,7 @@ extension UIAlertController {
     
     class func alert(title: String, msg: String, target: UIViewController) {
         let alert = UIAlertController(title: title, message: msg, preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "Добре", style: UIAlertAction.Style.default) {
+        alert.addAction(UIAlertAction(title: "Хорошо", style: UIAlertAction.Style.default) {
             (result: UIAlertAction) -> Void in
         })
         target.present(alert, animated: true, completion: nil)

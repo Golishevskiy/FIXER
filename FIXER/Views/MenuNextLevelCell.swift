@@ -14,7 +14,6 @@ class MenuNextLevelCell: UITableViewCell {
     @IBOutlet weak var viewCell: UIView!
     @IBOutlet weak var nameLabel: UILabel!
     
-    
     func setupCell(name: String) {
         nameLabel.text = name
         //radius

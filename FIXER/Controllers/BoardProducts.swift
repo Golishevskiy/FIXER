@@ -30,7 +30,7 @@ class BoardProducts: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Товари"
+        self.title = "Товары"
         
         self.boardTableView.delegate = self
         self.boardTableView.dataSource = self
@@ -42,31 +42,41 @@ class BoardProducts: UIViewController {
         searchController.obscuresBackgroundDuringPresentation = false
         definesPresentationContext = true
         
-        activityIndicator.startAnimating()
         boardTableView.separatorStyle = .none
-        //        tableView.rowHeight = UITableView.automaticDimension
-        
-        Network.shared.getToken { [weak self] in
-            guard let id = self?.CategoryId else { return }
-            Network.shared.loadProduct(idCategory: String(id)) { [weak self] (items) in
-                let objSinglton = items
-                
-                for product in objSinglton.response.products {
-                    let viewModel = ProductViewModel(product: product)
-                    self?.filteredProducts.append(viewModel)
-                }
-                
-                DispatchQueue.main.async{ [weak self] in
-                    self?.activityIndicator.stopAnimating()
-                    self?.activityIndicator.hidesWhenStopped = true
-                    self?.boardTableView.reloadData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if !InternetConnection.isConnectedToInternet {
+            UIView.setAnimationsEnabled(false)
+            performSegue(withIdentifier: "noConnectSegue", sender: nil)
+        } else {
+            UIView.setAnimationsEnabled(true)
+            if filteredProducts.count != 0 { return }
+            activityIndicator.startAnimating()
+            Network.shared.getToken { [weak self] in
+                guard let id = self?.CategoryId else { return }
+                Network.shared.loadProduct(idCategory: String(id)) { [weak self] (items) in
+                    //                let objSinglton = items
+                    
+                    for product in items.response.products {
+                        let viewModel = ProductViewModel(product: product)
+                        self?.filteredProducts.append(viewModel)
+                    }
+                    
+                    DispatchQueue.main.async{ [weak self] in
+                        self?.activityIndicator.stopAnimating()
+                        self?.activityIndicator.hidesWhenStopped = true
+                        self?.boardTableView.reloadData()
+                    }
                 }
             }
         }
     }
 }
 
+
 extension BoardProducts: UITableViewDataSource, UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isFiltering {
             return resultSearch.count
@@ -85,7 +95,7 @@ extension BoardProducts: UITableViewDataSource, UITableViewDelegate {
             product = filteredProducts[indexPath.row]
         }
         
-//        let product = filteredProducts[indexPath.item]
+        //        let product = filteredProducts[indexPath.item]
         cell.fill(product)
         return cell
     }
@@ -109,7 +119,7 @@ extension BoardProducts: UITableViewDataSource, UITableViewDelegate {
                     } else {
                         product = self.filteredProducts[indexPath.row]
                     }
-
+                    
                     let detail = segue.destination as! DetailProductVC
                     detail.item = product
                 }
@@ -123,18 +133,18 @@ extension BoardProducts: UISearchBarDelegate {
 }
 
 extension BoardProducts: UISearchResultsUpdating {
+    
     func updateSearchResults(for searchController: UISearchController) {
         filterContentForSearchText(textDidChange: searchController.searchBar.text!)
     }
     
     func filterContentForSearchText(textDidChange searchText: String) {
         resultSearch = filteredProducts
-
+        
         if searchText.isEmpty == false {
             resultSearch = filteredProducts.filter({ $0.product.description.ru.lowercased().contains(searchText.lowercased()) })
             print("resultSearch")
         }
-
         boardTableView.reloadData()
     }
 }

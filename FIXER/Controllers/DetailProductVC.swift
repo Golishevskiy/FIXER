@@ -23,22 +23,26 @@ class DetailProductVC: UIViewController {
     
     var indexForPageControll = 0
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         collectionViewSlider.delegate = self
         collectionViewSlider.dataSource = self
         
+        self.pageControl.addTarget(self, action: #selector(self.pageChanged(sender:)), for: UIControl.Event.valueChanged)
+        
+        
         pageControl.currentPageIndicatorTintColor = .orange
         pageControl.pageIndicatorTintColor = .gray
         pageControl.numberOfPages = item?.product.images.count ?? 1
-        self.title = "Детальніше"
+        self.title = "О товаре"
         bayButton.backgroundColor = .orange
         bayButton.layer.cornerRadius = 7
         bayButton.layer.shadowRadius = 7
         bayButton.layer.shadowColor = CGColor(_colorLiteralRed: 0.4, green: 0.8, blue: 0, alpha: 0)
         
-        bayButton.setTitle("Купити", for: .normal)
+        bayButton.setTitle("Купить", for: .normal)
         cartStatusLabel.isHidden = true
         PresenceProduct()
         
@@ -51,12 +55,17 @@ class DetailProductVC: UIViewController {
         textViewDescription.isEditable = false
     }
     
+    @objc func pageChanged(sender:AnyObject) {
+        let indexPath = IndexPath(item: pageControl.currentPage, section: 0)
+        self.collectionViewSlider.scrollToItem(at: indexPath, at: .left, animated: true)
+    }
+    
     @IBAction func addToCart(_ bayButton: UIButton) {
         guard let itemProd = item else { return }
         Cart.shared.addItemToCart(item: itemProd)
         bayButton.isHidden = true
         cartStatusLabel.isHidden = false
-        cartStatusLabel.text = "В кошику"
+        cartStatusLabel.text = "В корзине"
         cartStatusLabel.textColor = UIColor(red: 1, green: 0.5, blue: 0, alpha: 0.5)
         cartStatusLabel.font = .boldSystemFont(ofSize: 16)
         item?.cartStatus = true
@@ -67,7 +76,7 @@ class DetailProductVC: UIViewController {
             if String(i.article) == item?.product.article {
                 bayButton.isHidden = true
                 cartStatusLabel.isHidden = false
-                cartStatusLabel.text = "В кошику"
+                cartStatusLabel.text = "В корзине"
                 cartStatusLabel.textColor = UIColor(red: 1, green: 0.5, blue: 0, alpha: 0.5)
                 cartStatusLabel.font = .boldSystemFont(ofSize: 16)
             }
@@ -79,7 +88,7 @@ class DetailProductVC: UIViewController {
             print(#function)
             bayButton.isHidden = true
             cartStatusLabel.isHidden = false
-            cartStatusLabel.text = "Немає в наявності"
+            cartStatusLabel.text = "Нет в наличии"
             cartStatusLabel.textColor = .gray
             cartStatusLabel.font = .boldSystemFont(ofSize: 16)
         } else {
@@ -99,13 +108,24 @@ extension NSAttributedString {
 
 extension DetailProductVC: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return item?.product.images.count ?? 1
+        
+        if (item?.product.images.count)! == 0 {
+            return 1
+        } else {
+            return (item?.product.images.count)!
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ImageSlider
-        //        cell.backgroundColor = .gray
-        cell.setupCell(image: (item?.product.images[indexPath.row])!)
+        var photo = true
+        var image = ""
+        if item?.product.images.count == 0 {
+            photo = false
+        } else {
+            image = (item?.product.images[indexPath.row])!
+        }
+        cell.setupCell(image: image, photoAvailable: photo)
         return cell
     }
     
@@ -132,4 +152,6 @@ extension DetailProductVC: UICollectionViewDelegateFlowLayout {
         return 0.0
     }
 }
+
+
 

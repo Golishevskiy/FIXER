@@ -11,7 +11,6 @@ import UIKit
 
 class ImageSlider: UICollectionViewCell {
     
-    
     func getImageFromWeb(_ urlString: String, closure: @escaping (UIImage?) -> ()) {
             guard let url = URL(string: urlString) else {
     return closure(nil)
@@ -38,9 +37,14 @@ class ImageSlider: UICollectionViewCell {
     
     @IBOutlet weak var myImageView: UIImageView!
     
-    func setupCell(image: String) {
-        getImageFromWeb(image) { (image) in
-            self.myImageView.image = image
+    func setupCell(image: String,
+                   photoAvailable: Bool) {
+        if photoAvailable {
+            getImageFromWeb(image) { (images) in
+                   self.myImageView.image = images
+            }
+        } else {
+            self.myImageView.image = UIImage(named: "noPhoto")
         }
     }
 }

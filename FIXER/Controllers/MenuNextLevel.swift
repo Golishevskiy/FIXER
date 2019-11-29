@@ -38,7 +38,7 @@ extension MenuNextLevel: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableViewMenu.dequeueReusableCell(withIdentifier: "myCell", for: indexPath) as! MenuNextLevelCell
-        let titleCell = category[indexPath.row].title.ua
+        let titleCell = category[indexPath.row].title.ru
         cell.setupCell(name: titleCell)
         return cell
     }
@@ -54,6 +54,7 @@ extension MenuNextLevel: UITableViewDataSource, UITableViewDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showBoard" {
+            print("prepare segue")
             if let board = segue.destination as? BoardProducts {
                     board.CategoryId = parentID
             }

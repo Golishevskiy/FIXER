@@ -19,6 +19,9 @@ class Network: Codable {
     var token: String?
     
     
+    let a  = Url.catalog.rawValue
+    
+    
     func getToken(completion: EmptyClosure? = nil) {
         let parametrs = ["login": "Petro", "password": "life210191"]
         guard let url = URL(string: Url.base.rawValue + Url.auth.rawValue) else { return }

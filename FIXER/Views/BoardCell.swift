@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Foundation
 
 class BoardCell: UITableViewCell {
     
@@ -20,18 +21,19 @@ class BoardCell: UITableViewCell {
     @IBOutlet weak var presenceLabel: UILabel!
     
     
+    
     func fill(_ productViewModel: ProductViewModel) {
         self.viewModel = productViewModel
-        self.productNameLabel.text = productViewModel.product.title.ua
+        self.productNameLabel.text = productViewModel.product.title.ru
         self.productImage.image = productViewModel.image ?? UIImage(named: "noPhoto")
         self.productInfoLabel.text = Int(productViewModel.product.price * 27).description
         
-        if productViewModel.product.presence.value.ua == "В наявності" {
-            self.presenceLabel.textColor = .green
+        if productViewModel.product.presence.value.ua == StatusItem.inStock.rawValue {
+            self.presenceLabel.textColor = .orange
         } else {
-            self.presenceLabel.textColor = .red
+            self.presenceLabel.textColor = .darkGray
         }
-        self.presenceLabel.text = productViewModel.product.presence.value.ua
+        self.presenceLabel.text = productViewModel.product.presence.value.ru
         
         viewCell.layer.cornerRadius = 10
         viewCell.layer.shadowColor = UIColor.gray.cgColor

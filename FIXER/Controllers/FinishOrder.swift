@@ -8,12 +8,10 @@
 
 import UIKit
 
-
-
 class FinishOrder: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
-    var deliveryOptions = ["Самовивіз", "Доставка НП", "Кур'єром (Київ)"]
-    var deliveryMethod = ""
+    private var deliveryOptions = ["Самовивіз", "Доставка НП", "Кур'єром (Київ)"]
+    private var deliveryMethod = ""
     
     @IBOutlet weak var finishOrderButton: UIButton!
     @IBOutlet weak var fixcenterAddress: UILabel!
@@ -34,7 +32,7 @@ class FinishOrder: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
         
         //for button finish order
         finishOrderButton.backgroundColor = UIColor(red: 1, green: 0.45, blue: 0, alpha: 1)
-        finishOrderButton.setTitle("Оформити", for: .normal)
+        finishOrderButton.setTitle("Оформить", for: .normal)
         finishOrderButton.layer.cornerRadius = finishOrderButton.frame.height / 2
         finishOrderButton.setTitleColor(.white, for: .normal)
         
@@ -44,7 +42,7 @@ class FinishOrder: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
         self.dismiss(animated: true, completion: nil)
     }
     
-    func checkAllData() -> Bool {
+    private func checkAllData() -> Bool {
         if  checkLastname() && checkFirstName() && checkPhone() && checkShipping() {
             return true
         } else {
@@ -52,57 +50,57 @@ class FinishOrder: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
         }
     }
     
-    func checkFirstName() -> Bool {
+    private func checkFirstName() -> Bool {
         if firstNameShopper.text! != "" {
             return true
         } else {
             print(#function)
-            UIAlertController.alert(title: "Помилка", msg: "Будь ласка, введіть ім'я", target: self)
+            UIAlertController.alert(title: "Ошибка", msg: "Пожалуйста, напишите имя", target: self)
             return false
         }
     }
     
-    func checkLastname() -> Bool {
+    private func checkLastname() -> Bool {
         if secondNameShopper.text! != "" {
             return true
         } else {
             print(#function)
-            UIAlertController.alert(title: "Помилка", msg: "Будь ласка, введіть прізвище", target: self)
+            UIAlertController.alert(title: "Ошибка", msg: "Пожалуйста, напишите фамилию", target: self)
             return false
         }
     }
     
-    func checkPhone() -> Bool {
+    private func checkPhone() -> Bool {
         if phoneShopper.text! != "" {
             return true
         } else {
-            UIAlertController.alert(title: "Помилка", msg: "Будь ласка, введіть телефон", target: self)
+            UIAlertController.alert(title: "Ошибка", msg: "Пожалуйста, напишите телефон", target: self)
             return false
         }
     }
     
-    func checkCourier(str: String) -> Bool {
+    private func checkCourier(str: String) -> Bool {
         if str != "" {
             return true
         } else {
-            UIAlertController.alert(title: "Помилка", msg: "Будь ласка, введіть адресу доставки", target: self)
+            UIAlertController.alert(title: "Ошибка", msg: "Пожалуйста, напишите адрес доставки", target: self)
             return false
         }
     }
     
-    func checkPost(city: String, office: String) -> Bool {
+    private func checkPost(city: String, office: String) -> Bool {
         if city != "" && office != "" {
             return true
         } else if city == "" {
-            UIAlertController.alert(title: "Помилка", msg: "Будь ласка, введіть місто отримувача", target: self)
+            UIAlertController.alert(title: "Ошибка", msg: "Пожалуйста, напишите город", target: self)
             return false
         } else {
-            UIAlertController.alert(title: "Помилка", msg: "Будь ласка, введіть номер відділення", target: self)
+            UIAlertController.alert(title: "Ошибка", msg: "Пожалуйста, напишите номер отделения", target: self)
             return false
         }
     }
     
-    func checkShipping() -> Bool {
+    private func checkShipping() -> Bool {
         
         if deliveryMethod == "Кур'єром (Київ)" {
             return checkCourier(str: shippingAddress.text!)
@@ -118,7 +116,7 @@ class FinishOrder: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
     
     //sender order to telegram
     @IBAction func finishOrderButton(_ sender: UIButton) {
-        if checkAllData() {
+        if InternetConnection.isConnectedToInternet && checkAllData() {
             let apiToken = "861029744:AAF83m9tfZ1k8HnXteFsrJQYawEQdkMTAYo"
             let chatId = "@fixcenterOrder"
             var strUrl = "https://api.telegram.org/bot%@/sendMessage?chat_id=%@&text=%@"
@@ -134,8 +132,9 @@ class FinishOrder: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
             if Cart.shared.cartArrayItem.isEmpty {
                 self.dismiss(animated: true, completion: nil)
             }
+        } else {
+            UIAlertController.alert(title: "Не получиться", msg: "Будь ласка підключіться до інтернету", target: self)
         }
-        print(checkAllData())
     }
     
     //setup Picker
@@ -175,7 +174,7 @@ class FinishOrder: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
     }
     
     //api manager telegram
-    func orderInformationForTelegram() -> String? {
+    private func orderInformationForTelegram() -> String? {
         var textOrder = "#ЗАКАЗ#"
         for i in Cart.shared.cartArrayItem {
             textOrder = "\(textOrder)\n+\(i.name) x \(i.count.description)шт\nАртикул - \(i.article)\nЦіна - \(i.price)\n-----------------------------------------------"
@@ -190,8 +189,8 @@ class FinishOrder: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
         self.view.endEditing(true)
     }
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
+//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//        textField.resignFirstResponder()
+//        return true
+//    }
 }
