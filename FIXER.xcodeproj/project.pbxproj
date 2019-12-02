@@ -46,7 +46,7 @@
 		5AEA56F6172672436CBCE7BD /* Pods-FIXER.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FIXER.release.xcconfig"; path = "Pods/Target Support Files/Pods-FIXER/Pods-FIXER.release.xcconfig"; sourceTree = "<group>"; };
 		7F053B5E024662DD14047FC0 /* Pods-FIXER.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FIXER.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FIXER/Pods-FIXER.debug.xcconfig"; sourceTree = "<group>"; };
 		86392F0CFF023E7253887E69 /* Pods_FIXER.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FIXER.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		EA008C842237D9E900025332 /* FIXER.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FIXER.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA008C842237D9E900025332 /* Fixcenter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fixcenter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA008C872237D9E900025332 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EA008C8C2237D9E900025332 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EA008C8E2237D9EB00025332 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -124,7 +124,7 @@
 		EA008C852237D9E900025332 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				EA008C842237D9E900025332 /* FIXER.app */,
+				EA008C842237D9E900025332 /* Fixcenter.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -221,7 +221,7 @@
 			);
 			name = FIXER;
 			productName = FIXER;
-			productReference = EA008C842237D9E900025332 /* FIXER.app */;
+			productReference = EA008C842237D9E900025332 /* Fixcenter.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -511,13 +511,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4R56U7KD56;
 				INFOPLIST_FILE = "$(SRCROOT)/FIXER/Resources/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Petro.Fixcenter;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = PetroGolishevskiy.Fixcenter;
+				PRODUCT_NAME = Fixcenter;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -533,13 +533,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4R56U7KD56;
 				INFOPLIST_FILE = "$(SRCROOT)/FIXER/Resources/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Petro.Fixcenter;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = PetroGolishevskiy.Fixcenter;
+				PRODUCT_NAME = Fixcenter;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

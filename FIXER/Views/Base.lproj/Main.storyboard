@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0k9-so-eXA">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0k9-so-eXA">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -12,7 +12,7 @@
         <!--CartVC-->
         <scene sceneID="e3c-dh-KuC">
             <objects>
-                <viewController id="yaI-A5-n8m" customClass="CartVC" customModule="FIXER" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="yaI-A5-n8m" customClass="CartVC" customModule="Fixcenter" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hVX-W8-7YI">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -20,10 +20,10 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="53" sectionFooterHeight="45" translatesAutoresizingMaskIntoConstraints="NO" id="Eor-Qe-pwr">
                                 <rect key="frame" x="0.0" y="56" width="414" height="620"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="separatorColor" systemColor="opaqueSeparatorColor" red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="separatorColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="product_cell" rowHeight="233" id="FbS-ol-xTo" customClass="CartTVC" customModule="FIXER" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="product_cell" rowHeight="233" id="FbS-ol-xTo" customClass="CartTVC" customModule="Fixcenter" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="233"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FbS-ol-xTo" id="hbb-F7-5oY">
@@ -141,7 +141,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" red="1" green="0.57760047910000001" blue="0.099909715349999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Оформить">
-                                            <color key="titleColor" systemColor="systemOrangeColor" red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="titleColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                                         </state>
                                         <connections>
@@ -214,7 +214,7 @@
         <!--Finish Order-->
         <scene sceneID="Syf-SL-Odj">
             <objects>
-                <viewController id="Cve-CL-7cO" customClass="FinishOrder" customModule="FIXER" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Cve-CL-7cO" customClass="FinishOrder" customModule="Fixcenter" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="AfA-H8-OvI">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -264,7 +264,7 @@
                                     <outlet property="delegate" destination="Cve-CL-7cO" id="JmO-c2-ka9"/>
                                 </connections>
                             </pickerView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Місто" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pcP-fY-Z09">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Город" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pcP-fY-Z09">
                                 <rect key="frame" x="20" y="400" width="374" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -352,7 +352,7 @@
         <!--Start ScreenVC-->
         <scene sceneID="OXP-im-v5d">
             <objects>
-                <viewController definesPresentationContext="YES" modalPresentationStyle="pageSheet" id="0k9-so-eXA" customClass="StartScreenVC" customModule="FIXER" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController definesPresentationContext="YES" modalPresentationStyle="pageSheet" id="0k9-so-eXA" customClass="StartScreenVC" customModule="Fixcenter" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="otc-sS-2De">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -393,7 +393,7 @@
                                 <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="color" keyPath="selectedImageTintColor">
-                                <color key="value" systemColor="systemOrangeColor" red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="value" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </tabBar>
@@ -431,7 +431,7 @@
         <!--MenuVC-->
         <scene sceneID="cVL-mu-3J8">
             <objects>
-                <viewController id="qoE-Qq-6la" customClass="MenuVC" customModule="FIXER" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="qoE-Qq-6la" customClass="MenuVC" customModule="Fixcenter" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ESX-zP-ugo">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -445,7 +445,7 @@
                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="blue" indentationWidth="10" reuseIdentifier="cellMenu" rowHeight="150" id="gq8-FG-jts" customClass="MenuCell" customModule="FIXER" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="blue" indentationWidth="10" reuseIdentifier="cellMenu" rowHeight="150" id="gq8-FG-jts" customClass="MenuCell" customModule="Fixcenter" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gq8-FG-jts" id="at4-eD-FoW">
@@ -516,7 +516,7 @@
         <!--Menu Next Level-->
         <scene sceneID="jrK-Yk-MKE">
             <objects>
-                <viewController id="Cbf-Wb-BUD" customClass="MenuNextLevel" customModule="FIXER" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Cbf-Wb-BUD" customClass="MenuNextLevel" customModule="Fixcenter" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VS1-EE-cef">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -525,7 +525,7 @@
                                 <rect key="frame" x="0.0" y="57" width="414" height="785"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="myCell" rowHeight="140" id="a7E-VJ-67S" customClass="MenuNextLevelCell" customModule="FIXER" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="myCell" rowHeight="140" id="a7E-VJ-67S" customClass="MenuNextLevelCell" customModule="Fixcenter" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="140"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="a7E-VJ-67S" id="eGV-LL-zIv">
@@ -590,7 +590,7 @@
         <!--Board Products-->
         <scene sceneID="2EB-SC-CE8">
             <objects>
-                <viewController storyboardIdentifier="YourStoryboardID" id="tMk-js-osH" customClass="BoardProducts" customModule="FIXER" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="YourStoryboardID" id="tMk-js-osH" customClass="BoardProducts" customModule="Fixcenter" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3T1-GV-3CD">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -600,7 +600,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ProductCell" rowHeight="287" id="2Zl-GB-aep" customClass="BoardCell" customModule="FIXER" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ProductCell" rowHeight="287" id="2Zl-GB-aep" customClass="BoardCell" customModule="Fixcenter" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="287"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2Zl-GB-aep" id="IbB-bh-cYa">
@@ -624,7 +624,7 @@
                                                         </label>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WAv-7N-O1h">
                                                             <rect key="frame" x="8" y="227.5" width="358" height="1"/>
-                                                            <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="1" id="n1Q-sM-Lh6"/>
                                                             </constraints>
@@ -733,7 +733,7 @@
         <!--Detail ProductVC-->
         <scene sceneID="lkW-Gf-LDG">
             <objects>
-                <viewController id="Kyy-oV-YmO" customClass="DetailProductVC" customModule="FIXER" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Kyy-oV-YmO" customClass="DetailProductVC" customModule="Fixcenter" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="n8G-NR-lwa">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="946"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -784,7 +784,7 @@
                                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 </collectionViewFlowLayout>
                                                 <cells>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" reuseIdentifier="cell" id="DG5-FE-9sU" customClass="ImageSlider" customModule="FIXER" customModuleProvider="target">
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" reuseIdentifier="cell" id="DG5-FE-9sU" customClass="ImageSlider" customModule="Fixcenter" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="4" width="397" height="184"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" id="C4O-Nv-Qd2">
@@ -818,14 +818,14 @@
                                             </pageControl>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VtQ-cS-MGk">
                                                 <rect key="frame" x="8" y="208" width="398" height="1"/>
-                                                <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="INE-ZO-IEF"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y8T-5p-Brq">
                                                 <rect key="frame" x="8" y="245.5" width="398" height="1"/>
-                                                <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="CJr-nT-hif"/>
                                                 </constraints>
@@ -952,7 +952,7 @@
         <!--No InternetVC-->
         <scene sceneID="Uhk-uo-BNx">
             <objects>
-                <viewController storyboardIdentifier="noInternetStoryboard" modalPresentationStyle="fullScreen" id="8bo-ho-SaP" customClass="NoInternetVC" customModule="FIXER" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="noInternetStoryboard" modalPresentationStyle="fullScreen" id="8bo-ho-SaP" customClass="NoInternetVC" customModule="Fixcenter" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4ra-a5-sVU">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1002,6 +1002,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="gQ5-fu-3oK"/>
-        <segue reference="rC9-ms-BMJ"/>
+        <segue reference="CaD-xg-VkV"/>
     </inferredMetricsTieBreakers>
 </document>

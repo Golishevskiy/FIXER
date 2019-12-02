@@ -8,10 +8,23 @@
 
 import UIKit
 
+enum Delivery : String {
+    case InOffice = "Самовывоз"
+    case NovaPoshta = "Новая почта"
+    case Courier = "Kypьep"
+}
+
+
+
 class FinishOrder: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
-    private var deliveryOptions = ["Самовивіз", "Доставка НП", "Кур'єром (Київ)"]
+//    private var deliveryOptions = ["Самовивіз", "Доставка НП", "Кур'єром (Київ)"]
     private var deliveryMethod = ""
+    private var deliveryOptions = [
+        Delivery.InOffice.rawValue,
+        Delivery.NovaPoshta.rawValue,
+        Delivery.Courier.rawValue
+    ]
     
     @IBOutlet weak var finishOrderButton: UIButton!
     @IBOutlet weak var fixcenterAddress: UILabel!
@@ -24,7 +37,7 @@ class FinishOrder: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
     @IBOutlet weak var myPicker: UIPickerView!
     
     override func viewDidLoad() {
-        deliveryMethod = "Самовивіз"
+        deliveryMethod = Delivery.InOffice.rawValue
         cityDelivery.isHidden = true
         postOfficeDeliveryr.isHidden = true
         shippingAddress.isHidden = true
@@ -102,12 +115,11 @@ class FinishOrder: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
     
     private func checkShipping() -> Bool {
         
-        if deliveryMethod == "Кур'єром (Київ)" {
+        if deliveryMethod == Delivery.Courier.rawValue {
             return checkCourier(str: shippingAddress.text!)
-        } else if deliveryMethod == "Доставка НП" {
+        } else if deliveryMethod == Delivery.NovaPoshta.rawValue {
             return checkPost(city: cityDelivery.text!, office: postOfficeDeliveryr.text!)
-        } else if deliveryMethod == "Самовивіз" {
-            print("Самовивіз")
+        } else if deliveryMethod == Delivery.InOffice.rawValue {
             return true
         } else {
             return false
@@ -133,7 +145,7 @@ class FinishOrder: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
                 self.dismiss(animated: true, completion: nil)
             }
         } else {
-            UIAlertController.alert(title: "Не получиться", msg: "Будь ласка підключіться до інтернету", target: self)
+            UIAlertController.alert(title: "Не получиться", msg: "Пожалуйста, подключитесь к интернету", target: self)
         }
     }
     
@@ -153,19 +165,19 @@ class FinishOrder: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         deliveryMethod = deliveryOptions[row]
         
-        if deliveryMethod == "Доставка НП" {
+        if deliveryMethod == Delivery.NovaPoshta.rawValue {
             cityDelivery.isHidden = false
             postOfficeDeliveryr.isHidden = false
             shippingAddress.isHidden = true
             fixcenterAddress.isHidden = true
         }
-        if deliveryMethod == "Кур'єром (Київ)" {
+        if deliveryMethod == Delivery.Courier.rawValue {
             shippingAddress.isHidden = false
             postOfficeDeliveryr.isHidden = true
             cityDelivery.isHidden = true
             fixcenterAddress.isHidden = true
         }
-        if deliveryMethod == "Самовивіз" {
+        if deliveryMethod == Delivery.InOffice.rawValue {
             cityDelivery.isHidden = true
             postOfficeDeliveryr.isHidden = true
             shippingAddress.isHidden = true
