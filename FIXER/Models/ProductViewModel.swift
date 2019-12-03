@@ -46,3 +46,4 @@ class ProductViewModel {
         self.imageDownloadHandler = nil
     }
 }
+//
