@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "EA008C832237D9E900025332"
-               BuildableName = "FIXER.app"
+               BuildableName = "Fixcenter.app"
                BlueprintName = "FIXER"
                ReferencedContainer = "container:FIXER.xcodeproj">
             </BuildableReference>
@@ -31,7 +31,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "EA008C832237D9E900025332"
-            BuildableName = "FIXER.app"
+            BuildableName = "Fixcenter.app"
             BlueprintName = "FIXER"
             ReferencedContainer = "container:FIXER.xcodeproj">
          </BuildableReference>
@@ -54,7 +54,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "EA008C832237D9E900025332"
-            BuildableName = "FIXER.app"
+            BuildableName = "Fixcenter.app"
             BlueprintName = "FIXER"
             ReferencedContainer = "container:FIXER.xcodeproj">
          </BuildableReference>
@@ -71,7 +71,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "EA008C832237D9E900025332"
-            BuildableName = "FIXER.app"
+            BuildableName = "Fixcenter.app"
             BlueprintName = "FIXER"
             ReferencedContainer = "container:FIXER.xcodeproj">
          </BuildableReference>

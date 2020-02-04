@@ -91,6 +91,34 @@ class Network: Codable {
             }.resume()
     }
     
+    func passDataFromSalesDrive(data: [String: Any]) {
+        // prepare json data
+//        let json: [String: Any] = ["title": "ABC",
+//                                   "dict": ["1":"First", "2":"Second"]]
+
+        let jsonData = try? JSONSerialization.data(withJSONObject: data)
+
+        // create post request
+        guard let url = URL(string: "https://fixcenter.salesdrive.me/handler/") else { return }
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+
+        // insert json data to the request
+        request.httpBody = jsonData
+
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, error == nil else {
+                print(error?.localizedDescription ?? "No data")
+                return
+            }
+            let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
+            if let responseJSON = responseJSON as? [String: Any] {
+                print(responseJSON)
+            }
+        }
+        task.resume()
+    }
+    
 //    func loadData<T>(model: T.Type, urlString: String, type: T.Type, completion: @escaping Closure<T>) where T: Decodable  {
 //
 //            guard let token = self.token else { return }

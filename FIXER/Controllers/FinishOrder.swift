@@ -18,7 +18,7 @@ enum Delivery : String {
 
 class FinishOrder: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
-//    private var deliveryOptions = ["Самовивіз", "Доставка НП", "Кур'єром (Київ)"]
+    //    private var deliveryOptions = ["Самовивіз", "Доставка НП", "Кур'єром (Київ)"]
     private var deliveryMethod = ""
     private var deliveryOptions = [
         Delivery.InOffice.rawValue,
@@ -35,6 +35,11 @@ class FinishOrder: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
     @IBOutlet weak var firstNameShopper: UITextField!
     @IBOutlet weak var secondNameShopper: UITextField!
     @IBOutlet weak var myPicker: UIPickerView!
+    @IBOutlet weak var paySegmentControll: UISegmentedControl!
+    
+    @IBAction func paymentMethod(_ sender: Any) {
+        
+    }
     
     override func viewDidLoad() {
         deliveryMethod = Delivery.InOffice.rawValue
@@ -128,17 +133,37 @@ class FinishOrder: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
     
     //sender order to telegram
     @IBAction func finishOrderButton(_ sender: UIButton) {
+        var shipingMethod = Delivery.InOffice.rawValue
+        guard var payMethod = paySegmentControll.titleForSegment(at: paySegmentControll.selectedSegmentIndex) else { return }
+
+        func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+            let shipingMethod = deliveryOptions[row] as String
+        }
+        
         if InternetConnection.isConnectedToInternet && checkAllData() {
-            let apiToken = "861029744:AAF83m9tfZ1k8HnXteFsrJQYawEQdkMTAYo"
-            let chatId = "@fixcenterOrder"
-            var strUrl = "https://api.telegram.org/bot%@/sendMessage?chat_id=%@&text=%@"
+            var dataOrder = [
+                "form": "XhfXlcpSQIAzbcW7LFDhYfDRIQD7Y-u8OBy_j2ayV_2weMSVRpTVZDS7pSAO5Ggvdzx6hYMoJGoj",
+                "products": [
+                    [
+                        "id": Cart.shared.cartArrayItem[0].article,
+                        "name": "",
+                        "costPerItem": "",
+                        "amount": Cart.shared.cartArrayItem[0].count
+                    ]
+                ],
+                "comment": "Коментар введений вручну в API менеджері",
+                "externalId": "",
+                "fName": firstNameShopper.text!,
+                "lName": secondNameShopper.text!,
+                "phone": phoneShopper.text!,
+                "email": "",
+                "con_comment": "",
+                "shipping_address": shippingAddress.text!,
+                "shipping_method": shipingMethod,
+                "payment_method": payMethod
+                ] as [String : Any]
             
-            strUrl = String(format: strUrl, apiToken, chatId, orderInformationForTelegram()!)
-            let url = URL(string: strUrl)
-            guard let newUrl = url else {return}
-            let downloadTask = URLSession.shared.dataTask(with: newUrl) { (data : Data?, response : URLResponse?, error : Error?) in
-            }
-            downloadTask.resume()
+            Network.shared.passDataFromSalesDrive(data: dataOrder)
             
             Cart.shared.clearCart()
             if Cart.shared.cartArrayItem.isEmpty {
@@ -147,7 +172,29 @@ class FinishOrder: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
         } else {
             UIAlertController.alert(title: "Не получиться", msg: "Пожалуйста, подключитесь к интернету", target: self)
         }
+        
+        //send to telegram
+        //        if InternetConnection.isConnectedToInternet && checkAllData() {
+        //            let apiToken = "861029744:AAF83m9tfZ1k8HnXteFsrJQYawEQdkMTAYo"
+        //            let chatId = "@fixcenterOrder"
+        //            var strUrl = "https://api.telegram.org/bot%@/sendMessage?chat_id=%@&text=%@"
+        //
+        //            strUrl = String(format: strUrl, apiToken, chatId, orderInformationForTelegram()!)
+        //            let url = URL(string: strUrl)
+        //            guard let newUrl = url else {return}
+        //            let downloadTask = URLSession.shared.dataTask(with: newUrl) { (data : Data?, response : URLResponse?, error : Error?) in
+        //            }
+        //            downloadTask.resume()
+        //
+        //            Cart.shared.clearCart()
+        //            if Cart.shared.cartArrayItem.isEmpty {
+        //                self.dismiss(animated: true, completion: nil)
+        //            }
+        //        } else {
+        //            UIAlertController.alert(title: "Не получиться", msg: "Пожалуйста, подключитесь к интернету", target: self)
+        //        }
     }
+    
     
     //setup Picker
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
@@ -201,8 +248,8 @@ class FinishOrder: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
         self.view.endEditing(true)
     }
     
-//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-//        textField.resignFirstResponder()
-//        return true
-//    }
+    //    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    //        textField.resignFirstResponder()
+    //        return true
+    //    }
 }

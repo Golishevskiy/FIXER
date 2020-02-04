@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0k9-so-eXA">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0k9-so-eXA">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -292,6 +292,24 @@
                                     <action selector="finishOrderButton:" destination="Cve-CL-7cO" eventType="touchUpInside" id="cb9-6z-QY0"/>
                                 </connections>
                             </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="YMl-Dd-ecU">
+                                <rect key="frame" x="20" y="510" width="374" height="32"/>
+                                <segments>
+                                    <segment title="Наличными"/>
+                                    <segment title="Карточка Приватбанка"/>
+                                </segments>
+                                <connections>
+                                    <action selector="paymentMethod:" destination="Cve-CL-7cO" eventType="valueChanged" id="4Ex-hc-WuL"/>
+                                </connections>
+                            </segmentedControl>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Wm9-aj-AEL">
+                                <rect key="frame" x="20" y="565" width="374" height="32"/>
+                                <segments>
+                                    <segment title="Самовывоз"/>
+                                    <segment title="Почта"/>
+                                    <segment title="Курьер"/>
+                                </segments>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -299,9 +317,12 @@
                             <constraint firstItem="bnc-1F-PX4" firstAttribute="top" secondItem="Hll-y5-V6f" secondAttribute="bottom" constant="8" id="3vn-Bx-G2X"/>
                             <constraint firstItem="8g6-Hc-9ou" firstAttribute="top" secondItem="SGL-7u-704" secondAttribute="top" constant="38" id="4q0-ay-JZv"/>
                             <constraint firstItem="lAm-Yf-bTD" firstAttribute="top" secondItem="bnc-1F-PX4" secondAttribute="bottom" constant="16" id="5GS-Mq-ish"/>
+                            <constraint firstItem="Wm9-aj-AEL" firstAttribute="top" secondItem="YMl-Dd-ecU" secondAttribute="bottom" constant="24" id="5HX-dM-7jA"/>
+                            <constraint firstItem="Wm9-aj-AEL" firstAttribute="leading" secondItem="SGL-7u-704" secondAttribute="leading" constant="20" id="5nz-c7-434"/>
                             <constraint firstItem="SGL-7u-704" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="1JG-RM-G1m" secondAttribute="trailing" constant="50" id="7KR-QK-09t"/>
                             <constraint firstItem="M1R-M6-ZtN" firstAttribute="leading" relation="lessThanOrEqual" secondItem="SGL-7u-704" secondAttribute="leading" constant="20" id="9ag-m2-MDh"/>
                             <constraint firstItem="Hll-y5-V6f" firstAttribute="leading" secondItem="SGL-7u-704" secondAttribute="leading" id="CYx-Ji-jnD"/>
+                            <constraint firstItem="YMl-Dd-ecU" firstAttribute="top" secondItem="lAm-Yf-bTD" secondAttribute="bottom" constant="26" id="CaS-LP-Kbm"/>
                             <constraint firstItem="Pji-vr-vg9" firstAttribute="top" secondItem="SGL-7u-704" secondAttribute="top" id="Ct4-Pg-aGt"/>
                             <constraint firstItem="SGL-7u-704" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="bnc-1F-PX4" secondAttribute="trailing" constant="20" id="EUS-rZ-8ic"/>
                             <constraint firstItem="SGL-7u-704" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="kAg-Ke-mv8" secondAttribute="trailing" constant="20" id="GNm-EP-cfx"/>
@@ -311,6 +332,7 @@
                             <constraint firstItem="bnc-1F-PX4" firstAttribute="leading" relation="lessThanOrEqual" secondItem="SGL-7u-704" secondAttribute="leading" constant="20" id="LVb-t1-Jsf"/>
                             <constraint firstItem="SGL-7u-704" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="cXi-55-kyI" secondAttribute="trailing" constant="20" id="Laj-E2-sbK"/>
                             <constraint firstItem="pcP-fY-Z09" firstAttribute="top" secondItem="Hll-y5-V6f" secondAttribute="bottom" constant="8" id="Lbv-os-59v"/>
+                            <constraint firstItem="SGL-7u-704" firstAttribute="trailing" secondItem="Wm9-aj-AEL" secondAttribute="trailing" constant="20" id="LiN-pb-iCD"/>
                             <constraint firstItem="SGL-7u-704" firstAttribute="bottom" secondItem="1JG-RM-G1m" secondAttribute="bottom" constant="22" id="Mbg-4D-19v"/>
                             <constraint firstItem="1JG-RM-G1m" firstAttribute="leading" relation="lessThanOrEqual" secondItem="SGL-7u-704" secondAttribute="leading" constant="50" id="UWv-nk-Jwk"/>
                             <constraint firstItem="SGL-7u-704" firstAttribute="trailing" secondItem="8Em-sr-lGq" secondAttribute="trailing" constant="20" id="WVq-6G-ZTl"/>
@@ -320,12 +342,15 @@
                             <constraint firstItem="cXi-55-kyI" firstAttribute="leading" relation="lessThanOrEqual" secondItem="SGL-7u-704" secondAttribute="leading" constant="20" id="aRB-N2-weZ"/>
                             <constraint firstItem="cXi-55-kyI" firstAttribute="top" secondItem="kAg-Ke-mv8" secondAttribute="bottom" constant="16" id="bko-c1-yF7"/>
                             <constraint firstItem="Pji-vr-vg9" firstAttribute="centerX" secondItem="AfA-H8-OvI" secondAttribute="centerX" id="cjg-ke-9ed"/>
+                            <constraint firstItem="YMl-Dd-ecU" firstAttribute="centerX" secondItem="AfA-H8-OvI" secondAttribute="centerX" id="dxQ-5p-JJf"/>
                             <constraint firstItem="rbJ-Us-oYo" firstAttribute="centerX" secondItem="AfA-H8-OvI" secondAttribute="centerX" id="hcO-d3-En3"/>
                             <constraint firstItem="M1R-M6-ZtN" firstAttribute="top" secondItem="cXi-55-kyI" secondAttribute="bottom" constant="16" id="lAF-Eo-cAP"/>
                             <constraint firstItem="pcP-fY-Z09" firstAttribute="leading" relation="lessThanOrEqual" secondItem="SGL-7u-704" secondAttribute="leading" constant="20" id="lEs-iL-TkW"/>
                             <constraint firstItem="SGL-7u-704" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="M1R-M6-ZtN" secondAttribute="trailing" constant="20" id="ng7-Pu-ryJ"/>
+                            <constraint firstItem="YMl-Dd-ecU" firstAttribute="leading" secondItem="SGL-7u-704" secondAttribute="leading" constant="20" id="r6C-4Y-2GX"/>
                             <constraint firstItem="8g6-Hc-9ou" firstAttribute="centerX" secondItem="AfA-H8-OvI" secondAttribute="centerX" id="rkR-ex-W4c"/>
                             <constraint firstItem="lAm-Yf-bTD" firstAttribute="leading" relation="lessThanOrEqual" secondItem="SGL-7u-704" secondAttribute="leading" constant="20" id="u5g-e4-gRN"/>
+                            <constraint firstItem="SGL-7u-704" firstAttribute="trailing" secondItem="YMl-Dd-ecU" secondAttribute="trailing" constant="20" id="vPL-Ma-86k"/>
                             <constraint firstItem="rbJ-Us-oYo" firstAttribute="top" secondItem="M1R-M6-ZtN" secondAttribute="bottom" constant="16" id="vd3-w9-y4B"/>
                             <constraint firstItem="SGL-7u-704" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="lAm-Yf-bTD" secondAttribute="trailing" constant="20" id="yYQ-zl-bHi"/>
                             <constraint firstItem="1JG-RM-G1m" firstAttribute="centerX" secondItem="AfA-H8-OvI" secondAttribute="centerX" id="zFy-QO-yFg"/>
@@ -339,6 +364,7 @@
                         <outlet property="firstNameShopper" destination="cXi-55-kyI" id="lwc-K9-M9b"/>
                         <outlet property="fixcenterAddress" destination="8Em-sr-lGq" id="I0a-Uz-pEz"/>
                         <outlet property="myPicker" destination="Hll-y5-V6f" id="Hj2-PP-8QZ"/>
+                        <outlet property="paySegmentControll" destination="YMl-Dd-ecU" id="HPu-zh-WF1"/>
                         <outlet property="phoneShopper" destination="M1R-M6-ZtN" id="pzc-Ch-LE9"/>
                         <outlet property="postOfficeDeliveryr" destination="lAm-Yf-bTD" id="9r4-to-Kuh"/>
                         <outlet property="secondNameShopper" destination="kAg-Ke-mv8" id="PrS-CY-X7z"/>
@@ -347,7 +373,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tiw-uw-Uqf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1033" y="2225"/>
+            <point key="canvasLocation" x="-1033.3333333333335" y="2223.8839285714284"/>
         </scene>
         <!--Start ScreenVC-->
         <scene sceneID="OXP-im-v5d">
