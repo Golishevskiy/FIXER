@@ -36,6 +36,8 @@ class MenuVC: UIViewController {
         tableViewMenu.tableFooterView = UIView()
         activityLoadMenu.startAnimating()
         
+        print(CFGetRetainCount(tableViewMenu as CFTypeRef))
+        
         if InternetConnection.isConnectedToInternet {
             Network.shared.getToken {
                 Network.shared.loadMenu(completion: { (menu) in
@@ -60,6 +62,21 @@ class MenuVC: UIViewController {
                                     target: self)
             activityLoadMenu.stopAnimating()
         }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        print(CFGetRetainCount(tableViewMenu as CFTypeRef))
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        print("disappear")
+        print(CFGetRetainCount(tableViewMenu as CFTypeRef))
+    }
+    
+    deinit {
+        print("category = \(category)")
+        print("------------------------------")
+        print("view = \(view) tableView = \(tableViewMenu) activityLoadMenu = \(activityLoadMenu)")
     }
 }
 

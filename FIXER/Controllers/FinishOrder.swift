@@ -10,15 +10,19 @@ import UIKit
 
 enum Delivery : String {
     case InOffice = "Самовывоз"
-    case NovaPoshta = "Новая почта"
-    case Courier = "Kypьep"
+    case NovaPoshta = "Новой почтой"
+    case Courier = "Курьером по Киеву на завтра"
+}
+
+enum PayMethod : String {
+    case Cash = "id_15"
+    case Privat = "id_16"
+    case Novaposhta = "id_13"
 }
 
 
-
-class FinishOrder: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class FinishOrder: UIViewController {
     
-    //    private var deliveryOptions = ["Самовивіз", "Доставка НП", "Кур'єром (Київ)"]
     private var deliveryMethod = ""
     private var deliveryOptions = [
         Delivery.InOffice.rawValue,
@@ -34,12 +38,14 @@ class FinishOrder: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
     @IBOutlet weak var phoneShopper: UITextField!
     @IBOutlet weak var firstNameShopper: UITextField!
     @IBOutlet weak var secondNameShopper: UITextField!
-    @IBOutlet weak var myPicker: UIPickerView!
     @IBOutlet weak var paySegmentControll: UISegmentedControl!
+    @IBOutlet weak var deliverySegmentedControl: UISegmentedControl!
     
     @IBAction func paymentMethod(_ sender: Any) {
         
     }
+
+
     
     override func viewDidLoad() {
         deliveryMethod = Delivery.InOffice.rawValue
@@ -48,13 +54,31 @@ class FinishOrder: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
         shippingAddress.isHidden = true
         fixcenterAddress.isHidden = false
         
+        
         //for button finish order
         finishOrderButton.backgroundColor = UIColor(red: 1, green: 0.45, blue: 0, alpha: 1)
         finishOrderButton.setTitle("Оформить", for: .normal)
         finishOrderButton.layer.cornerRadius = finishOrderButton.frame.height / 2
         finishOrderButton.setTitleColor(.white, for: .normal)
         
+        cityDelivery.addTarget(self, action: #selector(textFieldTyping), for: .editingChanged)
     }
+    
+    @objc func textFieldTyping(textField: UITextField)
+    {
+        print(textField.text?.count)
+        guard let count = textField.text?.count else { return }
+        if count >= 3 {
+            print("count > 3")
+            NovaPoshta.loadSearchCity(search: textField.text) { (NovaPoshtaAnswer) in
+                //1
+            }
+        }
+        
+    }
+    
+
+    
     
     @IBAction func cancel(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
@@ -134,11 +158,33 @@ class FinishOrder: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
     //sender order to telegram
     @IBAction func finishOrderButton(_ sender: UIButton) {
         var shipingMethod = Delivery.InOffice.rawValue
-        guard var payMethod = paySegmentControll.titleForSegment(at: paySegmentControll.selectedSegmentIndex) else { return }
-
-        func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-            let shipingMethod = deliveryOptions[row] as String
+    
+        switch deliverySegmentedControl.selectedSegmentIndex {
+        case 0:
+            shipingMethod = Delivery.InOffice.rawValue
+        case 1:
+            shipingMethod = Delivery.NovaPoshta.rawValue
+        case 2:
+            shipingMethod = Delivery.Courier.rawValue
+        default:
+            break
         }
+        
+        var payMethod = PayMethod.Cash.rawValue
+        
+        switch paySegmentControll.selectedSegmentIndex {
+        case 0:
+            payMethod = PayMethod.Cash.rawValue
+        case 1:
+            payMethod = PayMethod.Privat.rawValue
+        default:
+            break
+        }
+        
+
+//        func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+//            let shipingMethod = deliveryOptions[row] as String
+//        }
         
         if InternetConnection.isConnectedToInternet && checkAllData() {
             var dataOrder = [
@@ -194,43 +240,32 @@ class FinishOrder: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
         //            UIAlertController.alert(title: "Не получиться", msg: "Пожалуйста, подключитесь к интернету", target: self)
         //        }
     }
+
     
-    
-    //setup Picker
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return deliveryOptions.count
-    }
-    
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return deliveryOptions[row]
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        deliveryMethod = deliveryOptions[row]
+    @IBAction func deliverySegmentControl(_ sender: UISegmentedControl) {
         
-        if deliveryMethod == Delivery.NovaPoshta.rawValue {
-            cityDelivery.isHidden = false
-            postOfficeDeliveryr.isHidden = false
-            shippingAddress.isHidden = true
-            fixcenterAddress.isHidden = true
-        }
-        if deliveryMethod == Delivery.Courier.rawValue {
-            shippingAddress.isHidden = false
-            postOfficeDeliveryr.isHidden = true
-            cityDelivery.isHidden = true
-            fixcenterAddress.isHidden = true
-        }
-        if deliveryMethod == Delivery.InOffice.rawValue {
+        switch sender.selectedSegmentIndex {
+            
+        case 0:
             cityDelivery.isHidden = true
             postOfficeDeliveryr.isHidden = true
             shippingAddress.isHidden = true
             fixcenterAddress.isHidden = false
+        case 1:
+            cityDelivery.isHidden = false
+            postOfficeDeliveryr.isHidden = false
+            shippingAddress.isHidden = true
+            fixcenterAddress.isHidden = true
+        case 2:
+            shippingAddress.isHidden = false
+            postOfficeDeliveryr.isHidden = true
+            cityDelivery.isHidden = true
+            fixcenterAddress.isHidden = true
+        default:
+            break
         }
     }
+    
     
     //api manager telegram
     private func orderInformationForTelegram() -> String? {

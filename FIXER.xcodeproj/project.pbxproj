@@ -3,11 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		5AC10B779688D5000B57E813 /* Pods_FIXER.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86392F0CFF023E7253887E69 /* Pods_FIXER.framework */; };
+		AB052EE12444B94C0018C423 /* ModelNovaPoshta.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB052EE02444B94C0018C423 /* ModelNovaPoshta.swift */; };
+		AB052EE32445139F0018C423 /* ChooseNovaPoshta.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB052EE22445139F0018C423 /* ChooseNovaPoshta.swift */; };
 		EA008C882237D9E900025332 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA008C872237D9E900025332 /* AppDelegate.swift */; };
 		EA008C8D2237D9E900025332 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA008C8B2237D9E900025332 /* Main.storyboard */; };
 		EA008C8F2237D9EB00025332 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA008C8E2237D9EB00025332 /* Assets.xcassets */; };
@@ -46,6 +48,8 @@
 		5AEA56F6172672436CBCE7BD /* Pods-FIXER.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FIXER.release.xcconfig"; path = "Pods/Target Support Files/Pods-FIXER/Pods-FIXER.release.xcconfig"; sourceTree = "<group>"; };
 		7F053B5E024662DD14047FC0 /* Pods-FIXER.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FIXER.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FIXER/Pods-FIXER.debug.xcconfig"; sourceTree = "<group>"; };
 		86392F0CFF023E7253887E69 /* Pods_FIXER.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FIXER.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB052EE02444B94C0018C423 /* ModelNovaPoshta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelNovaPoshta.swift; sourceTree = "<group>"; };
+		AB052EE22445139F0018C423 /* ChooseNovaPoshta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseNovaPoshta.swift; sourceTree = "<group>"; };
 		EA008C842237D9E900025332 /* Fixcenter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fixcenter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA008C872237D9E900025332 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EA008C8C2237D9E900025332 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -111,6 +115,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		AB052EE424451D8E0018C423 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Extension;
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		EA008C7B2237D9E900025332 = {
 			isa = PBXGroup;
 			children = (
@@ -135,6 +147,7 @@
 				EAC5A0AE223B97C100D16517 /* Models */,
 				EAE5514F230C29E70058C236 /* Views */,
 				EAE55150230C29F30058C236 /* Controllers */,
+				AB052EE424451D8E0018C423 /* Extension */,
 				EAE55151230C2AB80058C236 /* Resources */,
 			);
 			path = FIXER;
@@ -153,6 +166,7 @@
 				EA6322762238236C0090753B /* Menu.swift */,
 				EA71E0D922510F7200A23E96 /* ProductViewModel.swift */,
 				EA56125723808787009BC0D0 /* InternetConnection.swift */,
+				AB052EE02444B94C0018C423 /* ModelNovaPoshta.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -179,6 +193,7 @@
 			children = (
 				EA008C872237D9E900025332 /* AppDelegate.swift */,
 				EA56125D238350B5009BC0D0 /* StartScreenVC.swift */,
+				AB052EE22445139F0018C423 /* ChooseNovaPoshta.swift */,
 				EA00ACB6223A6810009D2F00 /* MenuVC.swift */,
 				EAC5A0B3223C0B1000D16517 /* MenuNextLevel.swift */,
 				EA99DC1E233A54A4000ADCC7 /* BoardProducts.swift */,
@@ -319,11 +334,13 @@
 				EA71E0D8224E7B0000A23E96 /* CartTVC.swift in Sources */,
 				EA8B515A22BCD9FC00C32F06 /* NovaPoshtaAllCity.swift in Sources */,
 				EA56125E238350B5009BC0D0 /* StartScreenVC.swift in Sources */,
+				AB052EE12444B94C0018C423 /* ModelNovaPoshta.swift in Sources */,
 				EA4C3BF02338DB9D005EE5B0 /* BoardCell.swift in Sources */,
 				EA71E0D4224D29C700A23E96 /* CartVC.swift in Sources */,
 				EA71E0D6224D320000A23E96 /* Cart.swift in Sources */,
 				EA99DC1F233A54A4000ADCC7 /* BoardProducts.swift in Sources */,
 				EA344ACB231A8F3500C0BC76 /* ImageSlider.swift in Sources */,
+				AB052EE32445139F0018C423 /* ChooseNovaPoshta.swift in Sources */,
 				EAC5A0B4223C0B1000D16517 /* MenuNextLevel.swift in Sources */,
 				EA2F8809231585DB00052340 /* MenuCell.swift in Sources */,
 				EA008C882237D9E900025332 /* AppDelegate.swift in Sources */,
@@ -494,7 +511,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4R56U7KD56;
 				INFOPLIST_FILE = "$(SRCROOT)/FIXER/Resources/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -516,7 +533,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4R56U7KD56;
 				INFOPLIST_FILE = "$(SRCROOT)/FIXER/Resources/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
