@@ -44,8 +44,11 @@ class FinishOrder: UIViewController {
     @IBAction func paymentMethod(_ sender: Any) {
         
     }
-
-
+    
+    
+    @IBAction func test() {
+    }
+    
     
     override func viewDidLoad() {
         deliveryMethod = Delivery.InOffice.rawValue
@@ -66,7 +69,6 @@ class FinishOrder: UIViewController {
     
     @objc func textFieldTyping(textField: UITextField)
     {
-        print(textField.text?.count)
         guard let count = textField.text?.count else { return }
         if count >= 3 {
             print("count > 3")
@@ -187,7 +189,7 @@ class FinishOrder: UIViewController {
 //        }
         
         if InternetConnection.isConnectedToInternet && checkAllData() {
-            var dataOrder = [
+            let dataOrder = [
                 "form": "XhfXlcpSQIAzbcW7LFDhYfDRIQD7Y-u8OBy_j2ayV_2weMSVRpTVZDS7pSAO5Ggvdzx6hYMoJGoj",
                 "products": [
                     [

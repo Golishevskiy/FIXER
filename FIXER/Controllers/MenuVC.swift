@@ -17,9 +17,10 @@ class MenuVC: UIViewController {
     private var selectRow: Int?
     private var x = Menu()
     private var menuOneLine = [1186,
-                       1052,
-                       1053,
-                       1055]
+                               1052,
+                               1053,
+                               1055,
+                               1207]
     // outlet
     @IBOutlet weak var tableViewMenu: UITableView!
     @IBOutlet weak var activityLoadMenu: UIActivityIndicatorView!

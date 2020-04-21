@@ -9,28 +9,24 @@
 import UIKit
 
 class ChooseNovaPoshta: UIViewController, UITableViewDelegate, UITableViewDataSource {
-   
-    
-    
+
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var resultTableView: UITableView!
     
-    private var resultData: [City] = []
+    private var resultData: [ResultCity] = []
+    var novaPoshtaQueue = OperationQueue()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
         searchTextField.addTarget(self, action: #selector(loadSearchResult), for: .editingChanged)
     }
     
-    @objc func loadSearchResult(textField: UITextField) {
-        print(textField.text?.count)
-        
+    @objc func loadSearchResult(textField: UITextField) {        
         if textField.text!.count >= 2 {
             NovaPoshta.loadSearchCity(search: textField.text) { (response) in
-                let result = response.data[0].addresses
+                guard let result = response.data else { return }
                 self.resultData = result
+                print(result.count)
                 DispatchQueue.main.async {
                     self.resultTableView.reloadData()
                 }
@@ -49,7 +45,21 @@ class ChooseNovaPoshta: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = resultData[indexPath.row].mainDescription
+        cell.textLabel?.text = resultData[indexPath.row].description
         return cell
+    }
+    
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let city = resultData[indexPath.row].ref
+
+        let operation = LoadOfficeNovaPoshta(city: city!) { (result) in
+            for i in result {
+                print("№\(i.number!) (\(i.shortAddress!))")
+            }
+        }
+        
+        novaPoshtaQueue.addOperation(operation)
     }
 }

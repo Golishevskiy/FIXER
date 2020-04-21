@@ -10,6 +10,14 @@
 		5AC10B779688D5000B57E813 /* Pods_FIXER.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86392F0CFF023E7253887E69 /* Pods_FIXER.framework */; };
 		AB052EE12444B94C0018C423 /* ModelNovaPoshta.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB052EE02444B94C0018C423 /* ModelNovaPoshta.swift */; };
 		AB052EE32445139F0018C423 /* ChooseNovaPoshta.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB052EE22445139F0018C423 /* ChooseNovaPoshta.swift */; };
+		AB052EE624451E710018C423 /* AsynchronousOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB052EE524451E710018C423 /* AsynchronousOperation.swift */; };
+		AB052EE824451F3D0018C423 /* LoadOfficeNovaPoshta.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB052EE724451F3C0018C423 /* LoadOfficeNovaPoshta.swift */; };
+		AB052EEA2445C3000018C423 /* ResultSearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB052EE92445C2FF0018C423 /* ResultSearchModel.swift */; };
+		AB052EEC2445CD0B0018C423 /* OfficesInCityVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB052EEB2445CD0B0018C423 /* OfficesInCityVC.swift */; };
+		AB4D7E5A244C466F00BFF705 /* ResultSearchNovaPoshta.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4D7E59244C466F00BFF705 /* ResultSearchNovaPoshta.swift */; };
+		AB4D7E5C244C970200BFF705 /* SearchStreetsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4D7E5B244C970200BFF705 /* SearchStreetsVC.swift */; };
+		AB4D7E5E244C9CDB00BFF705 /* StreetsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4D7E5D244C9CDB00BFF705 /* StreetsModel.swift */; };
+		AB4D7E60244CA3DF00BFF705 /* LoadStreetsKyivOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4D7E5F244CA3DF00BFF705 /* LoadStreetsKyivOperation.swift */; };
 		EA008C882237D9E900025332 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA008C872237D9E900025332 /* AppDelegate.swift */; };
 		EA008C8D2237D9E900025332 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA008C8B2237D9E900025332 /* Main.storyboard */; };
 		EA008C8F2237D9EB00025332 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA008C8E2237D9EB00025332 /* Assets.xcassets */; };
@@ -50,6 +58,14 @@
 		86392F0CFF023E7253887E69 /* Pods_FIXER.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FIXER.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB052EE02444B94C0018C423 /* ModelNovaPoshta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelNovaPoshta.swift; sourceTree = "<group>"; };
 		AB052EE22445139F0018C423 /* ChooseNovaPoshta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseNovaPoshta.swift; sourceTree = "<group>"; };
+		AB052EE524451E710018C423 /* AsynchronousOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsynchronousOperation.swift; sourceTree = "<group>"; };
+		AB052EE724451F3C0018C423 /* LoadOfficeNovaPoshta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadOfficeNovaPoshta.swift; sourceTree = "<group>"; };
+		AB052EE92445C2FF0018C423 /* ResultSearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultSearchModel.swift; sourceTree = "<group>"; };
+		AB052EEB2445CD0B0018C423 /* OfficesInCityVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfficesInCityVC.swift; sourceTree = "<group>"; };
+		AB4D7E59244C466F00BFF705 /* ResultSearchNovaPoshta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultSearchNovaPoshta.swift; sourceTree = "<group>"; };
+		AB4D7E5B244C970200BFF705 /* SearchStreetsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchStreetsVC.swift; sourceTree = "<group>"; };
+		AB4D7E5D244C9CDB00BFF705 /* StreetsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreetsModel.swift; sourceTree = "<group>"; };
+		AB4D7E5F244CA3DF00BFF705 /* LoadStreetsKyivOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadStreetsKyivOperation.swift; sourceTree = "<group>"; };
 		EA008C842237D9E900025332 /* Fixcenter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fixcenter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA008C872237D9E900025332 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EA008C8C2237D9E900025332 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -118,6 +134,7 @@
 		AB052EE424451D8E0018C423 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				AB052EE524451E710018C423 /* AsynchronousOperation.swift */,
 			);
 			name = Extension;
 			path = Controllers;
@@ -167,6 +184,11 @@
 				EA71E0D922510F7200A23E96 /* ProductViewModel.swift */,
 				EA56125723808787009BC0D0 /* InternetConnection.swift */,
 				AB052EE02444B94C0018C423 /* ModelNovaPoshta.swift */,
+				AB052EE724451F3C0018C423 /* LoadOfficeNovaPoshta.swift */,
+				AB4D7E5F244CA3DF00BFF705 /* LoadStreetsKyivOperation.swift */,
+				AB052EE92445C2FF0018C423 /* ResultSearchModel.swift */,
+				AB4D7E59244C466F00BFF705 /* ResultSearchNovaPoshta.swift */,
+				AB4D7E5D244C9CDB00BFF705 /* StreetsModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -193,16 +215,18 @@
 			children = (
 				EA008C872237D9E900025332 /* AppDelegate.swift */,
 				EA56125D238350B5009BC0D0 /* StartScreenVC.swift */,
-				AB052EE22445139F0018C423 /* ChooseNovaPoshta.swift */,
 				EA00ACB6223A6810009D2F00 /* MenuVC.swift */,
 				EAC5A0B3223C0B1000D16517 /* MenuNextLevel.swift */,
 				EA99DC1E233A54A4000ADCC7 /* BoardProducts.swift */,
 				EA71E0D122457E7100A23E96 /* DetailProductVC.swift */,
 				EA71E0D3224D29C700A23E96 /* CartVC.swift */,
+				AB4D7E5B244C970200BFF705 /* SearchStreetsVC.swift */,
+				AB052EE22445139F0018C423 /* ChooseNovaPoshta.swift */,
 				EA406496227E2BA300EC4BBD /* FinishOrder.swift */,
 				EA56125F2385CC54009BC0D0 /* NoInternetVC.swift */,
 				EA56126323881B3E009BC0D0 /* NoConnectionVC.swift */,
 				EA9D6BAD223C3C71000B8B36 /* BoardProduct.swift */,
+				AB052EEB2445CD0B0018C423 /* OfficesInCityVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -329,12 +353,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB052EEC2445CD0B0018C423 /* OfficesInCityVC.swift in Sources */,
 				EA344AC92317F2EE00C0BC76 /* MenuNextLevelCell.swift in Sources */,
 				EA008C9A2237DA3500025332 /* NetworkLayer.swift in Sources */,
 				EA71E0D8224E7B0000A23E96 /* CartTVC.swift in Sources */,
 				EA8B515A22BCD9FC00C32F06 /* NovaPoshtaAllCity.swift in Sources */,
+				AB052EE824451F3D0018C423 /* LoadOfficeNovaPoshta.swift in Sources */,
 				EA56125E238350B5009BC0D0 /* StartScreenVC.swift in Sources */,
 				AB052EE12444B94C0018C423 /* ModelNovaPoshta.swift in Sources */,
+				AB4D7E5E244C9CDB00BFF705 /* StreetsModel.swift in Sources */,
 				EA4C3BF02338DB9D005EE5B0 /* BoardCell.swift in Sources */,
 				EA71E0D4224D29C700A23E96 /* CartVC.swift in Sources */,
 				EA71E0D6224D320000A23E96 /* Cart.swift in Sources */,
@@ -344,7 +371,9 @@
 				EAC5A0B4223C0B1000D16517 /* MenuNextLevel.swift in Sources */,
 				EA2F8809231585DB00052340 /* MenuCell.swift in Sources */,
 				EA008C882237D9E900025332 /* AppDelegate.swift in Sources */,
+				AB052EEA2445C3000018C423 /* ResultSearchModel.swift in Sources */,
 				EA56125823808787009BC0D0 /* InternetConnection.swift in Sources */,
+				AB052EE624451E710018C423 /* AsynchronousOperation.swift in Sources */,
 				EA1285C32330136800057C06 /* DetailView.swift in Sources */,
 				EA008C9C2237DAC400025332 /* Authorization.swift in Sources */,
 				EAE55153230C4B670058C236 /* Urls.swift in Sources */,
@@ -354,7 +383,10 @@
 				EA406497227E2BA300EC4BBD /* FinishOrder.swift in Sources */,
 				EA71E0D222457E7200A23E96 /* DetailProductVC.swift in Sources */,
 				EA9D6BB0223C4233000B8B36 /* ProductCell.swift in Sources */,
+				AB4D7E5C244C970200BFF705 /* SearchStreetsVC.swift in Sources */,
 				EA9D6BB2223D33AE000B8B36 /* Product.swift in Sources */,
+				AB4D7E5A244C466F00BFF705 /* ResultSearchNovaPoshta.swift in Sources */,
+				AB4D7E60244CA3DF00BFF705 /* LoadStreetsKyivOperation.swift in Sources */,
 				EA9D6BAE223C3C71000B8B36 /* BoardProduct.swift in Sources */,
 				EA56126423881B3E009BC0D0 /* NoConnectionVC.swift in Sources */,
 				EA00ACB7223A6810009D2F00 /* MenuVC.swift in Sources */,

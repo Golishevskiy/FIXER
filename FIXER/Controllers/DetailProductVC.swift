@@ -23,7 +23,6 @@ class DetailProductVC: UIViewController {
     
     var indexForPageControll = 0
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
