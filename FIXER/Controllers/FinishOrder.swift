@@ -20,8 +20,19 @@ enum PayMethod : String {
     case Novaposhta = "id_13"
 }
 
+protocol PassDataStreet: class {
+    func passData(name: String)
+}
 
-class FinishOrder: UIViewController {
+protocol PassDataOffice: class {
+    func passDataOffice(nameOffice: String)
+}
+
+
+class FinishOrder: UIViewController, PassData, PassDataStreet, PassDataOffice {
+
+    
+    
     
     private var deliveryMethod = ""
     private var deliveryOptions = [
@@ -41,14 +52,14 @@ class FinishOrder: UIViewController {
     @IBOutlet weak var paySegmentControll: UISegmentedControl!
     @IBOutlet weak var deliverySegmentedControl: UISegmentedControl!
     
+    
+    private var cityRef: String?
     @IBAction func paymentMethod(_ sender: Any) {
         
     }
     
-    
     @IBAction func test() {
     }
-    
     
     override func viewDidLoad() {
         deliveryMethod = Delivery.InOffice.rawValue
@@ -64,8 +75,62 @@ class FinishOrder: UIViewController {
         finishOrderButton.layer.cornerRadius = finishOrderButton.frame.height / 2
         finishOrderButton.setTitleColor(.white, for: .normal)
         
-        cityDelivery.addTarget(self, action: #selector(textFieldTyping), for: .editingChanged)
+        cityDelivery.addTarget(self, action: #selector(goToSearchCityVC), for: .touchDown)
+        postOfficeDeliveryr.addTarget(self, action: #selector(goToSearchOffice), for: .touchDown)
+        shippingAddress.addTarget(self, action: #selector(goToSearchStretsVC), for: .touchDown)
     }
+    
+    
+    @objc func goToSearchStretsVC() {
+        performSegue(withIdentifier: "chooseStreetSegue", sender: nil)
+    }
+    
+    @objc func hi() {
+        print("Hi")
+//        performSegue(withIdentifier: "NovaPoshtaCitiesSegue", sender: nil)
+    }
+    
+    @objc func goToSearchCityVC() {
+        performSegue(withIdentifier: "NovaPoshtaCitiesSegue", sender: nil)
+    }
+    
+    @objc func goToSearchOffice() {
+        performSegue(withIdentifier: "chooseOffice", sender: nil)
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "NovaPoshtaCitiesSegue" {
+            guard let destination = segue.destination as? ChooseNovaPoshta else { return }
+            destination.delegate = self
+        }
+        else if segue.identifier == "chooseStreetSegue" {
+            guard let destination = segue.destination as? SearchStreetsVC else { return }
+            destination.delegate = self
+        
+        }
+        else if segue.identifier == "chooseOffice" {
+            guard let destination = segue.destination as? SearchOfficeVC else { return }
+            destination.cityRef = cityRef
+            destination.delegate = self
+        }
+    }
+    
+    func passdataBack(id: String, name: String) {
+        print("passed back \(id)")
+        self.cityRef = id
+        //        guard let idString = id else { return }
+        cityDelivery.attributedPlaceholder = NSAttributedString(string: name, attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
+    }
+    
+    func passData(name: String) {
+//        shippingAddress.placeholder = name
+        shippingAddress.attributedPlaceholder = NSAttributedString(string: name, attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
+    }
+    
+    func passDataOffice(nameOffice: String) {
+        postOfficeDeliveryr.attributedPlaceholder = NSAttributedString(string: nameOffice, attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
+    }
+    
     
     @objc func textFieldTyping(textField: UITextField)
     {
@@ -78,9 +143,6 @@ class FinishOrder: UIViewController {
         }
         
     }
-    
-
-    
     
     @IBAction func cancel(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
@@ -160,7 +222,7 @@ class FinishOrder: UIViewController {
     //sender order to telegram
     @IBAction func finishOrderButton(_ sender: UIButton) {
         var shipingMethod = Delivery.InOffice.rawValue
-    
+        
         switch deliverySegmentedControl.selectedSegmentIndex {
         case 0:
             shipingMethod = Delivery.InOffice.rawValue
@@ -182,11 +244,6 @@ class FinishOrder: UIViewController {
         default:
             break
         }
-        
-
-//        func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-//            let shipingMethod = deliveryOptions[row] as String
-//        }
         
         if InternetConnection.isConnectedToInternet && checkAllData() {
             let dataOrder = [
@@ -242,7 +299,6 @@ class FinishOrder: UIViewController {
         //            UIAlertController.alert(title: "Не получиться", msg: "Пожалуйста, подключитесь к интернету", target: self)
         //        }
     }
-
     
     @IBAction func deliverySegmentControl(_ sender: UISegmentedControl) {
         
@@ -268,7 +324,6 @@ class FinishOrder: UIViewController {
         }
     }
     
-    
     //api manager telegram
     private func orderInformationForTelegram() -> String? {
         var textOrder = "#ЗАКАЗ#"
@@ -284,9 +339,4 @@ class FinishOrder: UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
-    
-    //    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-    //        textField.resignFirstResponder()
-    //        return true
-    //    }
 }

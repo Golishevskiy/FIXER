@@ -15,7 +15,7 @@ class SearchStreetsVC: UIViewController {
     
     private var selectRow: Int?
     var queue = OperationQueue()
-    
+    weak var delegate: PassDataStreet?
     var result: [Street] = []
     
     override func viewDidLoad() {
@@ -71,6 +71,9 @@ extension SearchStreetsVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.selectRow = indexPath.row
-        stretsTableView.updateConstraints()
+        
+        let street = result[indexPath.row].present
+        delegate?.passData(name: street)
+        dismiss(animated: true)
     }
 }

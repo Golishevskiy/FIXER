@@ -8,17 +8,25 @@
 
 import UIKit
 
-class ChooseNovaPoshta: UIViewController, UITableViewDelegate, UITableViewDataSource {
+protocol PassData: class {
+    func passdataBack(id: String, name: String)
+}
 
+
+class ChooseNovaPoshta: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var resultTableView: UITableView!
-    
+   
     private var resultData: [ResultCity] = []
     var novaPoshtaQueue = OperationQueue()
+    weak var delegate: PassData?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         searchTextField.addTarget(self, action: #selector(loadSearchResult), for: .editingChanged)
+        
+        
     }
     
     @objc func loadSearchResult(textField: UITextField) {        
@@ -39,6 +47,10 @@ class ChooseNovaPoshta: UIViewController, UITableViewDelegate, UITableViewDataSo
         }
     }
     
+    @IBAction func backButton(_ sender: Any) {
+        self.dismiss(animated: true)
+       }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return resultData.count
     }
@@ -51,15 +63,23 @@ class ChooseNovaPoshta: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     
     
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let city = resultData[indexPath.row].ref
-
-        let operation = LoadOfficeNovaPoshta(city: city!) { (result) in
-            for i in result {
-                print("№\(i.number!) (\(i.shortAddress!))")
-            }
-        }
+        print("didSelected")
+            guard let cityRef = resultData[indexPath.row].ref else { return }
+        guard let cityName = resultData[indexPath.row].description else { return }
+        delegate?.passdataBack(id: cityRef, name: cityName)
+        dismiss(animated: true)
         
-        novaPoshtaQueue.addOperation(operation)
+        
+//        let city = resultData[indexPath.row].ref
+
+//        let operation = LoadOfficeNovaPoshta(city: city!) { (result) in
+//            for i in result {
+//                print("№\(i.number!) (\(i.shortAddress!))")
+//            }
+//        }
+        
+//        novaPoshtaQueue.addOperation(operation)
     }
 }
