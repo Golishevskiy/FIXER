@@ -31,9 +31,6 @@ protocol PassDataOffice: class {
 
 class FinishOrder: UIViewController, PassData, PassDataStreet, PassDataOffice {
 
-    
-    
-    
     private var deliveryMethod = ""
     private var deliveryOptions = [
         Delivery.InOffice.rawValue,
@@ -58,16 +55,12 @@ class FinishOrder: UIViewController, PassData, PassDataStreet, PassDataOffice {
         
     }
     
-    @IBAction func test() {
-    }
-    
     override func viewDidLoad() {
         deliveryMethod = Delivery.InOffice.rawValue
         cityDelivery.isHidden = true
         postOfficeDeliveryr.isHidden = true
         shippingAddress.isHidden = true
         fixcenterAddress.isHidden = false
-        
         
         //for button finish order
         finishOrderButton.backgroundColor = UIColor(red: 1, green: 0.45, blue: 0, alpha: 1)
@@ -78,18 +71,31 @@ class FinishOrder: UIViewController, PassData, PassDataStreet, PassDataOffice {
         cityDelivery.addTarget(self, action: #selector(goToSearchCityVC), for: .touchDown)
         postOfficeDeliveryr.addTarget(self, action: #selector(goToSearchOffice), for: .touchDown)
         shippingAddress.addTarget(self, action: #selector(goToSearchStretsVC), for: .touchDown)
+        
+        
     }
     
+    func allItemToSalesDrive(itemArray: [ProductInCart]) -> [[String: Any]] {
+        
+        var dataItemSalesDrive = [[String: Any]].init()
+        
+        for i in itemArray {
+            
+            var item: [String: Any]
+            item = ["id": i.article,
+                    "amount": i.count
+            ]
+            
+            dataItemSalesDrive.append(item)
+        }
+        
+        return dataItemSalesDrive
+    }
     
     @objc func goToSearchStretsVC() {
         performSegue(withIdentifier: "chooseStreetSegue", sender: nil)
     }
-    
-    @objc func hi() {
-        print("Hi")
-//        performSegue(withIdentifier: "NovaPoshtaCitiesSegue", sender: nil)
-    }
-    
+ 
     @objc func goToSearchCityVC() {
         performSegue(withIdentifier: "NovaPoshtaCitiesSegue", sender: nil)
     }
@@ -119,7 +125,8 @@ class FinishOrder: UIViewController, PassData, PassDataStreet, PassDataOffice {
         print("passed back \(id)")
         self.cityRef = id
         //        guard let idString = id else { return }
-        cityDelivery.attributedPlaceholder = NSAttributedString(string: name, attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
+        cityDelivery.text = name
+//        cityDelivery.attributedPlaceholder = NSAttributedString(string: name, attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
     }
     
     func passData(name: String) {
@@ -128,9 +135,10 @@ class FinishOrder: UIViewController, PassData, PassDataStreet, PassDataOffice {
     }
     
     func passDataOffice(nameOffice: String) {
-        postOfficeDeliveryr.attributedPlaceholder = NSAttributedString(string: nameOffice, attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
+        
+        postOfficeDeliveryr.text = nameOffice
+//        postOfficeDeliveryr.attributedPlaceholder = NSAttributedString(string: nameOffice, attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
     }
-    
     
     @objc func textFieldTyping(textField: UITextField)
     {
@@ -245,17 +253,12 @@ class FinishOrder: UIViewController, PassData, PassDataStreet, PassDataOffice {
             break
         }
         
+        let allItem = allItemToSalesDrive(itemArray: Cart.shared.cartArrayItem)
+// MARK: send order to salesDrive
         if InternetConnection.isConnectedToInternet && checkAllData() {
             let dataOrder = [
                 "form": "XhfXlcpSQIAzbcW7LFDhYfDRIQD7Y-u8OBy_j2ayV_2weMSVRpTVZDS7pSAO5Ggvdzx6hYMoJGoj",
-                "products": [
-                    [
-                        "id": Cart.shared.cartArrayItem[0].article,
-                        "name": "",
-                        "costPerItem": "",
-                        "amount": Cart.shared.cartArrayItem[0].count
-                    ]
-                ],
+                "products": allItem,
                 "comment": "Коментар введений вручну в API менеджері",
                 "externalId": "",
                 "fName": firstNameShopper.text!,
@@ -265,7 +268,16 @@ class FinishOrder: UIViewController, PassData, PassDataStreet, PassDataOffice {
                 "con_comment": "",
                 "shipping_address": shippingAddress.text!,
                 "shipping_method": shipingMethod,
-                "payment_method": payMethod
+                "payment_method": payMethod,
+                "novaposhta": [
+                  "ServiceType": "WarehouseWarehouse",
+                  "city": cityDelivery.text!,
+                  "WarehouseNumber": postOfficeDeliveryr.text!,
+                  "Street": "",
+                  "BuildingNumber": "",
+                  "Flat": "",
+                  "backwardDeliveryCargoType": ""
+                ]
                 ] as [String : Any]
             
             Network.shared.passDataFromSalesDrive(data: dataOrder)
@@ -277,27 +289,6 @@ class FinishOrder: UIViewController, PassData, PassDataStreet, PassDataOffice {
         } else {
             UIAlertController.alert(title: "Не получиться", msg: "Пожалуйста, подключитесь к интернету", target: self)
         }
-        
-        //send to telegram
-        //        if InternetConnection.isConnectedToInternet && checkAllData() {
-        //            let apiToken = "861029744:AAF83m9tfZ1k8HnXteFsrJQYawEQdkMTAYo"
-        //            let chatId = "@fixcenterOrder"
-        //            var strUrl = "https://api.telegram.org/bot%@/sendMessage?chat_id=%@&text=%@"
-        //
-        //            strUrl = String(format: strUrl, apiToken, chatId, orderInformationForTelegram()!)
-        //            let url = URL(string: strUrl)
-        //            guard let newUrl = url else {return}
-        //            let downloadTask = URLSession.shared.dataTask(with: newUrl) { (data : Data?, response : URLResponse?, error : Error?) in
-        //            }
-        //            downloadTask.resume()
-        //
-        //            Cart.shared.clearCart()
-        //            if Cart.shared.cartArrayItem.isEmpty {
-        //                self.dismiss(animated: true, completion: nil)
-        //            }
-        //        } else {
-        //            UIAlertController.alert(title: "Не получиться", msg: "Пожалуйста, подключитесь к интернету", target: self)
-        //        }
     }
     
     @IBAction func deliverySegmentControl(_ sender: UISegmentedControl) {
@@ -322,18 +313,6 @@ class FinishOrder: UIViewController, PassData, PassDataStreet, PassDataOffice {
         default:
             break
         }
-    }
-    
-    //api manager telegram
-    private func orderInformationForTelegram() -> String? {
-        var textOrder = "#ЗАКАЗ#"
-        for i in Cart.shared.cartArrayItem {
-            textOrder = "\(textOrder)\n+\(i.name) x \(i.count.description)шт\nАртикул - \(i.article)\nЦіна - \(i.price)\n-----------------------------------------------"
-        }
-        
-        textOrder = "\(textOrder)\n*ПОКУПАТЕЛЬ:*\n\(firstNameShopper.text!) \(secondNameShopper.text!) \(phoneShopper.text!)\n*ДОСТАВКА:*\n\(deliveryMethod)\n\(shippingAddress.text ?? "")\(cityDelivery.text ?? "")\n\(postOfficeDeliveryr.text ?? "")"
-        let resultTextOrder = textOrder.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)
-        return resultTextOrder
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
