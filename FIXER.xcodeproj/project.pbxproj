@@ -18,16 +18,19 @@
 		AB4D7E5C244C970200BFF705 /* SearchStreetsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4D7E5B244C970200BFF705 /* SearchStreetsVC.swift */; };
 		AB4D7E5E244C9CDB00BFF705 /* StreetsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4D7E5D244C9CDB00BFF705 /* StreetsModel.swift */; };
 		AB4D7E60244CA3DF00BFF705 /* LoadStreetsKyivOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4D7E5F244CA3DF00BFF705 /* LoadStreetsKyivOperation.swift */; };
+		AB4FDA8E2454C517008AA7E1 /* PostOfficeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4FDA8D2454C517008AA7E1 /* PostOfficeCell.swift */; };
 		ABC926872450EAD500F3F597 /* SearchOfficeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC926862450EAD500F3F597 /* SearchOfficeVC.swift */; };
+		ABC9268924537FF400F3F597 /* PayMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC9268824537FF400F3F597 /* PayMethod.swift */; };
+		ABC9268B2453803300F3F597 /* Delivery.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC9268A2453803300F3F597 /* Delivery.swift */; };
+		ABC9268D245382F700F3F597 /* KeyApiNovaPoshta.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC9268C245382F700F3F597 /* KeyApiNovaPoshta.swift */; };
 		EA008C882237D9E900025332 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA008C872237D9E900025332 /* AppDelegate.swift */; };
 		EA008C8D2237D9E900025332 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA008C8B2237D9E900025332 /* Main.storyboard */; };
 		EA008C8F2237D9EB00025332 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA008C8E2237D9EB00025332 /* Assets.xcassets */; };
 		EA008C922237D9EB00025332 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA008C902237D9EB00025332 /* LaunchScreen.storyboard */; };
 		EA008C9A2237DA3500025332 /* NetworkLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA008C992237DA3500025332 /* NetworkLayer.swift */; };
-		EA008C9C2237DAC400025332 /* Authorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA008C9B2237DAC400025332 /* Authorization.swift */; };
+		EA008C9C2237DAC400025332 /* AuthorizationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA008C9B2237DAC400025332 /* AuthorizationModel.swift */; };
 		EA00ACB7223A6810009D2F00 /* MenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA00ACB6223A6810009D2F00 /* MenuVC.swift */; };
 		EA0BC4C823893475003A4402 /* StatusItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0BC4C723893474003A4402 /* StatusItem.swift */; };
-		EA1285C32330136800057C06 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1285C22330136800057C06 /* DetailView.swift */; };
 		EA2F8809231585DB00052340 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2F8808231585DB00052340 /* MenuCell.swift */; };
 		EA344AC92317F2EE00C0BC76 /* MenuNextLevelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA344AC82317F2EE00C0BC76 /* MenuNextLevelCell.swift */; };
 		EA344ACB231A8F3500C0BC76 /* ImageSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA344ACA231A8F3500C0BC76 /* ImageSlider.swift */; };
@@ -46,7 +49,6 @@
 		EA71E0DA22510F7200A23E96 /* ProductViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA71E0D922510F7200A23E96 /* ProductViewModel.swift */; };
 		EA8B515A22BCD9FC00C32F06 /* NovaPoshtaAllCity.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8B515922BCD9FC00C32F06 /* NovaPoshtaAllCity.swift */; };
 		EA99DC1F233A54A4000ADCC7 /* BoardProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA99DC1E233A54A4000ADCC7 /* BoardProducts.swift */; };
-		EA9D6BAE223C3C71000B8B36 /* BoardProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9D6BAD223C3C71000B8B36 /* BoardProduct.swift */; };
 		EA9D6BB0223C4233000B8B36 /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9D6BAF223C4233000B8B36 /* ProductCell.swift */; };
 		EA9D6BB2223D33AE000B8B36 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9D6BB1223D33AE000B8B36 /* Product.swift */; };
 		EAC5A0B4223C0B1000D16517 /* MenuNextLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC5A0B3223C0B1000D16517 /* MenuNextLevel.swift */; };
@@ -67,7 +69,11 @@
 		AB4D7E5B244C970200BFF705 /* SearchStreetsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchStreetsVC.swift; sourceTree = "<group>"; };
 		AB4D7E5D244C9CDB00BFF705 /* StreetsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreetsModel.swift; sourceTree = "<group>"; };
 		AB4D7E5F244CA3DF00BFF705 /* LoadStreetsKyivOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadStreetsKyivOperation.swift; sourceTree = "<group>"; };
+		AB4FDA8D2454C517008AA7E1 /* PostOfficeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostOfficeCell.swift; sourceTree = "<group>"; };
 		ABC926862450EAD500F3F597 /* SearchOfficeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchOfficeVC.swift; sourceTree = "<group>"; };
+		ABC9268824537FF400F3F597 /* PayMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayMethod.swift; sourceTree = "<group>"; };
+		ABC9268A2453803300F3F597 /* Delivery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delivery.swift; sourceTree = "<group>"; };
+		ABC9268C245382F700F3F597 /* KeyApiNovaPoshta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyApiNovaPoshta.swift; sourceTree = "<group>"; };
 		EA008C842237D9E900025332 /* Fixcenter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fixcenter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA008C872237D9E900025332 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EA008C8C2237D9E900025332 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -75,10 +81,9 @@
 		EA008C912237D9EB00025332 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EA008C932237D9EB00025332 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA008C992237DA3500025332 /* NetworkLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLayer.swift; sourceTree = "<group>"; };
-		EA008C9B2237DAC400025332 /* Authorization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authorization.swift; sourceTree = "<group>"; };
+		EA008C9B2237DAC400025332 /* AuthorizationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationModel.swift; sourceTree = "<group>"; };
 		EA00ACB6223A6810009D2F00 /* MenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuVC.swift; sourceTree = "<group>"; };
 		EA0BC4C723893474003A4402 /* StatusItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusItem.swift; sourceTree = "<group>"; };
-		EA1285C22330136800057C06 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		EA2F8808231585DB00052340 /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
 		EA344AC82317F2EE00C0BC76 /* MenuNextLevelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuNextLevelCell.swift; sourceTree = "<group>"; };
 		EA344ACA231A8F3500C0BC76 /* ImageSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSlider.swift; sourceTree = "<group>"; };
@@ -97,7 +102,6 @@
 		EA71E0D922510F7200A23E96 /* ProductViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewModel.swift; sourceTree = "<group>"; };
 		EA8B515922BCD9FC00C32F06 /* NovaPoshtaAllCity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovaPoshtaAllCity.swift; sourceTree = "<group>"; };
 		EA99DC1E233A54A4000ADCC7 /* BoardProducts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardProducts.swift; sourceTree = "<group>"; };
-		EA9D6BAD223C3C71000B8B36 /* BoardProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardProduct.swift; sourceTree = "<group>"; };
 		EA9D6BAF223C4233000B8B36 /* ProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
 		EA9D6BB1223D33AE000B8B36 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		EAC5A0B3223C0B1000D16517 /* MenuNextLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuNextLevel.swift; sourceTree = "<group>"; };
@@ -176,9 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				EA008C992237DA3500025332 /* NetworkLayer.swift */,
-				EA008C9B2237DAC400025332 /* Authorization.swift */,
-				EA0BC4C723893474003A4402 /* StatusItem.swift */,
-				EAE55152230C4B670058C236 /* Urls.swift */,
+				EA008C9B2237DAC400025332 /* AuthorizationModel.swift */,
 				EA8B515922BCD9FC00C32F06 /* NovaPoshtaAllCity.swift */,
 				EA71E0D5224D320000A23E96 /* Cart.swift */,
 				EA9D6BB1223D33AE000B8B36 /* Product.swift */,
@@ -191,6 +193,11 @@
 				AB052EE92445C2FF0018C423 /* ResultSearchModel.swift */,
 				AB4D7E59244C466F00BFF705 /* ResultSearchNovaPoshta.swift */,
 				AB4D7E5D244C9CDB00BFF705 /* StreetsModel.swift */,
+				ABC9268A2453803300F3F597 /* Delivery.swift */,
+				EAE55152230C4B670058C236 /* Urls.swift */,
+				EA0BC4C723893474003A4402 /* StatusItem.swift */,
+				ABC9268C245382F700F3F597 /* KeyApiNovaPoshta.swift */,
+				ABC9268824537FF400F3F597 /* PayMethod.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -200,9 +207,9 @@
 			children = (
 				EA9D6BAF223C4233000B8B36 /* ProductCell.swift */,
 				EA4C3BEF2338DB9D005EE5B0 /* BoardCell.swift */,
-				EA1285C22330136800057C06 /* DetailView.swift */,
-				EA71E0D7224E7B0000A23E96 /* CartTVC.swift */,
 				EA2F8808231585DB00052340 /* MenuCell.swift */,
+				EA71E0D7224E7B0000A23E96 /* CartTVC.swift */,
+				AB4FDA8D2454C517008AA7E1 /* PostOfficeCell.swift */,
 				EA344AC82317F2EE00C0BC76 /* MenuNextLevelCell.swift */,
 				EA344ACA231A8F3500C0BC76 /* ImageSlider.swift */,
 				EA008C902237D9EB00025332 /* LaunchScreen.storyboard */,
@@ -224,12 +231,11 @@
 				EA71E0D3224D29C700A23E96 /* CartVC.swift */,
 				AB4D7E5B244C970200BFF705 /* SearchStreetsVC.swift */,
 				AB052EE22445139F0018C423 /* ChooseNovaPoshta.swift */,
-				AB052EEB2445CD0B0018C423 /* OfficesInCityVC.swift */,
 				ABC926862450EAD500F3F597 /* SearchOfficeVC.swift */,
+				AB052EEB2445CD0B0018C423 /* OfficesInCityVC.swift */,
 				EA406496227E2BA300EC4BBD /* FinishOrder.swift */,
 				EA56125F2385CC54009BC0D0 /* NoInternetVC.swift */,
 				EA56126323881B3E009BC0D0 /* NoConnectionVC.swift */,
-				EA9D6BAD223C3C71000B8B36 /* BoardProduct.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -378,20 +384,22 @@
 				ABC926872450EAD500F3F597 /* SearchOfficeVC.swift in Sources */,
 				EA56125823808787009BC0D0 /* InternetConnection.swift in Sources */,
 				AB052EE624451E710018C423 /* AsynchronousOperation.swift in Sources */,
-				EA1285C32330136800057C06 /* DetailView.swift in Sources */,
-				EA008C9C2237DAC400025332 /* Authorization.swift in Sources */,
+				EA008C9C2237DAC400025332 /* AuthorizationModel.swift in Sources */,
 				EAE55153230C4B670058C236 /* Urls.swift in Sources */,
 				EA6322772238236C0090753B /* Menu.swift in Sources */,
 				EA0BC4C823893475003A4402 /* StatusItem.swift in Sources */,
+				AB4FDA8E2454C517008AA7E1 /* PostOfficeCell.swift in Sources */,
 				EA5612602385CC54009BC0D0 /* NoInternetVC.swift in Sources */,
 				EA406497227E2BA300EC4BBD /* FinishOrder.swift in Sources */,
 				EA71E0D222457E7200A23E96 /* DetailProductVC.swift in Sources */,
+				ABC9268B2453803300F3F597 /* Delivery.swift in Sources */,
 				EA9D6BB0223C4233000B8B36 /* ProductCell.swift in Sources */,
+				ABC9268D245382F700F3F597 /* KeyApiNovaPoshta.swift in Sources */,
 				AB4D7E5C244C970200BFF705 /* SearchStreetsVC.swift in Sources */,
 				EA9D6BB2223D33AE000B8B36 /* Product.swift in Sources */,
+				ABC9268924537FF400F3F597 /* PayMethod.swift in Sources */,
 				AB4D7E5A244C466F00BFF705 /* ResultSearchNovaPoshta.swift in Sources */,
 				AB4D7E60244CA3DF00BFF705 /* LoadStreetsKyivOperation.swift in Sources */,
-				EA9D6BAE223C3C71000B8B36 /* BoardProduct.swift in Sources */,
 				EA56126423881B3E009BC0D0 /* NoConnectionVC.swift in Sources */,
 				EA00ACB7223A6810009D2F00 /* MenuVC.swift in Sources */,
 				EA71E0DA22510F7200A23E96 /* ProductViewModel.swift in Sources */,

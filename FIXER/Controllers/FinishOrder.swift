@@ -8,18 +8,6 @@
 
 import UIKit
 
-enum Delivery : String {
-    case InOffice = "Самовывоз"
-    case NovaPoshta = "Новой почтой"
-    case Courier = "Курьером по Киеву на завтра"
-}
-
-enum PayMethod : String {
-    case Cash = "id_15"
-    case Privat = "id_16"
-    case Novaposhta = "id_13"
-}
-
 protocol PassDataStreet: class {
     func passData(name: String)
 }
@@ -28,15 +16,7 @@ protocol PassDataOffice: class {
     func passDataOffice(nameOffice: String)
 }
 
-
 class FinishOrder: UIViewController, PassData, PassDataStreet, PassDataOffice {
-
-    private var deliveryMethod = ""
-    private var deliveryOptions = [
-        Delivery.InOffice.rawValue,
-        Delivery.NovaPoshta.rawValue,
-        Delivery.Courier.rawValue
-    ]
     
     @IBOutlet weak var finishOrderButton: UIButton!
     @IBOutlet weak var fixcenterAddress: UILabel!
@@ -49,8 +29,16 @@ class FinishOrder: UIViewController, PassData, PassDataStreet, PassDataOffice {
     @IBOutlet weak var paySegmentControll: UISegmentedControl!
     @IBOutlet weak var deliverySegmentedControl: UISegmentedControl!
     
+    private var deliveryMethod = ""
+    private var deliveryOptions = [
+        Delivery.InOffice.rawValue,
+        Delivery.NovaPoshta.rawValue,
+        Delivery.Courier.rawValue
+    ]
     
     private var cityRef: String?
+    private var postOfficeNumber: String?
+    
     @IBAction func paymentMethod(_ sender: Any) {
         
     }
@@ -61,18 +49,17 @@ class FinishOrder: UIViewController, PassData, PassDataStreet, PassDataOffice {
         postOfficeDeliveryr.isHidden = true
         shippingAddress.isHidden = true
         fixcenterAddress.isHidden = false
-        
+//        postOfficeDeliveryr.isEnabled = true
         //for button finish order
         finishOrderButton.backgroundColor = UIColor(red: 1, green: 0.45, blue: 0, alpha: 1)
         finishOrderButton.setTitle("Оформить", for: .normal)
         finishOrderButton.layer.cornerRadius = finishOrderButton.frame.height / 2
         finishOrderButton.setTitleColor(.white, for: .normal)
         
+        //Target
         cityDelivery.addTarget(self, action: #selector(goToSearchCityVC), for: .touchDown)
         postOfficeDeliveryr.addTarget(self, action: #selector(goToSearchOffice), for: .touchDown)
         shippingAddress.addTarget(self, action: #selector(goToSearchStretsVC), for: .touchDown)
-        
-        
     }
     
     func allItemToSalesDrive(itemArray: [ProductInCart]) -> [[String: Any]] {
@@ -95,15 +82,21 @@ class FinishOrder: UIViewController, PassData, PassDataStreet, PassDataOffice {
     @objc func goToSearchStretsVC() {
         performSegue(withIdentifier: "chooseStreetSegue", sender: nil)
     }
- 
+    
     @objc func goToSearchCityVC() {
         performSegue(withIdentifier: "NovaPoshtaCitiesSegue", sender: nil)
     }
     
     @objc func goToSearchOffice() {
-        performSegue(withIdentifier: "chooseOffice", sender: nil)
+        
+        if cityRef != nil && cityRef != "" {
+//            postOfficeDeliveryr.isEnabled = true
+            performSegue(withIdentifier: "chooseOffice", sender: nil)
+        } else {
+            UIAlertController.alert(title: "Пожалуйста", msg: "Выберите город", target: self)
+        }
     }
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "NovaPoshtaCitiesSegue" {
             guard let destination = segue.destination as? ChooseNovaPoshta else { return }
@@ -112,7 +105,7 @@ class FinishOrder: UIViewController, PassData, PassDataStreet, PassDataOffice {
         else if segue.identifier == "chooseStreetSegue" {
             guard let destination = segue.destination as? SearchStreetsVC else { return }
             destination.delegate = self
-        
+            
         }
         else if segue.identifier == "chooseOffice" {
             guard let destination = segue.destination as? SearchOfficeVC else { return }
@@ -124,24 +117,19 @@ class FinishOrder: UIViewController, PassData, PassDataStreet, PassDataOffice {
     func passdataBack(id: String, name: String) {
         print("passed back \(id)")
         self.cityRef = id
-        //        guard let idString = id else { return }
         cityDelivery.text = name
-//        cityDelivery.attributedPlaceholder = NSAttributedString(string: name, attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
     }
     
     func passData(name: String) {
-//        shippingAddress.placeholder = name
-        shippingAddress.attributedPlaceholder = NSAttributedString(string: name, attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
+        shippingAddress.placeholder = "г. Киев, \(name) "
     }
     
     func passDataOffice(nameOffice: String) {
-        
-        postOfficeDeliveryr.text = nameOffice
-//        postOfficeDeliveryr.attributedPlaceholder = NSAttributedString(string: nameOffice, attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
+        postOfficeDeliveryr.text = "Отделение №\(nameOffice)"
+        postOfficeNumber = nameOffice
     }
     
-    @objc func textFieldTyping(textField: UITextField)
-    {
+    @objc func textFieldTyping(textField: UITextField) {
         guard let count = textField.text?.count else { return }
         if count >= 3 {
             print("count > 3")
@@ -149,7 +137,6 @@ class FinishOrder: UIViewController, PassData, PassDataStreet, PassDataOffice {
                 //1
             }
         }
-        
     }
     
     @IBAction func cancel(_ sender: UIButton) {
@@ -254,7 +241,7 @@ class FinishOrder: UIViewController, PassData, PassDataStreet, PassDataOffice {
         }
         
         let allItem = allItemToSalesDrive(itemArray: Cart.shared.cartArrayItem)
-// MARK: send order to salesDrive
+        // MARK: send order to salesDrive
         if InternetConnection.isConnectedToInternet && checkAllData() {
             let dataOrder = [
                 "form": "XhfXlcpSQIAzbcW7LFDhYfDRIQD7Y-u8OBy_j2ayV_2weMSVRpTVZDS7pSAO5Ggvdzx6hYMoJGoj",
@@ -270,13 +257,13 @@ class FinishOrder: UIViewController, PassData, PassDataStreet, PassDataOffice {
                 "shipping_method": shipingMethod,
                 "payment_method": payMethod,
                 "novaposhta": [
-                  "ServiceType": "WarehouseWarehouse",
-                  "city": cityDelivery.text!,
-                  "WarehouseNumber": postOfficeDeliveryr.text!,
-                  "Street": "",
-                  "BuildingNumber": "",
-                  "Flat": "",
-                  "backwardDeliveryCargoType": ""
+                    "ServiceType": "WarehouseWarehouse",
+                    "city": cityDelivery.text!,
+                    "WarehouseNumber": postOfficeNumber!,
+                    "Street": "",
+                    "BuildingNumber": "",
+                    "Flat": "",
+                    "backwardDeliveryCargoType": ""
                 ]
                 ] as [String : Any]
             

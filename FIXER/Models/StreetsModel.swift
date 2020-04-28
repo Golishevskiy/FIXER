@@ -50,9 +50,13 @@ struct ResultSearchStreet: Codable {
 
 struct Street: Codable {
     let present: String
+    let descriptionRU: String
+    let streetType: String
     
     enum CodingKeys: String, CodingKey {
         case present = "Present"
+        case descriptionRU = "SettlementStreetDescriptionRu"
+        case streetType = "StreetsTypeDescription"
     }
 }
 

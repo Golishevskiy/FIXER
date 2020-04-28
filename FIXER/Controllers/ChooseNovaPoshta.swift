@@ -17,18 +17,17 @@ class ChooseNovaPoshta: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var resultTableView: UITableView!
-   
+    
     private var resultData: [ResultCity] = []
     var novaPoshtaQueue = OperationQueue()
     weak var delegate: PassData?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        resultTableView.tableFooterView = UIView()
         searchTextField.addTarget(self, action: #selector(loadSearchResult), for: .editingChanged)
-        
-        
     }
-    
+
     @objc func loadSearchResult(textField: UITextField) {        
         if textField.text!.count >= 2 {
             NovaPoshta.loadSearchCity(search: textField.text) { (response) in
@@ -40,7 +39,6 @@ class ChooseNovaPoshta: UIViewController, UITableViewDelegate, UITableViewDataSo
                 }
             }
         }
-        
         if textField.text!.count < 2 {
             self.resultData = []
             self.resultTableView.reloadData()
@@ -49,7 +47,7 @@ class ChooseNovaPoshta: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     @IBAction func backButton(_ sender: Any) {
         self.dismiss(animated: true)
-       }
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return resultData.count
@@ -57,29 +55,19 @@ class ChooseNovaPoshta: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = resultData[indexPath.row].description
+        cell.textLabel?.text = resultData[indexPath.row].descriptionRu
         return cell
     }
     
-    
-    
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("didSelected")
-            guard let cityRef = resultData[indexPath.row].ref else { return }
-        guard let cityName = resultData[indexPath.row].description else { return }
+        guard let cityRef = resultData[indexPath.row].ref else { return }
+        guard let cityName = resultData[indexPath.row].descriptionRu else { return }
         delegate?.passdataBack(id: cityRef, name: cityName)
         dismiss(animated: true)
-        
-        
-//        let city = resultData[indexPath.row].ref
-
-//        let operation = LoadOfficeNovaPoshta(city: city!) { (result) in
-//            for i in result {
-//                print("№\(i.number!) (\(i.shortAddress!))")
-//            }
-//        }
-        
-//        novaPoshtaQueue.addOperation(operation)
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        view.endEditing(true)
     }
 }

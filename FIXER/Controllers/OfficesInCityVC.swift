@@ -9,14 +9,12 @@
 import UIKit
 
 class OfficesInCityVC: UIViewController {
-
-    var selectedCity: String?
     
+    var selectedCity: String?
     var novaPoshtaQueue = OperationQueue()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         let operation = LoadOfficeNovaPoshta(city: selectedCity!) { (result) in
             for i in result {
                 print(i.descriptionRu)

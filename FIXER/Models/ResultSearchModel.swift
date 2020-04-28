@@ -23,6 +23,7 @@ struct Datum: Codable {
     let descriptionRu: String?
     let shortAddress: String?
     let ref: String?
+    let shortAddressRu: String?
 //    let shortAddressRu, phone, typeOfWarehouse, ref: String?
     let number: String?
 //    , cityRef, cityDescription, cityDescriptionRu: String?
@@ -39,7 +40,7 @@ struct Datum: Codable {
 //        case datumDescription
         case descriptionRu = "DescriptionRu"
         case shortAddress = "ShortAddress"
-//        case shortAddressRu
+        case shortAddressRu = "ShortAddressRu"
 //        case phone
 //        case typeOfWarehouse
         case ref = "Ref"

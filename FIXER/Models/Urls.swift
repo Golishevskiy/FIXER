@@ -13,4 +13,5 @@ enum Url: String {
     case auth = "/auth"
     case menu = "/pages/export/"
     case catalog = "/catalog/export/"
+    case novaPoshta = "https://api.novaposhta.ua/v2.0/json/"
 }

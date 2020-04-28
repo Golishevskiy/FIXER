@@ -20,8 +20,6 @@ class BoardCell: UITableViewCell {
     @IBOutlet weak var UAHLabel: UILabel!
     @IBOutlet weak var presenceLabel: UILabel!
     
-    
-    
     func fill(_ productViewModel: ProductViewModel) {
         self.viewModel = productViewModel
         self.productNameLabel.text = productViewModel.product.title.ru
@@ -41,22 +39,7 @@ class BoardCell: UITableViewCell {
         viewCell.layer.shadowOffset = CGSize.zero
         viewCell.layer.shadowRadius = 6
         selectionStyle = .none
-        
-//        viewCell.layer.cornerRadius = 15
-//        viewCell.layer.masksToBounds = true
-//        viewCell.layer.shadowRadius = 20
-//        viewCell.layer.shadowOffset = .zero
-//        viewCell.layer.shadowOpacity = 0.2
-//        viewCell.layer.shadowColor = UIColor.black.cgColor
-//        viewCell.backgroundColor = .red
-        
-        //        layer.cornerRadius = 15
-        //        layer.masksToBounds = true
-        //        layer.shadowOffset = .zero
-        //        layer.shadowOpacity = 0.2
-        //        layer.shadowRadius = 5
-        //        layer.shadowColor = UIColor.black.cgColor
-        //        layer.masksToBounds = false
+        layer.masksToBounds = false
         
         productViewModel.loadImage { [weak self] (loadedImage) in
             self?.productImage.image = loadedImage

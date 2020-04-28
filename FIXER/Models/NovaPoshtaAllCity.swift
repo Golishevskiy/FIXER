@@ -10,15 +10,11 @@ import Foundation
 
 class NovaPoshta {
     
-    static let shared = NovaPoshta()
-    
     var npAll = [String: [String]]()
     var cityArray = [String].init()
-    //    var answerNP = JSON()
-
     
     class func searchStreets(streetName name: String?, completion: @escaping (([Street]) -> Void)) {
-        let json: [String: Any] = [ "apiKey": "bde180dca59155e550084a261a90e69e",
+        let json: [String: Any] = [ "apiKey": ApiKeyNP.key.rawValue,
                                     "modelName": "Address",
                                     "calledMethod": "searchSettlementStreets",
                                     "methodProperties": [
@@ -29,7 +25,7 @@ class NovaPoshta {
         ]
         
         let JSONData = try? JSONSerialization.data(withJSONObject: json)
-        let urlString = URL(string: "https://api.novaposhta.ua/v2.0/json/")
+        let urlString = URL(string: Url.novaPoshta.rawValue)
         guard let url = urlString else { return }
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
@@ -44,19 +40,17 @@ class NovaPoshta {
         
     }
     
-    
-    
     class func loadAllOfficeInCity(cityRef: String, completion: @escaping ([Datum]) -> Void) {
         let json: [String: Any] = ["modelName": "AddressGeneral",
                                    "calledMethod": "getWarehouses",
                                    "methodProperties": [
                                     "CityRef": cityRef
             ],
-                                   "apiKey": "bde180dca59155e550084a261a90e69e"
+                                   "apiKey": ApiKeyNP.key.rawValue
         ]
         
         let jsonData = try? JSONSerialization.data(withJSONObject: json)
-        let urlString = URL(string: "https://api.novaposhta.ua/v2.0/json/")
+        let urlString = URL(string: Url.novaPoshta.rawValue)
         guard let url = urlString else { return }
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
@@ -64,7 +58,6 @@ class NovaPoshta {
         
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             guard let data = data else { return }
-            
             let officeInCity =  try? JSONDecoder().decode(ResultSearchModel.self, from: data)
             guard let offices = officeInCity?.data else { return }
             completion(offices)
@@ -77,11 +70,11 @@ class NovaPoshta {
                                    "methodProperties": [
                                     "FindByString": search
             ],
-                                   "apiKey": "bde180dca59155e550084a261a90e69e"
+                                   "apiKey": ApiKeyNP.key.rawValue
         ]
         
         let jsonData = try? JSONSerialization.data(withJSONObject: json)
-        let url = URL(string: "https://api.novaposhta.ua/v2.0/json/")!
+        let url = URL(string: Url.novaPoshta.rawValue)!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.httpBody = jsonData
@@ -89,7 +82,6 @@ class NovaPoshta {
         
         session.dataTask(with: request) { (data, response, error) in
             guard let data = data else { return }
-            
             let result = try? JSONDecoder().decode(ResultSearchNovaPoshta.self, from: data)
             guard let resp = result else { return }
             completion(resp)

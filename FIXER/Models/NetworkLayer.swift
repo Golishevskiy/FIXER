@@ -15,9 +15,7 @@ class Network: Codable {
     typealias EmptyClosure = (() -> Void)
     typealias exempleClosure = ((AllResponse) -> Void)
     typealias Closure = ((MenuStruct) -> Void)
-//    typealias Closure<T> = ((T) -> Void)
     var token: String?
-    
     
     let a  = Url.catalog.rawValue
     
@@ -42,7 +40,7 @@ class Network: Codable {
             } catch {
                 print(error)
             }
-            }.resume()
+        }.resume()
     }
     
     func loadMenu(completion: @escaping Closure) {
@@ -65,7 +63,7 @@ class Network: Codable {
             } catch {
                 print(error)
             }
-            }.resume()
+        }.resume()
     }
     
     func loadProduct(idCategory: String, completion: @escaping exempleClosure) {
@@ -88,24 +86,21 @@ class Network: Codable {
             } catch {
                 print(error)
             }
-            }.resume()
+        }.resume()
     }
     
     func passDataFromSalesDrive(data: [String: Any]) {
-        // prepare json data
-//        let json: [String: Any] = ["title": "ABC",
-//                                   "dict": ["1":"First", "2":"Second"]]
-
+        
         let jsonData = try? JSONSerialization.data(withJSONObject: data)
-
+        
         // create post request
         guard let url = URL(string: "https://fixcenter.salesdrive.me/handler/") else { return }
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
-
+        
         // insert json data to the request
         request.httpBody = jsonData
-
+        
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data, error == nil else {
                 print(error?.localizedDescription ?? "No data")
@@ -118,31 +113,7 @@ class Network: Codable {
         }
         task.resume()
     }
-    
-//    func loadData<T>(model: T.Type, urlString: String, type: T.Type, completion: @escaping Closure<T>) where T: Decodable  {
-//
-//            guard let token = self.token else { return }
-//            let parametrs = ["token": token, "parent": "1273"]
-//            let url = URL(string: urlString)
-//
-//            var reuest = URLRequest(url: url!)
-//            reuest.httpMethod = "POST"
-//            reuest.addValue("application/json", forHTTPHeaderField: "Content-Type")
-//            guard let httpBody = try? JSONSerialization.data(withJSONObject: parametrs, options:[]) else { return }
-//            reuest.httpBody = httpBody
-//
-//            URLSession.shared.dataTask(with: reuest) { (data, response, error) in
-//                guard let data = data else { return }
-//
-//                do {
-//                    let result = try JSONDecoder().decode(model, from: data)
-//                    completion(result)
-//                } catch {
-//                    print(error)
-//                }
-//                }.resume()
-//        }
-    }
+}
 
 
 
