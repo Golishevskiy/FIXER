@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PhoneNumberKit
 
 protocol PassDataStreet: class {
     func passData(name: String)
@@ -16,7 +17,7 @@ protocol PassDataOffice: class {
     func passDataOffice(nameOffice: String)
 }
 
-class FinishOrder: UIViewController, PassData, PassDataStreet, PassDataOffice {
+class FinishOrder: UIViewController, PassData, PassDataStreet, PassDataOffice, UITextFieldDelegate {
     
     @IBOutlet weak var finishOrderButton: UIButton!
     @IBOutlet weak var fixcenterAddress: UILabel!
@@ -36,65 +37,54 @@ class FinishOrder: UIViewController, PassData, PassDataStreet, PassDataOffice {
         Delivery.Courier.rawValue
     ]
     
+    let phoneNumberKit = PhoneNumberKit()
     private var cityRef: String?
-    private var postOfficeNumber: String?
+    private var postOfficeNumber: String = ""
+    private var deliveryIsNovaPoshta = false
+    private var deliveryIsCourier = false
+    private var deliveryIsGetOffice = false
     
     @IBAction func paymentMethod(_ sender: Any) {
         
     }
     
     override func viewDidLoad() {
+        
+        setupTextFielfDelegate()
+        setupOrderButton()
+        defaultSettingsUI()
+        targetActions()
+    }
+    
+    func setupTextFielfDelegate() {
+        phoneShopper.delegate = self
+        firstNameShopper.delegate = self
+        secondNameShopper.delegate = self
+    }
+    
+    func setupOrderButton() {
+        finishOrderButton.backgroundColor = UIColor(red: 1, green: 0.45, blue: 0, alpha: 1)
+        finishOrderButton.setTitle("Подтвердить", for: .normal)
+        finishOrderButton.layer.cornerRadius = finishOrderButton.frame.height / 2
+        finishOrderButton.setTitleColor(.white, for: .normal)
+        finishOrderButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+    }
+    
+    func defaultSettingsUI() {
         deliveryMethod = Delivery.InOffice.rawValue
         cityDelivery.isHidden = true
         postOfficeDeliveryr.isHidden = true
         shippingAddress.isHidden = true
         fixcenterAddress.isHidden = false
-//        postOfficeDeliveryr.isEnabled = true
-        //for button finish order
-        finishOrderButton.backgroundColor = UIColor(red: 1, green: 0.45, blue: 0, alpha: 1)
-        finishOrderButton.setTitle("Оформить", for: .normal)
-        finishOrderButton.layer.cornerRadius = finishOrderButton.frame.height / 2
-        finishOrderButton.setTitleColor(.white, for: .normal)
-        
-        //Target
+        firstNameShopper.autocapitalizationType = .words
+        secondNameShopper.autocapitalizationType = .words
+    }
+    
+    //MARK: go to next screen
+    func targetActions() {
         cityDelivery.addTarget(self, action: #selector(goToSearchCityVC), for: .touchDown)
         postOfficeDeliveryr.addTarget(self, action: #selector(goToSearchOffice), for: .touchDown)
         shippingAddress.addTarget(self, action: #selector(goToSearchStretsVC), for: .touchDown)
-    }
-    
-    func allItemToSalesDrive(itemArray: [ProductInCart]) -> [[String: Any]] {
-        
-        var dataItemSalesDrive = [[String: Any]].init()
-        
-        for i in itemArray {
-            
-            var item: [String: Any]
-            item = ["id": i.article,
-                    "amount": i.count
-            ]
-            
-            dataItemSalesDrive.append(item)
-        }
-        
-        return dataItemSalesDrive
-    }
-    
-    @objc func goToSearchStretsVC() {
-        performSegue(withIdentifier: "chooseStreetSegue", sender: nil)
-    }
-    
-    @objc func goToSearchCityVC() {
-        performSegue(withIdentifier: "NovaPoshtaCitiesSegue", sender: nil)
-    }
-    
-    @objc func goToSearchOffice() {
-        
-        if cityRef != nil && cityRef != "" {
-//            postOfficeDeliveryr.isEnabled = true
-            performSegue(withIdentifier: "chooseOffice", sender: nil)
-        } else {
-            UIAlertController.alert(title: "Пожалуйста", msg: "Выберите город", target: self)
-        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -114,6 +104,24 @@ class FinishOrder: UIViewController, PassData, PassDataStreet, PassDataOffice {
         }
     }
     
+    @objc func goToSearchStretsVC() {
+        performSegue(withIdentifier: "chooseStreetSegue", sender: nil)
+    }
+    
+    @objc func goToSearchCityVC() {
+        performSegue(withIdentifier: "NovaPoshtaCitiesSegue", sender: nil)
+    }
+    
+    @objc func goToSearchOffice() {
+        
+        if cityRef != nil && cityRef != "" {
+            performSegue(withIdentifier: "chooseOffice", sender: nil)
+        } else {
+            UIAlertController.alert(title: "Пожалуйста", msg: "Выберите город", target: self)
+        }
+    }
+    
+    //MARK: data from protocol
     func passdataBack(id: String, name: String) {
         print("passed back \(id)")
         self.cityRef = id
@@ -129,20 +137,38 @@ class FinishOrder: UIViewController, PassData, PassDataStreet, PassDataOffice {
         postOfficeNumber = nameOffice
     }
     
-    @objc func textFieldTyping(textField: UITextField) {
-        guard let count = textField.text?.count else { return }
-        if count >= 3 {
-            print("count > 3")
-            NovaPoshta.loadSearchCity(search: textField.text) { (NovaPoshtaAnswer) in
-                //1
-            }
+    func allItemToSalesDrive(itemArray: [ProductInCart]) -> [[String: Any]] {
+        
+        var dataItemSalesDrive = [[String: Any]].init()
+        for i in itemArray {
+            var item: [String: Any]
+            item = ["id": i.article,
+                    "amount": i.count
+            ]
+            
+            dataItemSalesDrive.append(item)
         }
+        return dataItemSalesDrive
     }
+    
+    
+    
+    //    @objc func textFieldTyping(textField: UITextField) {
+    //        guard let count = textField.text?.count else { return }
+    //        if count >= 3 {
+    //            print("count > 3")
+    //            NovaPoshta.loadSearchCity(search: textField.text) { (NovaPoshtaAnswer) in
+    //                //1
+    //            }
+    //        }
+    //    }
     
     @IBAction func cancel(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
     
+    
+    //MARK: check user data
     private func checkAllData() -> Bool {
         if  checkLastname() && checkFirstName() && checkPhone() && checkShipping() {
             return true
@@ -155,7 +181,6 @@ class FinishOrder: UIViewController, PassData, PassDataStreet, PassDataOffice {
         if firstNameShopper.text! != "" {
             return true
         } else {
-            print(#function)
             UIAlertController.alert(title: "Ошибка", msg: "Пожалуйста, напишите имя", target: self)
             return false
         }
@@ -165,17 +190,23 @@ class FinishOrder: UIViewController, PassData, PassDataStreet, PassDataOffice {
         if secondNameShopper.text! != "" {
             return true
         } else {
-            print(#function)
             UIAlertController.alert(title: "Ошибка", msg: "Пожалуйста, напишите фамилию", target: self)
             return false
         }
     }
     
     private func checkPhone() -> Bool {
-        if phoneShopper.text! != "" {
+        guard let number = phoneShopper.text else {
+            UIAlertController.alert(title: "Ошибка", msg: "Пожалуйста, напишите номер телефона", target: self)
+            return false }
+        
+        do {
+            let phoneNumberCustomDefaultRegion = try phoneNumberKit.parse(number, withRegion: "UA", ignoreType: true)
             return true
-        } else {
-            UIAlertController.alert(title: "Ошибка", msg: "Пожалуйста, напишите телефон", target: self)
+        }
+        catch {
+            print("Generic parser error")
+            UIAlertController.alert(title: "Ошибка", msg: "Пожалуйста, напишите телефон в формате: 0630103201", target: self)
             return false
         }
     }
@@ -193,10 +224,10 @@ class FinishOrder: UIViewController, PassData, PassDataStreet, PassDataOffice {
         if city != "" && office != "" {
             return true
         } else if city == "" {
-            UIAlertController.alert(title: "Ошибка", msg: "Пожалуйста, напишите город", target: self)
+            UIAlertController.alert(title: "Ошибка", msg: "Пожалуйста, выберите город", target: self)
             return false
         } else {
-            UIAlertController.alert(title: "Ошибка", msg: "Пожалуйста, напишите номер отделения", target: self)
+            UIAlertController.alert(title: "Ошибка", msg: "Пожалуйста, выберите номер отделения", target: self)
             return false
         }
     }
@@ -212,6 +243,17 @@ class FinishOrder: UIViewController, PassData, PassDataStreet, PassDataOffice {
         } else {
             return false
         }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == secondNameShopper {
+            textField.resignFirstResponder()
+            firstNameShopper.becomeFirstResponder()
+        } else if textField == firstNameShopper {
+            textField.resignFirstResponder()
+            phoneShopper.becomeFirstResponder()
+        }
+        return false
     }
     
     //sender order to telegram
@@ -241,6 +283,10 @@ class FinishOrder: UIViewController, PassData, PassDataStreet, PassDataOffice {
         }
         
         let allItem = allItemToSalesDrive(itemArray: Cart.shared.cartArrayItem)
+        let shippingAdr = shippingAddress.text ?? ""
+        let city = cityDelivery.text ?? ""
+        let office = postOfficeNumber ?? ""
+        
         // MARK: send order to salesDrive
         if InternetConnection.isConnectedToInternet && checkAllData() {
             let dataOrder = [
@@ -253,13 +299,13 @@ class FinishOrder: UIViewController, PassData, PassDataStreet, PassDataOffice {
                 "phone": phoneShopper.text!,
                 "email": "",
                 "con_comment": "",
-                "shipping_address": shippingAddress.text!,
+                "shipping_address": shippingAdr,
                 "shipping_method": shipingMethod,
                 "payment_method": payMethod,
                 "novaposhta": [
                     "ServiceType": "WarehouseWarehouse",
-                    "city": cityDelivery.text!,
-                    "WarehouseNumber": postOfficeNumber!,
+                    "city": city,
+                    "WarehouseNumber": office,
                     "Street": "",
                     "BuildingNumber": "",
                     "Flat": "",
@@ -287,16 +333,25 @@ class FinishOrder: UIViewController, PassData, PassDataStreet, PassDataOffice {
             postOfficeDeliveryr.isHidden = true
             shippingAddress.isHidden = true
             fixcenterAddress.isHidden = false
+            deliveryIsGetOffice = true
+            deliveryIsCourier = false
+            deliveryIsNovaPoshta = false
         case 1:
             cityDelivery.isHidden = false
             postOfficeDeliveryr.isHidden = false
             shippingAddress.isHidden = true
             fixcenterAddress.isHidden = true
+            deliveryIsNovaPoshta = true
+            deliveryIsGetOffice = false
+            deliveryIsCourier = false
         case 2:
             shippingAddress.isHidden = false
             postOfficeDeliveryr.isHidden = true
             cityDelivery.isHidden = true
             fixcenterAddress.isHidden = true
+            deliveryIsCourier = true
+            deliveryIsNovaPoshta = false
+            deliveryIsGetOffice = false
         default:
             break
         }
@@ -306,3 +361,5 @@ class FinishOrder: UIViewController, PassData, PassDataStreet, PassDataOffice {
         self.view.endEditing(true)
     }
 }
+
+

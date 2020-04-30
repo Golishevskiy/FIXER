@@ -50,7 +50,16 @@ class DetailProductVC: UIViewController {
         guard let price = item?.product.price else { return }
         priceLabel.text = String(Int(price) * 27)
         guard let descr = item?.product.description.ru else { return }
-        textViewDescription.attributedText = try? NSAttributedString(htmlString: descr)
+        
+        
+        let attributes: [NSAttributedString.Key: Any] = [NSAttributedString.Key.foregroundColor: UIColor.blue]
+        let attributedString = NSAttributedString(string: descr, attributes: attributes)
+        textViewDescription.attributedText = attributedString
+        
+
+//        textViewDescription.attributedText = try? NSAttributedString(htmlString: descr)
+
+            
         textViewDescription.isEditable = false
     }
     
