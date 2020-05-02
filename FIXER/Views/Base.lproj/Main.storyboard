@@ -495,7 +495,7 @@
                         <outlet property="fixcenterAddress" destination="8Em-sr-lGq" id="I0a-Uz-pEz"/>
                         <outlet property="paySegmentControll" destination="YMl-Dd-ecU" id="HPu-zh-WF1"/>
                         <outlet property="phoneShopper" destination="M1R-M6-ZtN" id="pzc-Ch-LE9"/>
-                        <outlet property="postOfficeDeliveryr" destination="lAm-Yf-bTD" id="9r4-to-Kuh"/>
+                        <outlet property="postOfficeDelivery" destination="lAm-Yf-bTD" id="9r4-to-Kuh"/>
                         <outlet property="secondNameShopper" destination="kAg-Ke-mv8" id="PrS-CY-X7z"/>
                         <outlet property="shippingAddress" destination="bnc-1F-PX4" id="vt5-fP-fEw"/>
                         <segue destination="Uzq-jO-ZjW" kind="show" identifier="NovaPoshtaCitiesSegue" id="7Kt-Q6-OT3"/>
