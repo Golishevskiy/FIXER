@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AudioToolbox
 
 class SearchStreetsVC: UIViewController {
     
@@ -21,7 +22,7 @@ class SearchStreetsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         stretsTableView.tableFooterView = UIView()
-        
+        searchStreetTextField.becomeFirstResponder()
         searchStreetTextField.addTarget(self, action: #selector(loadStreets), for: .editingChanged)
     }
     
@@ -30,18 +31,26 @@ class SearchStreetsVC: UIViewController {
     }
     
     @objc func loadStreets(textField: UITextField) {
-        let operation = LoadStreetsKyivOperation(searchStreet: textField.text!) { (res) in
+        let alphbet = "qwertyuiopasdfghjklzxcvbnm"
+        guard let char = textField.text?.last?.lowercased() else { return }
+        if alphbet.contains(char) {
+            AudioServicesPlaySystemSound(1521)
+            UIAlertController.alert(title: "Ошибка", msg: "Попробуйте писать назваие улицы на укр. или рус. языке", target: self)
+            searchStreetTextField.text?.removeLast()
+        }
+        guard let nameStreet = textField.text else { return }
+        let operation = LoadStreetsKyivOperation(searchStreet: nameStreet) { (res) in
             self.result = res
             DispatchQueue.main.async {
                 self.stretsTableView.reloadData()
             }
         }
         
-        if textField.text!.count >= 2 {
+        if nameStreet.count >= 2 {
             self.queue.addOperation(operation)
         }
         
-        if textField.text!.count < 2 {
+        if nameStreet.count < 2 {
             self.result = []
             self.stretsTableView.reloadData()
         }
@@ -58,8 +67,13 @@ extension SearchStreetsVC: UITableViewDelegate, UITableViewDataSource {
         let cell = stretsTableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         let item = result[indexPath.row]
         let typeStreet = checkTypeStreet(street: item)
-        cell.textLabel?.text = typeStreet + " " + result[indexPath.row].descriptionRU
-        return cell
+        if result[indexPath.row].descriptionRU == "" {
+            cell.textLabel?.text = result[indexPath.row].present
+            return cell
+        } else {
+            cell.textLabel?.text = typeStreet + " " + result[indexPath.row].descriptionRU
+            return cell
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -67,21 +81,29 @@ extension SearchStreetsVC: UITableViewDelegate, UITableViewDataSource {
         
         let item = result[indexPath.row]
         let typeStreet = checkTypeStreet(street: item)
-        let nameStreet = typeStreet + " " + result[indexPath.row].descriptionRU
-        
-//        let street = result[indexPath.row].present
-        delegate?.passData(name: nameStreet)
-        dismiss(animated: true)
+        if result[indexPath.row].descriptionRU == "" {
+            let nameStreet = result[indexPath.row].present
+            delegate?.passData(name: nameStreet)
+            dismiss(animated: true)
+        } else {
+            let nameStreet = typeStreet + " " + result[indexPath.row].descriptionRU
+            
+            //        let street = result[indexPath.row].present
+            delegate?.passData(name: nameStreet)
+            dismiss(animated: true)
+        }
     }
     
     func checkTypeStreet(street: Street) -> String {
         switch street.streetType {
-               case "вул.": return "ул."
-               case "пл.": return "пл."
-               case "бул.": return "бул."
-               case "пров.": return "проул."
-               default:
-                   return ""
-               }
+        case "вул.": return "ул."
+        case "пл.": return "пл."
+        case "бул.": return "бул."
+        case "пров.": return "проул."
+        case "просп.": return "просп."
+        case "шосе": return "шоссе"
+        default:
+            return ""
+        }
     }
 }

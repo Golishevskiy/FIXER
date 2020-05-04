@@ -34,8 +34,14 @@ class NovaPoshta {
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             guard let data = data else { return }
             let streets = try? JSONDecoder().decode(StreetsModel.self, from: data)
-            let result = streets?.data![0]
-            completion((result?.addresses)!)
+            guard let answer = streets?.success else { return }
+            if answer {
+                guard let resulData = streets?.data![0] else { return }
+                let result = resulData
+                guard let sendData = result.addresses else { return }
+                completion(sendData)
+            }
+            
         }.resume()
         
     }

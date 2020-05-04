@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AudioToolbox
 
 protocol PassData: class {
     func passdataBack(id: String, name: String)
@@ -25,10 +26,18 @@ class ChooseNovaPoshta: UIViewController, UITableViewDelegate, UITableViewDataSo
     override func viewDidLoad() {
         super.viewDidLoad()
         resultTableView.tableFooterView = UIView()
+        searchTextField.becomeFirstResponder()
         searchTextField.addTarget(self, action: #selector(loadSearchResult), for: .editingChanged)
     }
 
-    @objc func loadSearchResult(textField: UITextField) {        
+    @objc func loadSearchResult(textField: UITextField) {
+        let alphbet = "qwertyuiopasdfghjklzxcvbnm"
+        guard let char = textField.text?.last?.lowercased() else { return }
+        if alphbet.contains(char) {
+            AudioServicesPlaySystemSound(1521)
+            UIAlertController.alert(title: "Ошибка", msg: "Попробуйте писать назваие города на укр. или рус. языке", target: self)
+            searchTextField.text?.removeLast()
+        }
         if textField.text!.count >= 2 {
             NovaPoshta.loadSearchCity(search: textField.text) { (response) in
                 guard let result = response.data else { return }

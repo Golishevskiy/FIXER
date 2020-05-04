@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AudioToolbox
 
 class BoardProducts: UIViewController {
     
@@ -102,6 +103,7 @@ extension BoardProducts: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "showDetailSegue", sender: filteredProducts[indexPath.item])
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

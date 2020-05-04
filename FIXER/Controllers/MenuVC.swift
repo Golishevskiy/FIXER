@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import AudioToolbox
 
 class MenuVC: UIViewController {
     
@@ -97,6 +98,8 @@ extension MenuVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+
         let selectRow = category[indexPath.row].id
         self.selectRow = selectRow
         

@@ -8,6 +8,7 @@
 
 import UIKit
 import PhoneNumberKit
+import AudioToolbox
 
 protocol PassDataStreet: class {
     func passData(name: String)
@@ -49,7 +50,7 @@ class FinishOrder: UIViewController, PassData, PassDataStreet, PassDataOffice, U
     private var courierStreet = ""
     
     @IBAction func paymentMethod(_ sender: Any) {
-        
+
     }
     
     override func viewDidLoad() {
@@ -179,6 +180,7 @@ class FinishOrder: UIViewController, PassData, PassDataStreet, PassDataOffice, U
         if  checkLastname() && checkFirstName() && checkPhone() {
             return true
         } else {
+            AudioServicesPlaySystemSound(1521)
             return false
         }
     }
@@ -207,7 +209,7 @@ class FinishOrder: UIViewController, PassData, PassDataStreet, PassDataOffice, U
             return false }
         
         do {
-            let phoneNumberCustomDefaultRegion = try phoneNumberKit.parse(number, withRegion: "UA", ignoreType: true)
+            _ = try phoneNumberKit.parse(number, withRegion: "UA", ignoreType: true)
             return true
         }
         catch {
@@ -235,6 +237,7 @@ class FinishOrder: UIViewController, PassData, PassDataStreet, PassDataOffice, U
             courierStreet = "\(novaPoshtaCity), отделение № \(novaPoshtaOffice)"
             return true
         }
+        AudioServicesPlaySystemSound(1521)
         return false
     }
     
@@ -243,6 +246,7 @@ class FinishOrder: UIViewController, PassData, PassDataStreet, PassDataOffice, U
             courierStreet = "г. Киев, \(courierStreet)"
             return true
         } else {
+            AudioServicesPlaySystemSound(1521)
             UIAlertController.alert(title: "Ошибка", msg: "Выберите улицу", target: self)
             return false
         }
@@ -383,4 +387,9 @@ class FinishOrder: UIViewController, PassData, PassDataStreet, PassDataOffice, U
     }
 }
 
+
+
+//AudioServicesPlaySystemSound(1521)
+//AudioServicesPlaySystemSound(1520)
+//AudioServicesPlaySystemSound(1519)
 
